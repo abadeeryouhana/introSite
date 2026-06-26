@@ -1,10 +1,179 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="hero">
-    <h1>Welcome to Bayan Group</h1>
-    <p>Empowering businesses with innovative solutions and top-tier divisions.</p>
-    <a href="{{ route('contact') }}" class="btn">Get in Touch</a>
+<style>
+.hero-modern {
+    position: relative;
+    background-color: #e6f0fa;
+    background-image: linear-gradient(135deg, rgba(230,240,250,0.92) 0%, rgba(200,225,250,0.85) 100%), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 140px 20px 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 85vh;
+    overflow: hidden;
+}
+
+.hero-modern::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(var(--primary-color) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.15;
+    z-index: 1;
+}
+
+.hero-modern-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    flex: 1.2;
+    text-align: left;
+}
+
+.hero-content h4 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-transform: none;
+}
+
+.hero-content h1 {
+    color: #1a1a1a;
+    font-size: 3.5rem;
+    line-height: 1.2;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.hero-content p {
+    color: #444;
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    line-height: 1.6;
+    max-width: 90%;
+}
+
+.hero-content .btn {
+    background: var(--primary-color);
+    color: white;
+    padding: 14px 35px;
+    font-size: 1.15rem;
+    border-radius: 30px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(61, 129, 195, 0.3);
+}
+.hero-content .btn:hover {
+    background: var(--secondary-color);
+    box-shadow: 0 6px 20px rgba(43, 178, 149, 0.4);
+}
+
+.hero-graphic {
+    flex: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.hero-circle {
+    width: 420px;
+    height: 420px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 20px 50px rgba(61, 129, 195, 0.4);
+    position: relative;
+    z-index: 2;
+}
+
+.hero-circle::before {
+    content: '';
+    position: absolute;
+    width: 550px;
+    height: 550px;
+    background: rgba(61, 129, 195, 0.1);
+    border-radius: 50%;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hero-circle::after {
+    content: '';
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    background: rgba(61, 129, 195, 0.05);
+    border-radius: 50%;
+    z-index: -2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hero-circle img {
+    max-width: 100%;
+    max-height: 100%;
+   /* filter: brightness(0) invert(1);*/
+}
+
+@media (max-width: 992px) {
+    .hero-modern-container {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 60px;
+    }
+    .hero-content {
+        text-align: center;
+    }
+    .hero-content p {
+        margin: 0 auto 40px auto;
+    }
+    .hero-circle {
+        width: 320px;
+        height: 320px;
+    }
+    .hero-circle::before { width: 420px; height: 420px; }
+    .hero-circle::after { width: 520px; height: 520px; }
+}
+</style>
+
+<div class="hero-modern">
+    <div class="hero-modern-container">
+        <div class="hero-content">
+            <h4>Bayan Group</h4>
+            <h1>Innovating Business Through People, Technology & Insight</h1>
+            <p>We empower organizations with smart solutions across communication, technology, education, and digital transformation.</p>
+            <a href="#divisions" class="btn">Explore Our Divisions</a>
+        </div>
+        <div class="hero-graphic">
+            <div class="hero-circle">
+                @if(isset($global_settings['site_logo']))
+                    <img src="{{ asset('storage/' . $global_settings['site_logo']) }}" alt="Bayan Group Logo">
+                @else
+                    <svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                @endif
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="section achievements-section" style="background-color: #f8f9fa; padding: 60px 0; text-align: center;">
@@ -90,7 +259,7 @@
     </div>
 </div>
 
-<div class="section divisions-section" style="background-color: white; text-align: center; padding: 60px 0; overflow: hidden; position: relative;">
+<div id="divisions" class="section divisions-section" style="background-color: white; text-align: center; padding: 60px 0; overflow: hidden; position: relative;">
     <h2 style="font-weight: 300; color: #444; margin-bottom: 50px; font-size: 2.2rem;">Our Divisions</h2>
     
     <!-- Swiper -->
