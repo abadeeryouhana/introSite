@@ -10,6 +10,10 @@
     <form action="{{ route('admin.settings.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
+            <label>Site Name</label>
+            <input type="text" name="site_name" value="{{ $settings['site_name'] ?? 'Bayan Group' }}">
+        </div>
+        <div class="form-group">
             <label>Site Logo</label>
             <input type="file" name="site_logo">
             @if(isset($settings['site_logo']))

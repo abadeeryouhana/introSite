@@ -30,10 +30,15 @@
         <a href="{{ route('admin.divisions.index') }}">Divisions</a>
         <a href="{{ route('admin.services.index') }}">Services</a>
         <a href="{{ route('admin.team-members.index') }}">Team Members</a>
+        <a href="{{ route('admin.users.index') }}">Users</a>
         <a href="{{ route('admin.social-links.index') }}">Social Links</a>
         <a href="{{ route('admin.contact-messages.index') }}">Contact Messages</a>
         <a href="{{ route('admin.settings.index') }}">Settings</a>
         <a href="{{ route('home') }}" target="_blank" style="margin-top: 20px; color: #2BB295;">View Site</a>
+        <form action="{{ route('logout') }}" method="POST" style="margin-top: 20px;">
+            @csrf
+            <button type="submit" style="background: none; border: none; color: #ccc; cursor: pointer; padding: 10px 0; font-size: 16px; text-align: left; width: 100%; border-bottom: 1px solid #444;">Logout</button>
+        </form>
     </div>
     <div class="content">
         @if(session('success'))
