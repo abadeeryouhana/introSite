@@ -228,6 +228,134 @@
     </div>
 </div>
 
+<div class="section who-we-are-section" style="background-color: white; padding: 50px 0; position: relative; overflow: hidden;">
+    <!-- Background subtle decorations -->
+    <div style="position: absolute; top: -50px; right: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(59,113,202,0.05) 0%, rgba(255,255,255,0) 70%); border-radius: 50%; pointer-events: none;"></div>
+    <div style="position: absolute; bottom: -50px; left: -50px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(59,113,202,0.05) 0%, rgba(255,255,255,0) 70%); border-radius: 50%; pointer-events: none;"></div>
+    
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; gap: 60px; flex-wrap: wrap;">
+        
+        <div style="flex: 1; min-width: 300px; padding-right: 20px;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                <div style="height: 3px; width: 40px; background-color: var(--primary-color, #3b71ca); border-radius: 2px;"></div>
+                <h5 style="color: var(--primary-color, #3b71ca); font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.95rem;">Who We Are</h5>
+            </div>
+            
+            <h3 style="font-size: 2.8rem; font-weight: 800; color: #1a1a1a; margin-bottom: 30px; line-height: 1.25;">An Integrated Solution Engine</h3>
+            
+            <p style="color: #555; font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
+                We are a dynamic and forward-thinking organization dedicated to empowering businesses through cutting-edge technology and innovative strategies.
+            </p>
+
+
+        </div>
+
+        <div style="flex: 1; min-width: 300px; display: flex; justify-content: center; position: relative;">
+            <div style="position: relative; z-index: 2; width: 300px;">
+                <img src="{{ asset('images/who_we_are.png') }}" alt="Who We Are" style="width: 400px; height: 300px; border-radius: 20px; box-shadow: 0 25px 50px rgba(0,0,0,0.15); object-fit: cover;">
+            </div>
+            <!-- Decorative Elements behind image -->
+            <!-- <div style="position: absolute; width: 300px; height: 300px; border: 3px solid var(--primary-color, #3b71ca); border-radius: 20px; top: 20px; right: -20px; z-index: 1; opacity: 0.15;"></div> -->
+            <!-- <div style="position: absolute; width: 100px; height: 100px; background-color: var(--primary-color, #3b71ca); border-radius: 50%; bottom: -30px; left: -30px; z-index: 3; opacity: 0.1;"></div> -->
+        </div>
+
+    </div>
+</div>
+
+<div class="section how-we-work-section" style="background-color: #f4f7fb;  position: relative;">
+    <style>
+        .work-card {
+            flex: 1;
+            min-width: 240px;
+            background: white;
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            text-align: center;
+            transition: all 0.3s ease;
+            border-bottom: 4px solid transparent;
+            position: relative;
+            top: 0;
+        }
+        .work-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            border-bottom: 4px solid var(--primary-color, #3b71ca);
+        }
+        .work-card-icon {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(59,113,202,0.08);
+            color: var(--primary-color, #3b71ca);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px auto;
+            transition: all 0.3s ease;
+        }
+        .work-card:hover .work-card-icon {
+            background-color: var(--primary-color, #3b71ca);
+            color: white;
+            transform: scale(1.1);
+        }
+    </style>
+    
+    <div style="max-width: 1200px;">
+        
+        <!-- Header Row -->
+        <div style="text-align: center; ">
+            <div style="display: inline-flex; align-items: center; justify-content: center; gap: 15px;">
+                <div style="height: 2px; width: 40px; background-color: var(--primary-color, #3b71ca);"></div>
+                <h5 style="color: var(--primary-color, #3b71ca); font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.95rem;">How We Work</h5>
+                <div style="height: 2px; width: 40px; background-color: var(--primary-color, #3b71ca);"></div>
+            </div>
+            <h2 style="font-size: 1.8rem; font-weight: 800; color: #1a1a1a; line-height: 1.25;">A Repeatable Operating Model</h2>
+        </div>
+
+        <!-- Cards Row -->
+        <div style="display: flex; gap: 30px; flex-wrap: wrap; justify-content: center;">
+            
+            <!-- Card 1: Assess -->
+            <div class="work-card">
+                <div class="work-card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </div>
+                <h3 style="font-size: 1.5rem; font-weight: 700; color: #222; margin-bottom: 15px;">Assess</h3>
+                <!-- <p style="color: #666; font-size: 1.05rem; line-height: 1.6; margin: 0;">We analyze your current state, understand your needs, and define a clear roadmap for success.</p> -->
+            </div>
+
+            <!-- Card 2: Build -->
+            <div class="work-card">
+                <div class="work-card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                </div>
+                <h3 style="font-size: 1.5rem; font-weight: 700; color: #222; margin-bottom: 15px;">Build</h3>
+                <!-- <p style="color: #666; font-size: 1.05rem; line-height: 1.6; margin: 0;">Our experts design and develop robust solutions tailored precisely to your strategic objectives.</p> -->
+            </div>
+
+            <!-- Card 3: Deliver -->
+            <div class="work-card">
+                <div class="work-card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </div>
+                <h3 style="font-size: 1.5rem; font-weight: 700; color: #222; margin-bottom: 15px;">Deliver</h3>
+                <!-- <p style="color: #666; font-size: 1.05rem; line-height: 1.6; margin: 0;">We deploy the solution with precision, ensuring a smooth transition and immediate value realization.</p> -->
+            </div>
+
+            <!-- Card 4: Support -->
+            <div class="work-card">
+                <div class="work-card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"></line><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"></line><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"></line><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"></line></svg>
+                </div>
+                <h3 style="font-size: 1.5rem; font-weight: 700; color: #222; margin-bottom: 15px;">Support</h3>
+                <!-- <p style="color: #666; font-size: 1.05rem; line-height: 1.6; margin: 0;">We provide ongoing maintenance and continuous improvements to keep your business running flawlessly.</p> -->
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <div class="section clients-section" style="background-color: #f8f9fa; text-align: center; padding: 60px 0; overflow: hidden; position: relative;">
     <h2 style="font-weight: 300; color: #444; margin-bottom: 50px; font-size: 2.2rem;">Our Clients</h2>
     
