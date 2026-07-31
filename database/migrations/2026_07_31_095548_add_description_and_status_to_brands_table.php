@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('divisions', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('logo_path')->nullable();
-            $table->string('url')->nullable();
-            $table->integer('order')->default(0);
-            $table->timestamps();
+        Schema::table('brands', function (Blueprint $table) {
+            $table->text('description')->nullable();
+            $table->string('status')->default('Soon');
         });
     }
 
@@ -26,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('divisions');
+        Schema::table('brands', function (Blueprint $table) {
+            $table->dropColumn(['description', 'status']);
+        });
     }
 };

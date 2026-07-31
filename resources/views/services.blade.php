@@ -2,33 +2,88 @@
 
 @section('content')
 <style>
-.services-hero {
-    position: relative;
-    background-image: linear-gradient(rgba(10, 25, 47, 0.6), rgba(10, 25, 47, 0.7)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop');
-    background-size: cover;
-    background-position: center;
-    padding: 140px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    min-height: 400px;
-}
-.services-hero h1 {
-    color: white;
-    font-size: 2.8rem;
-    font-weight: 400;
-    line-height: 1.4;
-    max-width: 900px;
-    margin: 0 auto 20px auto;
-}
-.services-hero .down-arrow {
-    color: white;
-    font-size: 28px;
-    margin-top: 20px;
-    font-weight: 300;
-}
+    .sb-hero {
+        background: linear-gradient(110deg, #102640 0%, #30659b 100%);
+        color: white;
+        padding: 100px 20px 80px;
+        position: relative;
+        overflow: hidden;
+    }
+    .sb-hero-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
+    .sb-breadcrumb {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+        margin-bottom: 30px;
+        color: rgba(255,255,255,0.8);
+    }
+    .sb-breadcrumb span {
+        color: #fce268;
+    }
+    .sb-subtitle {
+        display: inline-flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 25px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+    .sb-subtitle::before, .sb-subtitle::after {
+        content: '';
+        display: block;
+        height: 2px;
+        width: 40px;
+        background-color: white;
+    }
+    .sb-title {
+        font-size: 3.5rem;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 25px;
+        max-width: 800px;
+        color: #8cb6d8;
+    }
+    .sb-title span {
+        color: #fce268;
+    }
+    .sb-desc {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: rgba(255,255,255,0.9);
+        max-width: 700px;
+    }
+    
+    /* Decorative waves */
+    .sb-waves {
+        position: absolute;
+        right: -5%;
+        top: 0;
+        height: 100%;
+        width: 50%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 20px;
+        z-index: 1;
+        opacity: 0.2;
+    }
+    .sb-wave {
+        width: 30px;
+        height: 120%;
+        background-color: rgba(255,255,255,0.6);
+        border-radius: 50px;
+        transform: rotate(5deg);
+    }
+    .sb-wave:nth-child(even) { height: 110%; transform: rotate(-2deg); }
+    .sb-wave:nth-child(3) { height: 130%; transform: rotate(3deg); }
 .intro-section {
     position: relative;
     background-color: #ffffff;
@@ -68,55 +123,60 @@
     max-width: 900px;
 }
 .services-frame {
-    background-image: url('{{ asset('images/services-bg.jpeg') }}');
-    background-size: cover;
-    background-position: center;
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
-    padding: 60px 40px 80px 40px;
-    margin: -60px auto 0 auto;
-    max-width: 1300px;
+    background-color: white;
+    padding: 80px 20px;
+    margin: 0 auto;
     position: relative;
-    z-index: 2;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
 }
+@media (max-width: 900px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 600px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
 .service-card {
     background: white;
     border-radius: 12px;
-    padding: 40px 20px;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    transition: transform 0.3s;
+    border: 1px solid #eaeaea;
+    padding: 30px 25px;
+    text-align: left;
+    transition: transform 0.3s, box-shadow 0.3s;
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 }
 .service-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    border-color: transparent;
 }
 .service-icon {
-    font-size: 3rem;
+    font-size: 2rem;
     color: #3b71ca;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 .service-card h3 {
-    font-size: 1.2rem;
-    color: #222;
-    margin-bottom: 15px;
+    font-size: 1.25rem;
+    color: #22456E;
+    margin-bottom: 10px;
     font-weight: 700;
 }
 .service-card p {
     font-size: 0.95rem;
-    color: #666;
-    line-height: 1.6;
+    color: #777;
+    line-height: 1.5;
 }
 .cta-section {
     background: linear-gradient(135deg, #4b7bb3 0%, #3a5c9a 100%);
@@ -216,28 +276,21 @@
 }
 </style>
 
-<div class="services-hero">
-    <h1>Empowering Enterprises Through Strategy,<br>Technology & Insight.</h1>
-    <div class="down-arrow">↓</div>
-</div>
-
-<div class="intro-section">
-    <div class="intro-container">
-        <h2>Smart Business Solutions for Modern Enterprises</h2>
-        <p>Bayan Group delivers end-to-end business, technology, and training solutions designed to help organizations grow, perform, and transform.</p>
-        <p>From ERP systems and AI tools to strategic consulting and corporate training, we combine innovation, expertise, and human insight to drive measurable impact.</p>
-        
-        <ul style="list-style: none; padding: 0; margin: 30px 0 0 0;">
-            <li style="margin-bottom: 12px; color: #444; font-size: 1.1rem; display: flex; align-items: center; gap: 12px;">
-                <i class="fa-solid fa-check" style="color: #3b71ca; font-size: 1.2rem;"></i> Comprehensive Solutions
-            </li>
-            <li style="margin-bottom: 12px; color: #444; font-size: 1.1rem; display: flex; align-items: center; gap: 12px;">
-                <i class="fa-solid fa-check" style="color: #3b71ca; font-size: 1.2rem;"></i> Customized Approach
-            </li>
-            <li style="margin-bottom: 12px; color: #444; font-size: 1.1rem; display: flex; align-items: center; gap: 12px;">
-                <i class="fa-solid fa-check" style="color: #3b71ca; font-size: 1.2rem;"></i> Expert Guidance
-            </li>
-        </ul>
+<div class="sb-hero">
+    <div class="sb-waves">
+        <div class="sb-wave"></div>
+        <div class="sb-wave"></div>
+        <div class="sb-wave"></div>
+        <div class="sb-wave"></div>
+        <div class="sb-wave"></div>
+        <div class="sb-wave"></div>
+    </div>
+    
+    <div class="sb-hero-content">
+        <div class="sb-breadcrumb">HOME / <span>SERVICES</span></div>
+        <div class="sb-subtitle">SERVICES</div>
+        <h1 class="sb-title"><span>Ten services.</span> One integrated engine.</h1>
+        <p class="sb-desc">Every service is engineered to compose with the others &mdash; so strategy, systems, language, and learning move together, not in silos.</p>
     </div>
 </div>
 
@@ -246,9 +299,9 @@
         @foreach($services as $service)
         <div class="service-card">
             @if($service->icon_path)
-                <img src="{{ asset('storage/' . $service->icon_path) }}" alt="{{ $service->title }}" style="max-width: 60px; margin-bottom: 25px;">
+                <img src="{{ asset('storage/' . $service->icon_path) }}" alt="{{ $service->title }}" style="max-width: 32px; margin-bottom: 15px; object-fit: contain;">
             @else
-                <div class="service-icon"><i class="fa-solid fa-cogs"></i></div>
+                <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="32" height="32"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
             @endif
             <h3>{{ $service->title }}</h3>
             <p>{{ $service->description }}</p>
@@ -257,24 +310,4 @@
     </div>
 </div>
 
-<div class="cta-section">
-    <div class="cta-container">
-        <div class="cta-content">
-            <h2>Let's build something exceptional together.</h2>
-            <p>Share your goals, and our experts will design a solution tailored to your business model, market, and timeline, turning your vision into measurable, lasting results.</p>
-            <a href="{{ route('contact') }}" class="btn-cta">Request a Consultation</a>
-        </div>
-        <div class="cta-image">
-            <div class="cta-image-circle"></div>
-            <!-- Decorative stars to match the image -->
-            <svg style="position: absolute; left: 40px; bottom: 80px; width: 30px; height: 30px; stroke: #ff8a4c; fill: none; stroke-width: 1.5; z-index: 1;" viewBox="0 0 24 24">
-                <path d="M12 2 L14.5 9.5 L22 12 L14.5 14.5 L12 22 L9.5 14.5 L2 12 L9.5 9.5 Z"/>
-            </svg>
-            <svg style="position: absolute; right: 0; top: 100px; width: 40px; height: 40px; stroke: #ff8a4c; fill: none; stroke-width: 1.5; z-index: 1;" viewBox="0 0 24 24">
-                <path d="M12 2 L14.5 9.5 L22 12 L14.5 14.5 L12 22 L9.5 14.5 L2 12 L9.5 9.5 Z"/>
-            </svg>
-            <!-- <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop" style="border-radius: 10px; max-height: 400px; object-fit: cover;" alt="Consultation"> -->
-        </div>
-    </div>
-</div>
 @endsection

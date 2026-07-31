@@ -24,13 +24,35 @@
             <label>Contact Email</label>
             <input type="email" name="contact_email" value="{{ $settings['contact_email'] ?? '' }}">
         </div>
-        <div class="form-group">
-            <label>Contact Phone</label>
-            <input type="text" name="contact_phone" value="{{ $settings['contact_phone'] ?? '' }}">
+        <div class="form-group" style="display: flex; gap: 15px; margin-bottom: 20px;">
+            <div style="flex: 1;">
+                <label>Location 1 Title (e.g. CAIRO HQ)</label>
+                <input type="text" name="contact_title_1" value="{{ $settings['contact_title_1'] ?? 'CAIRO HQ' }}">
+            </div>
+            <div style="flex: 1;">
+                <label>Location 1 Phone</label>
+                <input type="text" name="contact_phone_1" value="{{ $settings['contact_phone_1'] ?? '(+20) 127 0432 222' }}">
+            </div>
         </div>
-        <div class="form-group">
-            <label>Contact Address</label>
-            <input type="text" name="contact_address" value="{{ $settings['contact_address'] ?? '' }}">
+        <div class="form-group" style="display: flex; gap: 15px; margin-bottom: 20px;">
+            <div style="flex: 1;">
+                <label>Location 2 Title (e.g. MUSCAT)</label>
+                <input type="text" name="contact_title_2" value="{{ $settings['contact_title_2'] ?? 'MUSCAT' }}">
+            </div>
+            <div style="flex: 1;">
+                <label>Location 2 Phone</label>
+                <input type="text" name="contact_phone_2" value="{{ $settings['contact_phone_2'] ?? '(+968) 9141 2315' }}">
+            </div>
+        </div>
+        <div class="form-group" style="display: flex; gap: 15px; margin-bottom: 20px;">
+            <div style="flex: 1;">
+                <label>Location 3 Title (e.g. FLORIDA)</label>
+                <input type="text" name="contact_title_3" value="{{ $settings['contact_title_3'] ?? 'FLORIDA' }}">
+            </div>
+            <div style="flex: 1;">
+                <label>Location 3 Phone</label>
+                <input type="text" name="contact_phone_3" value="{{ $settings['contact_phone_3'] ?? '(+1) 727 371 4121' }}">
+            </div>
         </div>
         <div class="form-group">
             <label>Primary Color</label>

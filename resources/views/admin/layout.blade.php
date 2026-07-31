@@ -27,7 +27,8 @@
         <h2 style="color: #2BB295;">Admin Panel</h2>
         <a href="{{ route('admin.dashboard') }}">Dashboard</a>
         <a href="{{ route('admin.clients.index') }}">Clients</a>
-        <a href="{{ route('admin.divisions.index') }}">Divisions</a>
+        <a href="{{ route('admin.sectors.index') }}">Sectors</a>
+        <a href="{{ route('admin.brands.index') }}">Brands</a>
         <a href="{{ route('admin.services.index') }}">Services</a>
         <a href="{{ route('admin.team-members.index') }}">Team Members</a>
         <a href="{{ route('admin.users.index') }}">Users</a>

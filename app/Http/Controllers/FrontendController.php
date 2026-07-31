@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Client;
-use App\Models\Division;
+use App\Models\Sector;
 use App\Models\Service;
 use App\Models\TeamMember;
 use App\Models\ContactMessage;
@@ -15,9 +15,15 @@ class FrontendController extends Controller
 {
     public function home()
     {
-        $clients = Client::orderBy('order')->get();
-        $divisions = Division::orderBy('order')->get();
-        return view('home', compact('clients', 'divisions'));
+        $sectors = Sector::with('brands')->take(5)->get();
+        $services = Service::orderBy('order')->take(10)->get();
+        return view('home', compact('sectors', 'services'));
+    }
+
+    public function sectorsBrands()
+    {
+        $sectors = Sector::with('brands')->get();
+        return view('sectors_brands', compact('sectors'));
     }
 
     public function about()
