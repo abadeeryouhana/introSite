@@ -28,6 +28,7 @@
         <a href="{{ route('admin.dashboard') }}">Dashboard</a>
         <a href="{{ route('admin.clients.index') }}">Clients</a>
         <a href="{{ route('admin.sectors.index') }}">Sectors</a>
+        <a href="{{ route('admin.case-studies.index') }}">Case Studies</a>
         <a href="{{ route('admin.brands.index') }}">Brands</a>
         <a href="{{ route('admin.services.index') }}">Services</a>
         <a href="{{ route('admin.team-members.index') }}">Team Members</a>

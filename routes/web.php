@@ -35,6 +35,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('clients', ClientController::class);
     Route::resource('sectors', SectorController::class);
+    Route::resource('case-studies', \App\Http\Controllers\Admin\CaseStudyController::class);
     Route::resource('brands', BrandController::class);
     Route::resource('services', ServiceController::class);
     Route::resource('social-links', SocialLinkController::class);

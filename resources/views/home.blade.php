@@ -471,7 +471,248 @@
     </div>
 </div>
 
+
+<!-- Case Studies / Portfolio Section -->
+<div class="section portfolio-section" style="background-color: white; padding: 80px 0; font-family: 'Inter', sans-serif;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <div style="text-align: left;">
+            <div style="display: inline-block; border-top: 1px solid #3b71ca; border-bottom: 1px solid #3b71ca; padding: 5px 0; margin-bottom: 25px;">
+                <h5 style="color: #3b71ca; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">PORTFOLIO</h5>
+            </div>
+            <h2 style="font-size: 3.2rem; font-weight: 800; color: #22456E; margin-bottom: 50px; line-height: 1.15; letter-spacing: -1px;">A powerful portfolio.</h2>
+        </div>
+
+        <div class="portfolio-grid">
+            @foreach($caseStudies as $caseStudy)
+            <div class="portfolio-card">
+                <div class="portfolio-image" style="background-image: url('{{ $caseStudy->image ? asset('storage/' . $caseStudy->image) : '' }}');">
+                    <!-- Blur Overlay -->
+                    <div class="portfolio-blur-overlay"></div>
+                    
+                    <div style="position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: center; padding: 20px;">
+                        @if($caseStudy->sector)
+                            <div class="portfolio-sector-pill" style="margin: 0;">{{ $caseStudy->sector->name }}</div>
+                        @else
+                            <div></div>
+                        @endif
+                        <div class="portfolio-date-pill">
+                            {{ $caseStudy->created_at->format('M d') }}
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-content">
+                    <h4>{{ $caseStudy->title }}</h4>
+                    <p>{{ $caseStudy->sub_title }}</p>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</div>
+
+<!-- Clients Section -->
+<div class="section clients-section" style="background-color: #f0f4f8; padding: 80px 0 100px; overflow: hidden; text-align: center; font-family: 'Inter', sans-serif;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; margin-bottom: 50px;">
+        <div style="display: inline-block; border-top: 1px solid #3b71ca; border-bottom: 1px solid #3b71ca; padding: 5px 0; margin-bottom: 25px;">
+            <h5 style="color: #3b71ca; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">OUR CLIENTS</h5>
+        </div>
+        <h2 style="font-size: 2.8rem; font-weight: 800; color: #22456E; margin-bottom: 20px; letter-spacing: -0.5px;">Trusted by 2,300+ organizations in 40+ countries.</h2>
+    </div>
+
+    <!-- Animated Slider Marquee -->
+    <div class="clients-marquee-container">
+        <!-- Row 1 -->
+        <div class="clients-marquee-row row-1">
+            <div class="clients-marquee-content">
+                @foreach($clients as $client)
+                <a href="{{ $client->url ?? '#' }}" class="client-pill" style="text-decoration: none;" {!! $client->url ? 'target="_blank" rel="noopener noreferrer"' : '' !!}>
+                    @if($client->logo_path)
+                        <img src="{{ asset('storage/' . $client->logo_path) }}" alt="{{ $client->name }}">
+                    @else
+                        <span>{{ $client->name }}</span>
+                    @endif
+                </a>
+                @endforeach
+                <!-- Duplicate for seamless loop -->
+                @foreach($clients as $client)
+                <a href="{{ $client->url ?? '#' }}" class="client-pill" style="text-decoration: none;" {!! $client->url ? 'target="_blank" rel="noopener noreferrer"' : '' !!}>
+                    @if($client->logo_path)
+                        <img src="{{ asset('storage/' . $client->logo_path) }}" alt="{{ $client->name }}">
+                    @else
+                        <span>{{ $client->name }}</span>
+                    @endif
+                </a>
+                @endforeach
+            </div>
+        </div>
+        
+        <!-- Row 2 (Reverse direction) -->
+        <div class="clients-marquee-row row-2">
+            <div class="clients-marquee-content reverse">
+                @foreach($clients->reverse() as $client)
+                <a href="{{ $client->url ?? '#' }}" class="client-pill" style="text-decoration: none;" {!! $client->url ? 'target="_blank" rel="noopener noreferrer"' : '' !!}>
+                    @if($client->logo_path)
+                        <img src="{{ asset('storage/' . $client->logo_path) }}" alt="{{ $client->name }}">
+                    @else
+                        <span>{{ $client->name }}</span>
+                    @endif
+                </a>
+                @endforeach
+                <!-- Duplicate for seamless loop -->
+                @foreach($clients->reverse() as $client)
+                <a href="{{ $client->url ?? '#' }}" class="client-pill" style="text-decoration: none;" {!! $client->url ? 'target="_blank" rel="noopener noreferrer"' : '' !!}>
+                    @if($client->logo_path)
+                        <img src="{{ asset('storage/' . $client->logo_path) }}" alt="{{ $client->name }}">
+                    @else
+                        <span>{{ $client->name }}</span>
+                    @endif
+                </a>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</div>
+
 <style>
+    .clients-marquee-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+    }
+    .clients-marquee-row {
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        position: relative;
+    }
+    .clients-marquee-content {
+        display: inline-flex;
+        gap: 20px;
+        padding: 0 10px;
+        animation: marquee 40s linear infinite;
+    }
+    .clients-marquee-content.reverse {
+        animation-direction: reverse;
+    }
+    .client-pill {
+        background: white;
+        border-radius: 50px;
+        padding: 15px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        min-width: 150px;
+        height: 60px;
+    }
+    .client-pill img {
+        max-height: 30px;
+        max-width: 120px;
+        object-fit: contain;
+    }
+    .client-pill span {
+        font-weight: 700;
+        color: #22456E;
+        font-size: 1.1rem;
+    }
+    @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+    
+    /* Portfolio Styles */
+    .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+    }
+    .portfolio-card {
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid #eaeaea;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        transition: transform 0.3s;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    .portfolio-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+    .portfolio-image {
+        position: relative;
+        height: 250px;
+        background-color: #22456E; /* fallback color */
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+    }
+    .portfolio-blur-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(16, 38, 64, 0.7) 0%, rgba(48, 101, 155, 0.7) 100%);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    .portfolio-date-pill {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 5px 12px;
+        border-radius: 15px;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .portfolio-sector-pill {
+        position: relative;
+        z-index: 2;
+        display: inline-block;
+        background: white;
+        color: #22456E;
+        font-size: 0.7rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 6px 14px;
+        border-radius: 20px;
+        margin: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .portfolio-content {
+        padding: 25px 20px;
+        background: white;
+        flex-grow: 1;
+    }
+    .portfolio-content h4 {
+        font-size: 1.15rem;
+        font-weight: 800;
+        color: #22456E;
+        margin: 0 0 8px 0;
+        line-height: 1.3;
+    }
+    .portfolio-content p {
+        font-size: 0.9rem;
+        color: #777;
+        margin: 0;
+        font-weight: 500;
+    }
+    @media (max-width: 1024px) {
+        .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+        .portfolio-grid { grid-template-columns: 1fr; }
+    }
+    
     @media (max-width: 1024px) {
         .services-grid { grid-template-columns: repeat(3, 1fr) !important; }
     }

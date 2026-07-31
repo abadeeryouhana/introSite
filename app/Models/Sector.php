@@ -14,4 +14,9 @@ class Sector extends Model
     {
         return $this->hasMany(Brand::class);
     }
+
+    public function caseStudies()
+    {
+        return $this->hasMany(CaseStudy::class);
+    }
 }

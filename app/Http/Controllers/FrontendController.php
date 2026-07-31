@@ -17,7 +17,9 @@ class FrontendController extends Controller
     {
         $sectors = Sector::with('brands')->take(5)->get();
         $services = Service::orderBy('order')->take(10)->get();
-        return view('home', compact('sectors', 'services'));
+        $clients = Client::orderBy('order')->get();
+        $caseStudies = \App\Models\CaseStudy::with('sector')->orderBy('order')->take(4)->get();
+        return view('home', compact('sectors', 'services', 'clients', 'caseStudies'));
     }
 
     public function sectorsBrands()
