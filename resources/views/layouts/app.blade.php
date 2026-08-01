@@ -7,6 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/components.css') }}">
+    @stack('styles')
     <style>
         :root {
             --primary-color: {{ $global_settings['color_primary'] ?? '#3D81C3' }};
@@ -30,180 +33,16 @@
             <li><a href="{{ route('home') }}">Home</a></li>
             <li><a href="{{ route('about') }}">About Us</a></li>
             <li><a href="{{ route('sectors.brands') }}">Sectors & Brands</a></li>
+            <li><a href="{{ route('portfolio') }}">Portfolio</a></li>
             <li><a href="{{ route('services.page') }}">Services</a></li>
+            <li><a href="{{ route('blog') }}">Blog</a></li>
             <li><a href="{{ route('contact') }}">Contact Us</a></li>
         </ul>
     </nav>
 
-    @yield('content')
-
-    <style>
-        .footer-cta {
-            background: linear-gradient(110deg, #102640 0%, #30659b 100%);
-            text-align: center;
-            padding: 80px 20px;
-            position: relative;
-            overflow: hidden;
-        }
-        .footer-cta h2 {
-            color: #fce268;
-            font-size: 2.8rem;
-            font-weight: 800;
-            margin-bottom: 30px;
-            position: relative;
-            z-index: 2;
-        }
-        .footer-cta .btn-cta {
-            background-color: #5591cd;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 1.1rem;
-            position: relative;
-            z-index: 2;
-            transition: background 0.3s;
-            display: inline-block;
-        }
-        .footer-cta .btn-cta:hover {
-            background-color: #3b71ca;
-        }
-        .footer-cta .cta-waves {
-            position: absolute;
-            right: -5%;
-            top: 0;
-            height: 100%;
-            width: 50%;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            gap: 20px;
-            z-index: 1;
-            opacity: 0.15;
-        }
-        .footer-cta .cta-wave {
-            width: 40px;
-            height: 120%;
-            background-color: rgba(255,255,255,0.8);
-            border-radius: 50px;
-            transform: rotate(5deg);
-        }
-        .footer-cta .cta-wave:nth-child(even) { height: 110%; transform: rotate(-2deg); }
-        .footer-cta .cta-wave:nth-child(3) { height: 130%; transform: rotate(3deg); }
-
-        .site-footer {
-            background-color: #0c1b2a;
-            color: #a0aec0;
-            padding: 70px 20px 30px;
-            font-size: 0.95rem;
-            font-family: 'Inter', sans-serif;
-        }
-        .site-footer .footer-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1.5fr;
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-        .site-footer h4 {
-            color: #fce268;
-            font-size: 0.95rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-        }
-        .site-footer ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .site-footer ul li {
-            margin-bottom: 12px;
-        }
-        .site-footer ul li a {
-            color: #a0aec0;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .site-footer ul li a:hover {
-            color: white;
-        }
-        .footer-contact-item {
-            margin-bottom: 20px;
-        }
-        .footer-contact-item span {
-            display: block;
-            color: #a0aec0;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            margin-bottom: 3px;
-        }
-        .footer-contact-item p {
-            color: white;
-            margin: 0;
-        }
-        .footer-contact-item a {
-            color: #fce268;
-            text-decoration: none;
-        }
-        .social-icons-footer {
-            display: flex;
-            gap: 12px;
-            margin-top: 30px;
-        }
-        .social-icons-footer a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.2);
-            color: white;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-        }
-        .social-icons-footer a:hover {
-            background: white;
-            color: #0c1b2a;
-        }
-        .footer-bottom-bar {
-            max-width: 1200px;
-            margin: 0 auto;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 25px;
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-        }
-        .footer-bottom-links a {
-            color: #a0aec0;
-            margin-left: 20px;
-            text-decoration: none;
-        }
-        .footer-bottom-links a:hover {
-            color: white;
-        }
-        @media (max-width: 900px) {
-            .site-footer .footer-inner {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-        @media (max-width: 600px) {
-            .site-footer .footer-inner {
-                grid-template-columns: 1fr;
-            }
-            .footer-bottom-bar {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-            }
-        }
-    </style>
+    <main style="flex: 1; display: flex; flex-direction: column;">
+        @yield('content')
+    </main>
 
     <div class="footer-cta">
         <div class="cta-waves">
@@ -275,8 +114,8 @@
                 <ul>
                     <li><a href="{{ route('sectors.brands') }}">Sectors & Brands</a></li>
                     <li><a href="{{ route('services.page') }}">Our Services</a></li>
-                    <li><a href="#">Portfolio</a></li>
-                    <li><a href="#">Blog</a></li>
+                    <li><a href="{{ route('portfolio') }}">Portfolio</a></li>
+                    <li><a href="{{ route('blog') }}">Blog</a></li>
                 </ul>
             </div>
 
@@ -314,5 +153,8 @@
             </div>
         </div>
     </footer>
+
+    @stack('scripts')
+    <script src="{{ asset('js/modal.js') }}"></script>
 </body>
 </html>

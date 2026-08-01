@@ -1,0 +1,78 @@
+.sb-sector-section {
+    max-width: 1200px;
+    margin: 0 auto 80px auto;
+    padding-top: 40px; /* Offset for sticky header */
+}
+.sb-sector-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #22456E;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #eaeaea;
+    padding-bottom: 15px;
+}
+
+.sb-brands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.sb-brand-card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.3s;
+    height: auto;
+    min-height: 180px;
+    position: relative;
+}
+.sb-status-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.sb-status-live {
+    background-color: #e0f7e9;
+    color: #28a745;
+}
+.sb-status-soon {
+    background-color: #fef0d6;
+    color: #f59e0b;
+}
+.sb-brand-desc {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.sb-brand-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+.sb-brand-card img {
+    max-width: 100%;
+    max-height: 80px;
+    object-fit: contain;
+}
+.sb-brand-card h4 {
+    margin-top: 15px;
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 600;
+}

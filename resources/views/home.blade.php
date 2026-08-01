@@ -1,160 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
-.hero-modern {
-    position: relative;
-    background-color: #e6f0fa;
-    background-image: linear-gradient(135deg, rgba(230,240,250,0.92) 0%, rgba(200,225,250,0.85) 100%), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    padding: 140px 20px 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 85vh;
-    overflow: hidden;
-}
-
-.hero-modern::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image: radial-gradient(var(--primary-color) 1px, transparent 1px);
-    background-size: 30px 30px;
-    opacity: 0.15;
-    z-index: 1;
-}
-
-.hero-modern-container {
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 50px;
-    position: relative;
-    z-index: 2;
-}
-
-.hero-content {
-    flex: 1.2;
-    text-align: left;
-}
-
-.hero-content h4 {
-    color: var(--primary-color);
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-    text-transform: none;
-}
-
-.hero-content h1 {
-    color: #1a1a1a;
-    font-size: 3.5rem;
-    line-height: 1.2;
-    font-weight: 800;
-    margin-bottom: 25px;
-}
-
-.hero-content p {
-    color: #444;
-    font-size: 1.2rem;
-    margin-bottom: 40px;
-    line-height: 1.6;
-    max-width: 90%;
-}
-
-.hero-content .btn {
-    background: var(--primary-color);
-    color: white;
-    padding: 14px 35px;
-    font-size: 1.15rem;
-    border-radius: 30px;
-    font-weight: 600;
-    box-shadow: 0 4px 15px rgba(61, 129, 195, 0.3);
-}
-.hero-content .btn:hover {
-    background: var(--secondary-color);
-    box-shadow: 0 6px 20px rgba(43, 178, 149, 0.4);
-}
-
-.hero-graphic {
-    flex: 0.8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-.hero-circle {
-    width: 420px;
-    height: 420px;
-    background: var(--primary-color);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 20px 50px rgba(61, 129, 195, 0.4);
-    position: relative;
-    z-index: 2;
-}
-
-.hero-circle::before {
-    content: '';
-    position: absolute;
-    width: 550px;
-    height: 550px;
-    background: rgba(61, 129, 195, 0.1);
-    border-radius: 50%;
-    z-index: -1;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.hero-circle::after {
-    content: '';
-    position: absolute;
-    width: 700px;
-    height: 700px;
-    background: rgba(61, 129, 195, 0.05);
-    border-radius: 50%;
-    z-index: -2;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.hero-circle img {
-    max-width: 100%;
-    max-height: 100%;
-   /* filter: brightness(0) invert(1);*/
-}
-
-@media (max-width: 992px) {
-    .hero-modern-container {
-        flex-direction: column-reverse;
-        text-align: center;
-        gap: 60px;
-    }
-    .hero-content {
-        text-align: center;
-    }
-    .hero-content p {
-        margin: 0 auto 40px auto;
-    }
-    .hero-circle {
-        width: 320px;
-        height: 320px;
-    }
-    .hero-circle::before { width: 420px; height: 420px; }
-    .hero-circle::after { width: 520px; height: 520px; }
-}
-</style>
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/blog.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+@endpush
 
 <div class="hero-modern">
     <div class="hero-modern-container">
@@ -178,7 +29,7 @@
 
 <!-- Statistics Numbers Section -->
 <div class="section achievements-section" style="background-color: #f8f9fa;text-align: center;">
-    <div class="achievements-grid" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; max-width: 1200px;">
+    <div class="achievements-grid" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; width: 100%; padding: 0 20px;">
         
         <!-- Card 1 -->
         <div class="achievement-card" style="background: linear-gradient(180deg, #edf7f0 0%, #ffffff 30%); border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); padding: 40px 20px 30px; width: 190px; text-align: center;">
@@ -235,7 +86,7 @@
     <div style="position: absolute; top: -50px; right: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(59,113,202,0.05) 0%, rgba(255,255,255,0) 70%); border-radius: 50%; pointer-events: none;"></div>
     <div style="position: absolute; bottom: -50px; left: -50px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(59,113,202,0.05) 0%, rgba(255,255,255,0) 70%); border-radius: 50%; pointer-events: none;"></div>
     
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; gap: 60px; flex-wrap: wrap;">
+    <div style="width: 100%; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; gap: 60px; flex-wrap: wrap;">
         
         <div style="flex: 1; min-width: 300px; padding-right: 20px;">
             <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
@@ -266,45 +117,8 @@
 
 <!-- How we work Section  -->
 <div class="section how-we-work-section" style="background-color: #f4f7fb;  position: relative;">
-    <style>
-        .work-card {
-            flex: 1;
-            min-width: 240px;
-            background: white;
-            padding: 40px 30px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            text-align: center;
-            transition: all 0.3s ease;
-            border-bottom: 4px solid transparent;
-            position: relative;
-            top: 0;
-        }
-        .work-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-            border-bottom: 4px solid var(--primary-color, #3b71ca);
-        }
-        .work-card-icon {
-            width: 80px;
-            height: 80px;
-            background-color: rgba(59,113,202,0.08);
-            color: var(--primary-color, #3b71ca);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px auto;
-            transition: all 0.3s ease;
-        }
-        .work-card:hover .work-card-icon {
-            background-color: var(--primary-color, #3b71ca);
-            color: white;
-            transform: scale(1.1);
-        }
-    </style>
     
-    <div style="max-width: 1200px;">
+    <div style="width: 100%; padding: 0 20px;">
         
         <!-- Header Row -->
         <div style="text-align: center; ">
@@ -370,7 +184,7 @@
     <p style="color: #555; font-size: 1.1rem; max-width: 600px; margin: 0 0 50px 0;">One group operating specialized brands across the disciplines enterprises rely on most.</p>
     
     <!-- Swiper -->
-    <div class="swiper group-swiper" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+    <div class="swiper group-swiper" style="width: 100%; margin: 0 auto; padding: 0 40px;">
         <div class="swiper-wrapper" style="align-items: stretch;">
             @foreach($sectors as $sector)
             <div class="swiper-slide" style="height: auto;">
@@ -408,7 +222,7 @@
 
 <!-- What We Do Section -->
 <div class="section services-section" style="background-color: white; padding: 80px 0; text-align: left;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+    <div style="width: 100%; margin: 0 auto; padding: 0 20px;">
         <div style="display: inline-flex; align-items: center; justify-content: center; gap: 15px;">
         <div style="height: 2px; width: 40px; background-color: var(--primary-color, #22456E);"></div>
         <h5 style="color: var(--primary-color, #22456E); font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.95rem;">What We Do</h5>
@@ -439,7 +253,7 @@
 
 <!-- Partners Section -->
 <div class="section partners-section" style="background-color: #e2ebf3; padding: 60px 0; margin: 80px 0; font-family: 'Inter', sans-serif;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 40px; text-align: left;">
+    <div style="width: 100%; margin: 0 auto; padding: 0 20px; display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 40px; text-align: left;">
         <!-- Left Content -->
         <div style="flex: 1; min-width: 300px; max-width: 550px;">
             <div style="display: inline-block; border-top: 1px solid #3b71ca; border-bottom: 1px solid #3b71ca; padding: 5px 0; margin-bottom: 25px;">
@@ -474,7 +288,7 @@
 
 <!-- Case Studies / Portfolio Section -->
 <div class="section portfolio-section" style="background-color: white; padding: 80px 0; font-family: 'Inter', sans-serif;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+    <div style="width: 100%; margin: 0 auto; padding: 0 20px;">
         <div style="text-align: left;">
             <div style="display: inline-block; border-top: 1px solid #3b71ca; border-bottom: 1px solid #3b71ca; padding: 5px 0; margin-bottom: 25px;">
                 <h5 style="color: #3b71ca; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">PORTFOLIO</h5>
@@ -484,7 +298,7 @@
 
         <div class="portfolio-grid">
             @foreach($caseStudies as $caseStudy)
-            <div class="portfolio-card">
+            <div class="portfolio-card" onclick="openModal({{ $caseStudy->id }})" style="cursor: pointer;">
                 <div class="portfolio-image" style="background-image: url('{{ $caseStudy->image ? asset('storage/' . $caseStudy->image) : '' }}');">
                     <!-- Blur Overlay -->
                     <div class="portfolio-blur-overlay"></div>
@@ -505,14 +319,33 @@
                     <p>{{ $caseStudy->sub_title }}</p>
                 </div>
             </div>
+            
+            <!-- Hidden Data for Modal -->
+            <div id="cs-data-{{ $caseStudy->id }}" style="display: none;">
+                <div class="data-title">{{ $caseStudy->title }}</div>
+                <div class="data-subtitle">{{ $caseStudy->sub_title }}</div>
+                <div class="data-date">{{ $caseStudy->created_at->format('M d, Y') }}</div>
+                <div class="data-image">{{ $caseStudy->image ? asset('storage/' . $caseStudy->image) : '' }}</div>
+                <div class="data-challenge">{!! nl2br(e($caseStudy->challenge)) !!}</div>
+                <div class="data-solution">{!! nl2br(e($caseStudy->solution)) !!}</div>
+                <div class="data-delivered">{!! nl2br(e($caseStudy->delivered)) !!}</div>
+                <div class="data-tools">{{ $caseStudy->tools }}</div>
+            </div>
             @endforeach
+        </div>
+
+        <div style="text-align: center; margin-top: 60px;">
+            <a href="{{ route('portfolio') }}" style="background-color: #3b71ca; color: white; padding: 14px 40px; border-radius: 30px; font-weight: 600; text-decoration: none; display: inline-block; transition: background 0.3s, transform 0.3s; font-size: 1.05rem; box-shadow: 0 8px 20px rgba(59, 113, 202, 0.25);" onmouseover="this.style.backgroundColor='#285ba3'; this.style.transform='translateY(-3px)'" onmouseout="this.style.backgroundColor='#3b71ca'; this.style.transform='translateY(0)'">View Full Portfolio &rarr;</a>
         </div>
     </div>
 </div>
 
+<!-- Case Study Modal -->
+@include('partials.case_study_modal')
+
 <!-- Clients Section -->
 <div class="section clients-section" style="background-color: #f0f4f8; padding: 80px 0 100px; overflow: hidden; text-align: center; font-family: 'Inter', sans-serif;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; margin-bottom: 50px;">
+    <div style="width: 100%; margin: 0 auto; padding: 0 20px; margin-bottom: 50px;">
         <div style="display: inline-block; border-top: 1px solid #3b71ca; border-bottom: 1px solid #3b71ca; padding: 5px 0; margin-bottom: 25px;">
             <h5 style="color: #3b71ca; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">OUR CLIENTS</h5>
         </div>
@@ -573,217 +406,34 @@
     </div>
 </div>
 
-<style>
-    .clients-marquee-container {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        width: 100vw;
-        position: relative;
-        left: 50%;
-        right: 50%;
-        margin-left: -50vw;
-        margin-right: -50vw;
-    }
-    .clients-marquee-row {
-        width: 100%;
-        overflow: hidden;
-        white-space: nowrap;
-        position: relative;
-    }
-    .clients-marquee-content {
-        display: inline-flex;
-        gap: 20px;
-        padding: 0 10px;
-        animation: marquee 40s linear infinite;
-    }
-    .clients-marquee-content.reverse {
-        animation-direction: reverse;
-    }
-    .client-pill {
-        background: white;
-        border-radius: 50px;
-        padding: 15px 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-        min-width: 150px;
-        height: 60px;
-    }
-    .client-pill img {
-        max-height: 30px;
-        max-width: 120px;
-        object-fit: contain;
-    }
-    .client-pill span {
-        font-weight: 700;
-        color: #22456E;
-        font-size: 1.1rem;
-    }
-    @keyframes marquee {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
-    }
+<!-- Blog Section -->
+<div class="blog-section">
+    <div class="blog-section-header">
+        <span class="blog-section-subtitle">INSIGHTS</span>
+        <h2 class="blog-section-title">Ideas from our practice.</h2>
+    </div>
     
-    /* Portfolio Styles */
-    .portfolio-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 30px;
-    }
-    .portfolio-card {
-        background: white;
-        border-radius: 16px;
-        overflow: hidden;
-        border: 1px solid #eaeaea;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-        transition: transform 0.3s;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-    }
-    .portfolio-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    }
-    .portfolio-image {
-        position: relative;
-        height: 250px;
-        background-color: #22456E; /* fallback color */
-        background-size: cover;
-        background-position: center;
-        overflow: hidden;
-    }
-    .portfolio-blur-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, rgba(16, 38, 64, 0.7) 0%, rgba(48, 101, 155, 0.7) 100%);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-    }
-    .portfolio-date-pill {
-        background: rgba(255, 255, 255, 0.2);
-        color: white;
-        font-size: 0.75rem;
-        font-weight: 600;
-        padding: 5px 12px;
-        border-radius: 15px;
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    .portfolio-sector-pill {
-        position: relative;
-        z-index: 2;
-        display: inline-block;
-        background: white;
-        color: #22456E;
-        font-size: 0.7rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        padding: 6px 14px;
-        border-radius: 20px;
-        margin: 20px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    .portfolio-content {
-        padding: 25px 20px;
-        background: white;
-        flex-grow: 1;
-    }
-    .portfolio-content h4 {
-        font-size: 1.15rem;
-        font-weight: 800;
-        color: #22456E;
-        margin: 0 0 8px 0;
-        line-height: 1.3;
-    }
-    .portfolio-content p {
-        font-size: 0.9rem;
-        color: #777;
-        margin: 0;
-        font-weight: 500;
-    }
-    @media (max-width: 1024px) {
-        .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 600px) {
-        .portfolio-grid { grid-template-columns: 1fr; }
-    }
-    
-    @media (max-width: 1024px) {
-        .services-grid { grid-template-columns: repeat(3, 1fr) !important; }
-    }
-    @media (max-width: 768px) {
-        .services-grid { grid-template-columns: repeat(2, 1fr) !important; }
-    }
-    @media (max-width: 480px) {
-        .services-grid { grid-template-columns: 1fr !important; }
-    }
-    .service-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        border-color: transparent;
-    }
-</style>
+    @if(isset($latestBlogs) && $latestBlogs->count() > 0)
+    <div class="blog-grid">
+        @foreach($latestBlogs as $blog)
+        <a href="{{ route('blog.details', $blog->id) }}" class="blog-card">
+            <div class="blog-image" style="background-image: url('{{ $blog->image ? asset('storage/' . $blog->image) : '' }}');"></div>
+            <div class="blog-content">
+                <div class="blog-category-tag">{{ $blog->category ? $blog->category->name : 'Uncategorized' }}</div>
+                <h3 class="blog-card-title">{{ $blog->title }}</h3>
+                <div class="blog-date">{{ $blog->created_at->format('M d, Y') }}</div>
+            </div>
+        </a>
+        @endforeach
+    </div>
+    @else
+        <p style="color: #666;">No blogs published yet.</p>
+    @endif
+</div>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+@push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="{{ asset('js/home.js') }}"></script>
+@endpush
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var groupSwiper = new Swiper('.group-swiper', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: false,
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.group-pagination',
-                clickable: true,
-                bulletClass: 'custom-bullet',
-                bulletActiveClass: 'custom-bullet-active',
-            },
-            navigation: {
-                nextEl: '.group-button-next',
-                prevEl: '.group-button-prev',
-            },
-            breakpoints: {
-                640: { slidesPerView: 2, spaceBetween: 30 },
-                1024: { slidesPerView: 3, spaceBetween: 40 },
-                1280: { slidesPerView: 4, spaceBetween: 40 },
-            }
-        });
-    });
-</script>
-
-<style>
-.custom-bullet {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    border: 1px solid #ccc;
-    background: transparent;
-    display: inline-block;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-.custom-bullet-active {
-    background: #ccc;
-}
-.swiper-button-prev::after, .swiper-button-next::after {
-    font-size: 24px !important;
-    font-weight: bold;
-}
-.group-structure-section .btn:hover {
-    background-color: var(--primary-color) !important;
-    color: white !important;
-}
-.sector-card { transition: transform 0.3s ease; }
-.sector-card:hover { transform: translateY(-5px); }
-</style>
 @endsection

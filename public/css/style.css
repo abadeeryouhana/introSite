@@ -19,6 +19,9 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     background: var(--light-bg);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Typography */

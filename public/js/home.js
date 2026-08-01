@@ -1,0 +1,26 @@
+document.addEventListener('DOMContentLoaded', function () {
+    var groupSwiper = new Swiper('.group-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: false,
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.group-pagination',
+            clickable: true,
+            bulletClass: 'custom-bullet',
+            bulletActiveClass: 'custom-bullet-active',
+        },
+        navigation: {
+            nextEl: '.group-button-next',
+            prevEl: '.group-button-prev',
+        },
+        breakpoints: {
+            640: { slidesPerView: 2, spaceBetween: 30 },
+            1024: { slidesPerView: 3, spaceBetween: 40 },
+            1280: { slidesPerView: 4, spaceBetween: 40 },
+        }
+    });
+});

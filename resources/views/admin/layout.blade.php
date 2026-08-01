@@ -34,6 +34,8 @@
         <a href="{{ route('admin.team-members.index') }}">Team Members</a>
         <a href="{{ route('admin.users.index') }}">Users</a>
         <a href="{{ route('admin.social-links.index') }}">Social Links</a>
+        <a href="{{ route('admin.blog-categories.index') }}">Blog Categories</a>
+        <a href="{{ route('admin.blogs.index') }}">Blogs</a>
         <a href="{{ route('admin.contact-messages.index') }}">Contact Messages</a>
         <a href="{{ route('admin.settings.index') }}">Settings</a>
         <a href="{{ route('home') }}" target="_blank" style="margin-top: 20px; color: #2BB295;">View Site</a>

@@ -12,8 +12,9 @@ use App\Http\Controllers\Admin\TeamMemberController;
 use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\BlogCategoryController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Auth\LoginController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,7 +24,10 @@ use App\Http\Controllers\Auth\LoginController;
 Route::get('/', [FrontendController::class, 'home'])->name('home');
 Route::get('/about-us', [FrontendController::class, 'about'])->name('about');
 Route::get('/sectors-brands', [FrontendController::class, 'sectorsBrands'])->name('sectors.brands');
+Route::get('/portfolio', [FrontendController::class, 'portfolio'])->name('portfolio');
 Route::get('/services', [FrontendController::class, 'services'])->name('services.page');
+Route::get('/blog', [FrontendController::class, 'blog'])->name('blog');
+Route::get('/blog/{id}', [FrontendController::class, 'blogDetails'])->name('blog.details');
 Route::get('/contact-us', [FrontendController::class, 'contact'])->name('contact');
 Route::post('/contact-us', [FrontendController::class, 'submitContact'])->name('contact.submit');
 
@@ -41,6 +45,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
     Route::resource('social-links', SocialLinkController::class);
     Route::resource('team-members', TeamMemberController::class);
     Route::resource('users', UserController::class);
+    Route::resource('blog-categories', BlogCategoryController::class);
+    Route::resource('blogs', BlogController::class);
     Route::resource('contact-messages', ContactMessageController::class)->only(['index', 'show', 'destroy']);
     Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
     Route::post('settings', [SettingController::class, 'update'])->name('settings.update');

@@ -10,6 +10,8 @@ use App\Models\TeamMember;
 use App\Models\ContactMessage;
 use App\Models\Setting;
 use App\Models\SocialLink;
+use App\Models\Blog;
+use App\Models\BlogCategory;
 
 class FrontendController extends Controller
 {
@@ -19,13 +21,21 @@ class FrontendController extends Controller
         $services = Service::orderBy('order')->take(10)->get();
         $clients = Client::orderBy('order')->get();
         $caseStudies = \App\Models\CaseStudy::with('sector')->orderBy('order')->take(4)->get();
-        return view('home', compact('sectors', 'services', 'clients', 'caseStudies'));
+        $latestBlogs = Blog::with('category')->latest()->take(4)->get();
+        return view('home', compact('sectors', 'services', 'clients', 'caseStudies', 'latestBlogs'));
     }
 
     public function sectorsBrands()
     {
         $sectors = Sector::with('brands')->get();
         return view('sectors_brands', compact('sectors'));
+    }
+
+    public function portfolio()
+    {
+        $sectors = Sector::has('caseStudies')->get();
+        $caseStudies = \App\Models\CaseStudy::with('sector')->orderBy('order')->get();
+        return view('portfolio', compact('sectors', 'caseStudies'));
     }
 
     public function about()
@@ -57,5 +67,18 @@ class FrontendController extends Controller
 
         ContactMessage::create($validated);
         return redirect()->route('contact')->with('success', 'Your message has been sent successfully.');
+    }
+
+    public function blog()
+    {
+        $categories = BlogCategory::has('blogs')->get();
+        $blogs = Blog::with('category')->latest()->get();
+        return view('blog', compact('categories', 'blogs'));
+    }
+
+    public function blogDetails($id)
+    {
+        $blog = Blog::with('category')->findOrFail($id);
+        return view('blog_details', compact('blog'));
     }
 }
