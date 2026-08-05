@@ -12,6 +12,7 @@ use App\Models\Setting;
 use App\Models\SocialLink;
 use App\Models\Blog;
 use App\Models\BlogCategory;
+use App\Models\ClientTestimonial;
 
 class FrontendController extends Controller
 {
@@ -22,7 +23,8 @@ class FrontendController extends Controller
         $clients = Client::orderBy('order')->get();
         $caseStudies = \App\Models\CaseStudy::with('sector')->orderBy('order')->take(4)->get();
         $latestBlogs = Blog::with('category')->latest()->take(4)->get();
-        return view('home', compact('sectors', 'services', 'clients', 'caseStudies', 'latestBlogs'));
+        $testimonials = ClientTestimonial::with('client')->latest()->get();
+        return view('home', compact('sectors', 'services', 'clients', 'caseStudies', 'latestBlogs', 'testimonials'));
     }
 
     public function sectorsBrands()

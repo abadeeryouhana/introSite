@@ -23,4 +23,23 @@ document.addEventListener('DOMContentLoaded', function () {
             1280: { slidesPerView: 4, spaceBetween: 40 },
         }
     });
+
+    var testimonialsSwiper = new Swiper('.testimonials-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.testimonials-pagination',
+            clickable: true,
+            bulletClass: 'custom-bullet',
+            bulletActiveClass: 'custom-bullet-active',
+        },
+        breakpoints: {
+            768: { slidesPerView: 2, spaceBetween: 30 },
+        }
+    });
 });

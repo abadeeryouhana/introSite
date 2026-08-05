@@ -406,6 +406,50 @@
     </div>
 </div>
 
+<!-- Testimonials Section -->
+<div class="section testimonials-section" style="background-color: white; padding: 80px 0; text-align: center; font-family: 'Inter', sans-serif;">
+    <div style="width: 100%; margin: 0 auto; padding: 0 20px; margin-bottom: 50px;">
+        <div style="display: inline-block; border-top: 1px solid #3b71ca; border-bottom: 1px solid #3b71ca; padding: 5px 0; margin-bottom: 25px;">
+            <h5 style="color: #3b71ca; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">IN THEIR WORDS</h5>
+        </div>
+        <h2 style="font-size: 2.8rem; font-weight: 800; color: #22456E; margin-bottom: 20px; letter-spacing: -0.5px;">Some Of Our Clients' Testimonials</h2>
+        <p style="color: #66768f; font-size: 1.15rem; line-height: 1.6;">Why organizations across 40+ countries keep choosing Bayan Group</p>
+    </div>
+
+    <!-- Swiper for Testimonials -->
+    <div class="swiper testimonials-swiper" style="width: 100%; max-width: 900px; margin: 0 auto; padding: 20px 40px 60px;">
+        <div class="swiper-wrapper">
+            @foreach($testimonials as $testimonial)
+            <div class="swiper-slide">
+                <div class="testimonial-card" style="background: #f8f9fa; border-radius: 16px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: left; position: relative;">
+                    <div style="color: #3b71ca; margin-bottom: 20px;">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z"/></svg>
+                    </div>
+                    @if($testimonial->title)
+                        <h4 style="font-size: 1.25rem; font-weight: 700; color: #22456E; margin-bottom: 15px;">{{ $testimonial->title }}</h4>
+                    @endif
+                    <p style="color: #555; font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; font-style: italic;">"{{ $testimonial->description }}"</p>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        @if($testimonial->image)
+                            <img src="{{ asset('storage/' . $testimonial->image) }}" alt="Testimonial Image" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                        @endif
+                        <div>
+                            <h5 style="margin: 0; font-size: 1.1rem; font-weight: 700; color: #22456E;">{{ $testimonial->client->name ?? 'Client' }}</h5>
+                            @if(isset($testimonial->client->url))
+                                <a href="{{ $testimonial->client->url }}" target="_blank" style="color: #3b71ca; font-size: 0.9rem; text-decoration: none;">Visit Website</a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        <!-- Pagination -->
+        <div class="swiper-pagination testimonials-pagination"></div>
+    </div>
+</div>
+
+
 <!-- Blog Section -->
 <div class="blog-section">
     <div class="blog-section-header">

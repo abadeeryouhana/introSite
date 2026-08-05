@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\ClientTestimonialController;
 use App\Http\Controllers\Auth\LoginController;
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,7 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('clients', ClientController::class);
+    Route::resource('client-testimonials', ClientTestimonialController::class);
     Route::resource('sectors', SectorController::class);
     Route::resource('case-studies', \App\Http\Controllers\Admin\CaseStudyController::class);
     Route::resource('brands', BrandController::class);
