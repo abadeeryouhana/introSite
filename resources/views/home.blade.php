@@ -187,17 +187,19 @@
     <div class="swiper group-swiper" style="width: 100%; margin: 0 auto; padding: 0 40px;">
         <div class="swiper-wrapper" style="align-items: stretch;">
             @foreach($sectors as $sector)
-            <div class="swiper-slide" style="height: auto;">
-                <div class="sector-card" style="background: white; border-radius: 16px; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); height: 100%; display: flex; flex-direction: column;">
-                    <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--primary-color, #3b71ca); margin-bottom: 25px; text-transform: uppercase;">{{ $sector->name }}</h3>
+            <div class="swiper-slide" style="height: auto; width: 100%;">
+                <div class="sector-card" style="background: white; border-radius: 16px; padding: 25px 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); height: 100%; display: flex; flex-direction: column; width: 100%; box-sizing: border-box;">
+                    <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--primary-color, #3b71ca); margin-bottom: 20px; text-transform: uppercase; word-break: break-word; overflow-wrap: break-word; line-height: 1.3;">{{ $sector->name }}</h3>
                     
-                    <div class="brands-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; flex-grow: 1; align-content: start;">
+                    <div class="brands-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); gap: 10px; flex-grow: 1; align-content: start;">
                         @foreach($sector->brands as $brand)
-                            @if($brand->logo_path)
-                                <div style="display: flex; justify-content: center; align-items: center; padding: 10px; background: #fdfdfd; border: 1px solid #eee; border-radius: 8px;">
-                                    <img src="{{ asset('storage/' . $brand->logo_path) }}" alt="{{ $brand->name }}" style="max-width: 100%; max-height: 50px; object-fit: contain;">
-                                </div>
-                            @endif
+                            <div style="display: flex; justify-content: center; align-items: center; padding: 8px; background: #fdfdfd; border: 1px solid #eee; border-radius: 8px; width: 100%; box-sizing: border-box;">
+                                @if($brand->logo_path)
+                                    <img src="{{ asset('storage/' . $brand->logo_path) }}" alt="{{ $brand->name }}" style="max-width: 100%; max-height: 45px; object-fit: contain;">
+                                @else
+                                    <img src="https://ui-avatars.com/api/?name={{ urlencode($brand->name) }}&color=3D81C3&background=EBF4FF&bold=true&font-size=0.33&size=128" alt="{{ $brand->name }}" style="max-width: 100%; max-height: 45px; object-fit: contain; border-radius: 4px;">
+                                @endif
+                            </div>
                         @endforeach
                     </div>
                 </div>
