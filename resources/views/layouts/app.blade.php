@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/layout.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animations.css') }}">
     @stack('styles')
     <style>
         :root {
@@ -155,6 +156,7 @@
     </footer>
 
     @stack('scripts')
+    <script src="{{ asset('js/animations.js') }}"></script>
     <script src="{{ asset('js/modal.js') }}"></script>
 </body>
 </html>

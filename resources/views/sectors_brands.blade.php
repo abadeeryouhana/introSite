@@ -45,9 +45,9 @@
                 <div class="sb-brands-grid">
                     @foreach($sector->brands as $brand)
                         @if($brand->url)
-                            <a href="{{ $brand->url }}" target="_blank" class="sb-brand-card" style="text-decoration: none;">
+                            <a href="{{ $brand->url }}" target="_blank" class="sb-brand-card animate-fade-up" style="text-decoration: none;">
                         @else
-                            <div class="sb-brand-card">
+                            <div class="sb-brand-card animate-fade-up">
                         @endif
                             @if($brand->status)
                                 <div class="sb-status-badge {{ $brand->status == 'Live' ? 'sb-status-live' : 'sb-status-soon' }}">

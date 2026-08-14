@@ -37,7 +37,7 @@
         <div class="portfolio-grid">
             @foreach($caseStudies as $caseStudy)
                 <!-- Portfolio Card -->
-                <div class="portfolio-card" data-sector-id="{{ $caseStudy->sector_id ?? 'none' }}" onclick="openModal({{ $caseStudy->id }})">
+                <div class="portfolio-card animate-fade-up" data-sector-id="{{ $caseStudy->sector_id ?? 'none' }}" onclick="openModal({{ $caseStudy->id }})">
                     <div class="portfolio-image" style="background-image: url('{{ $caseStudy->image ? asset('storage/' . $caseStudy->image) : '' }}');">
                         <div class="portfolio-blur-overlay"></div>
                         <div style="position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: center; padding: 20px;">

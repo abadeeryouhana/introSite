@@ -41,7 +41,7 @@
     @if($blogs->count() > 0)
         <div class="blog-grid">
             @foreach($blogs as $blog)
-                <a href="{{ route('blog.details', $blog->id) }}" class="blog-card blog-item" data-category-id="{{ $blog->category ? $blog->category->id : 'none' }}">
+                <a href="{{ route('blog.details', $blog->id) }}" class="blog-card blog-item animate-fade-up" data-category-id="{{ $blog->category ? $blog->category->id : 'none' }}">
                     <div class="blog-image" style="background-image: url('{{ $blog->image ? asset('storage/' . $blog->image) : '' }}');"></div>
                     <div class="blog-content">
                         <div class="blog-category-tag">{{ $blog->category ? $blog->category->name : 'Uncategorized' }}</div>

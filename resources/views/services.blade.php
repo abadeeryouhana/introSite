@@ -26,7 +26,7 @@
 <div class="services-frame">
     <div class="services-grid">
         @foreach($services as $service)
-        <div class="service-card">
+        <div class="service-card animate-fade-up">
             @if($service->icon_path)
                 <img src="{{ asset('storage/' . $service->icon_path) }}" alt="{{ $service->title }}" style="max-width: 32px; margin-bottom: 15px; object-fit: contain;">
             @else
