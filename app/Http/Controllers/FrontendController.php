@@ -43,7 +43,9 @@ class FrontendController extends Controller
     public function about()
     {
         $team = TeamMember::orderBy('order')->get();
-        return view('about', compact('team'));
+        $clients = Client::orderBy('order')->get();
+        $testimonials = ClientTestimonial::with('client')->latest()->get();
+        return view('about', compact('team', 'clients', 'testimonials'));
     }
 
     public function services()

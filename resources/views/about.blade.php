@@ -3,6 +3,7 @@
 @section('content')
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/about.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 @endpush
 
 <div class="sb-hero">
@@ -299,20 +300,141 @@
 </div>
 
 
-<div class="section">
-    <h2>Our Team</h2>
-    <div class="grid">
-        @foreach($team as $member)
-        <div class="card animate-fade-up">
-            @if($member->image_path)
-                <img src="{{ asset('storage/' . $member->image_path) }}" alt="{{ $member->name }}" style="border-radius: 50%; max-width: 120px;">
-            @else
-                <div style="width: 120px; height: 120px; background: #ddd; border-radius: 50%; margin: 0 auto 20px auto;"></div>
-            @endif
-            <h3>{{ $member->name }}</h3>
-            <p style="color: var(--primary-color); font-weight: bold;">{{ $member->position }}</p>
+<!-- LEADERSHIP TEAM -->
+<div class="leadership-section">
+    <div class="leadership-container">
+        <div class="leadership-header animate-fade-up">
+            <div class="leadership-subtitle">LEADERSHIP</div>
+            <h2 class="leadership-title">The people behind the group.</h2>
         </div>
-        @endforeach
+        
+        <div class="leadership-grid">
+            @foreach($team as $member)
+            <div class="leadership-card animate-fade-up" style="animation-delay: {{ $loop->index * 0.1 }}s;">
+                <div class="leadership-avatar">
+                    @if($member->image_path)
+                        <img src="{{ asset('storage/' . $member->image_path) }}" alt="{{ $member->name }}">
+                    @else
+                        @php 
+                            $initials = collect(explode(' ', $member->name))
+                                ->map(function($segment) { return strtoupper(substr($segment, 0, 1)); })
+                                ->take(2)
+                                ->join(''); 
+                        @endphp
+                        {{ $initials }}
+                    @endif
+                </div>
+                <h3 class="leadership-name">{{ $member->name }}</h3>
+                <p class="leadership-position">{{ $member->position }}</p>
+            </div>
+            @endforeach
+        </div>
     </div>
 </div>
+
+
+<!-- OUR CLIENTS -->
+<div class="about-clients-section">
+    <div class="about-clients-container">
+        <div class="about-clients-header animate-fade-up">
+            <div class="about-clients-subtitle">OUR CLIENTS</div>
+            <h2 class="about-clients-title">Trusted by organizations worldwide.</h2>
+        </div>
+        
+        <div class="about-clients-grid">
+            @foreach($clients as $client)
+            <a href="{{ $client->url ?? '#' }}" class="about-client-card animate-fade-up" style="animation-delay: {{ ($loop->index % 10) * 0.1 }}s;" {!! $client->url ? 'target="_blank" rel="noopener noreferrer"' : '' !!}>
+                @if($client->logo_path)
+                    <img src="{{ asset('storage/' . $client->logo_path) }}" alt="{{ $client->name }}">
+                @else
+                    <span class="about-client-name">{{ $client->name }}</span>
+                @endif
+            </a>
+            @endforeach
+        </div>
+    </div>
+</div>
+
+<!-- Testimonials Section -->
+<div class="section testimonials-section" style="background-color: white; padding: 80px 0; font-family: 'Inter', sans-serif;">
+    <div style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; margin-bottom: 50px; text-align: left;">
+        <div style="display: inline-block; border-top: 1px solid #3b71ca; border-bottom: 1px solid #3b71ca; padding: 5px 0; margin-bottom: 25px;">
+            <h5 style="color: #3b71ca; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">IN THEIR WORDS</h5>
+        </div>
+        <h2 style="font-size: 2.8rem; font-weight: 800; color: #22456E; margin-bottom: 20px; letter-spacing: -0.5px;">Some Of Our Clients' Testimonials</h2>
+        <p style="color: #66768f; font-size: 1.15rem; line-height: 1.6;">Why organizations across 40+ countries keep choosing Bayan Group</p>
+    </div>
+
+    <!-- Swiper for Testimonials -->
+    <div class="swiper testimonials-swiper" style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 20px 20px 60px;">
+        <div class="swiper-wrapper">
+            @foreach($testimonials as $testimonial)
+            <div class="swiper-slide">
+                <div class="testimonial-card" style="background: #f8f9fa; border-radius: 16px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: left; position: relative;">
+                    <div style="color: #3b71ca; margin-bottom: 20px;">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z"/></svg>
+                    </div>
+                    @if($testimonial->title)
+                        <h4 style="font-size: 1.25rem; font-weight: 700; color: #22456E; margin-bottom: 15px;">{{ $testimonial->title }}</h4>
+                    @endif
+                    <p style="color: #555; font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; font-style: italic;">"{{ $testimonial->description }}"</p>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        @if($testimonial->image)
+                            <img src="{{ asset('storage/' . $testimonial->image) }}" alt="Testimonial Image" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                        @endif
+                        <div>
+                            <h5 style="margin: 0; font-size: 1.1rem; font-weight: 700; color: #22456E;">{{ $testimonial->client->name ?? 'Client' }}</h5>
+                            @if(isset($testimonial->client->url))
+                                <a href="{{ $testimonial->client->url }}" target="_blank" style="color: #3b71ca; font-size: 0.9rem; text-decoration: none;">Visit Website</a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        <!-- Pagination & Navigation -->
+        <div class="swiper-pagination testimonials-pagination"></div>
+        <div class="swiper-button-next testimonials-button-next" style="color: #3b71ca; transform: scale(0.7); right: 10px;"></div>
+        <div class="swiper-button-prev testimonials-button-prev" style="color: #3b71ca; transform: scale(0.7); left: 10px;"></div>
+    </div>
+</div>
+
+@push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if(document.querySelector('.testimonials-swiper')) {
+                new Swiper('.testimonials-swiper', {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                    loop: true,
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: '.testimonials-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.testimonials-button-next',
+                        prevEl: '.testimonials-button-prev',
+                    },
+                    breakpoints: {
+                        320: {
+                            slidesPerView: 1,
+                        },
+                        768: {
+                            slidesPerView: 2,
+                        },
+                        1024: {
+                            slidesPerView: 3,
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+@endpush
 @endsection

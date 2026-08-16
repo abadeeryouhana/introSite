@@ -76,15 +76,22 @@ class DatabaseSeeder extends Seeder
 
         // 7. Team Members
         TeamMember::truncate();
-        TeamMember::create(['name' => 'John Doe', 'position' => 'CEO', 'order' => 1]);
-        TeamMember::create(['name' => 'Jane Smith', 'position' => 'CTO', 'order' => 2]);
-        TeamMember::create(['name' => 'Ahmed Ali', 'position' => 'Lead Developer', 'order' => 3]);
-
+        TeamMember::create(['name' => 'Dr. Muhammad Fadel', 'position' => 'Chairman & Managing Director', 'order' => 1]);
+        TeamMember::create(['name' => 'Rim A. Wafa', 'position' => 'Vice Chairman', 'order' => 2]);
+        TeamMember::create(['name' => 'Amr Hatem', 'position' => 'Finance & Admin Director', 'order' => 3]);
+        TeamMember::create(['name' => 'Omar Taher', 'position' => 'Translation Sector Head', 'order' => 4]);
+        TeamMember::create(['name' => 'Job Moses', 'position' => 'Business Development Manager', 'order' => 5]);
+        TeamMember::create(['name' => 'Muhamed Murad', 'position' => 'Operation Officer', 'order' => 6]);
         // 8. Clients
         Client::truncate();
-        $client1 = Client::create(['name' => 'Acme Corp', 'url' => 'https://acme.test', 'order' => 1]);
-        $client2 = Client::create(['name' => 'Globex', 'url' => 'https://globex.test', 'order' => 2]);
-        $client3 = Client::create(['name' => 'Initech', 'url' => 'https://initech.test', 'order' => 3]);
+        $client1 = Client::create(['name' => 'Siemens', 'url' => 'https://acme.test', 'order' => 1]);
+        $client2 = Client::create(['name' => 'PwC', 'url' => 'https://globex.test', 'order' => 2]);
+        $client3 = Client::create(['name' => 'PepsiCo', 'url' => 'https://initech.test', 'order' => 3]);
+        $client4 = Client::create(['name' => 'EY', 'url' => 'https://initech.test', 'order' => 3]);
+        $client5 = Client::create(['name' => 'Deloitte', 'url' => 'https://initech.test', 'order' => 3]);
+        $client6 = Client::create(['name' => 'KPMG', 'url' => 'https://initech.test', 'order' => 3]);
+        $client7 = Client::create(['name' => 'World Bank', 'url' => 'https://initech.test', 'order' => 3]);
+        $client8 = Client::create(['name' => 'Emaar', 'url' => 'https://initech.test', 'order' => 3]);
 
         // 9. Client Testimonials
         ClientTestimonial::truncate();

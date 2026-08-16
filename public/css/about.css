@@ -475,7 +475,207 @@
     .numbers-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    .numbers-title {
+}
+
+/* Leadership Team Section */
+.leadership-section {
+    background-color: #f4f9ff;
+    padding: 100px 20px;
+}
+
+.leadership-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.leadership-header {
+    margin-bottom: 60px;
+}
+
+.leadership-subtitle {
+    font-size: 0.85rem;
+    color: #3b71ca;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    display: inline-block;
+    border-top: 2px solid #3b71ca;
+    border-bottom: 2px solid #3b71ca;
+    padding: 6px 0;
+}
+
+.leadership-title {
+    font-size: 2.8rem;
+    color: #1a2a47;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.leadership-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.leadership-card {
+    background: #fff;
+    border: 1px solid #e0e6ed;
+    border-radius: 16px;
+    padding: 40px 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+}
+
+.leadership-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(59, 113, 202, 0.1);
+    border-color: #3b71ca;
+}
+
+.leadership-avatar {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 25px auto;
+    border-radius: 50%;
+    background-color: #1a2a47;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    overflow: hidden;
+}
+
+.leadership-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.leadership-name {
+    font-size: 1.3rem;
+    color: #1a2a47;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.leadership-position {
+    font-size: 0.95rem;
+    color: #8898aa;
+    font-weight: 600;
+}
+
+@media (max-width: 992px) {
+    .leadership-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .leadership-grid {
+        grid-template-columns: 1fr;
+    }
+    .leadership-title {
         font-size: 2.2rem;
+    }
+}
+
+/* About Clients Section */
+.about-clients-section {
+    background-color: #fff;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.about-clients-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-clients-header {
+    margin-bottom: 60px;
+}
+
+.about-clients-subtitle {
+    font-size: 0.85rem;
+    color: #3b71ca;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    display: inline-block;
+    border-top: 2px solid #3b71ca;
+    border-bottom: 2px solid #3b71ca;
+    padding: 6px 0;
+}
+
+.about-clients-title {
+    font-size: 2.8rem;
+    color: #1a2a47;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.about-clients-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.about-client-card {
+    background: #fff;
+    border: 1px solid #e0e6ed;
+    border-radius: 12px;
+    padding: 30px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 140px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+    text-decoration: none;
+}
+
+.about-client-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(59, 113, 202, 0.1);
+    border-color: #3b71ca;
+}
+
+.about-client-card img {
+    max-width: 90%;
+    max-height: 90px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.4s ease;
+}
+
+.about-client-card:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.about-client-name {
+    font-weight: 700;
+    color: #1a2a47;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.about-client-card:hover .about-client-name {
+    color: #3b71ca;
+}
+
+@media (max-width: 768px) {
+    .about-clients-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 20px;
+    }
+    .about-client-card {
+        height: 120px;
     }
 }
