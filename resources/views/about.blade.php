@@ -192,7 +192,7 @@
 <!-- How we work Section  -->
 <div class="section how-we-work-section" style="background-color: #f4f7fb;  position: relative; padding: 80px 0;">
     
-    <div style="width: 100%; padding: 0 20px;">
+    <div style="max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 20px;">
         
         <!-- Header Row -->
         <div style="text-align: center; margin-bottom: 50px;">

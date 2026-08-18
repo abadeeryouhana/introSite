@@ -29,7 +29,7 @@
 
 <!-- Statistics Numbers Section -->
 <div class="section achievements-section" style="background-color: #f8f9fa;text-align: center;">
-    <div class="achievements-grid" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; width: 100%; padding: 0 20px;">
+    <div class="achievements-grid" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
         
         <!-- Card 1 -->
         <div class="achievement-card animate-fade-up delay-100" style="background: linear-gradient(180deg, #edf7f0 0%, #ffffff 30%); border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); padding: 40px 20px 30px; width: 190px; text-align: center;">
@@ -86,7 +86,7 @@
     <div style="position: absolute; top: -50px; right: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(59,113,202,0.05) 0%, rgba(255,255,255,0) 70%); border-radius: 50%; pointer-events: none;"></div>
     <div style="position: absolute; bottom: -50px; left: -50px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(59,113,202,0.05) 0%, rgba(255,255,255,0) 70%); border-radius: 50%; pointer-events: none;"></div>
     
-    <div style="width: 100%; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; gap: 60px; flex-wrap: wrap;">
+    <div style="max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; gap: 60px; flex-wrap: wrap;">
         
         <div style="flex: 1; min-width: 300px; padding-right: 20px;">
             <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
@@ -118,7 +118,7 @@
 <!-- How we work Section  -->
 <div class="section how-we-work-section" style="background-color: #f4f7fb;  position: relative;">
     
-    <div style="width: 100%; padding: 0 20px;">
+    <div style="max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 20px;">
         
         <!-- Header Row -->
         <div style="text-align: center; ">
@@ -175,6 +175,7 @@
 
 <!-- Our Brands Section -->
 <div id="brands" class="section group-structure-section" style="background-color: #f8f9fa; text-align: left; padding: 60px 0; overflow: hidden; position: relative;">
+    <div style="max-width: 1200px; margin: 0 auto; width: 100%; padding: 0 20px;">
     <div style="display: inline-flex; align-items: center; justify-content: center; gap: 15px;">
         <div style="height: 2px; width: 40px; background-color: var(--primary-color, #22456E);"></div>
         <h5 style="color: var(--primary-color, #22456E); font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.95rem;">The Group Structure</h5>
@@ -220,11 +221,12 @@
         <!-- Pagination -->
         <div class="swiper-pagination group-pagination" style="position: static; width: auto; display: flex; align-items: center; gap: 5px;"></div>
     </div>
+    </div>
 </div>
 
 <!-- What We Do Section -->
 <div class="section services-section" style="background-color: white; padding: 80px 0; text-align: left;">
-    <div style="width: 100%; margin: 0 auto; padding: 0 20px;">
+    <div style="max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 20px;">
         <div style="display: inline-flex; align-items: center; justify-content: center; gap: 15px;">
         <div style="height: 2px; width: 40px; background-color: var(--primary-color, #22456E);"></div>
         <h5 style="color: var(--primary-color, #22456E); font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.95rem;">What We Do</h5>
@@ -255,7 +257,7 @@
 
 <!-- Partners Section -->
 <div class="section partners-section" style="background-color: #e2ebf3; padding: 60px 0; margin: 80px 0; font-family: 'Inter', sans-serif;">
-    <div style="width: 100%; margin: 0 auto; padding: 0 20px; display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 40px; text-align: left;">
+    <div style="max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 20px; display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 40px; text-align: left;">
         <!-- Left Content -->
         <div style="flex: 1; min-width: 300px; max-width: 550px;">
             <div style="display: inline-block; border-top: 1px solid #3b71ca; border-bottom: 1px solid #3b71ca; padding: 5px 0; margin-bottom: 25px;">
@@ -290,7 +292,7 @@
 
 <!-- Case Studies / Portfolio Section -->
 <div class="section portfolio-section" style="background-color: white; padding: 80px 0; font-family: 'Inter', sans-serif;">
-    <div style="width: 100%; margin: 0 auto; padding: 0 20px;">
+    <div style="max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 20px;">
         <div style="text-align: left;">
             <div style="display: inline-block; border-top: 1px solid #3b71ca; border-bottom: 1px solid #3b71ca; padding: 5px 0; margin-bottom: 25px;">
                 <h5 style="color: #3b71ca; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">PORTFOLIO</h5>
@@ -347,7 +349,7 @@
 
 <!-- Clients Section -->
 <div class="section clients-section" style="background-color: #f0f4f8; padding: 80px 0 100px; overflow: hidden; text-align: center; font-family: 'Inter', sans-serif;">
-    <div style="width: 100%; margin: 0 auto; padding: 0 20px; margin-bottom: 50px;">
+    <div style="max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 20px; margin-bottom: 50px;">
         <div style="display: inline-block; border-top: 1px solid #3b71ca; border-bottom: 1px solid #3b71ca; padding: 5px 0; margin-bottom: 25px;">
             <h5 style="color: #3b71ca; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">OUR CLIENTS</h5>
         </div>
@@ -410,7 +412,7 @@
 
 <!-- Testimonials Section -->
 <div class="section testimonials-section" style="background-color: white; padding: 80px 0; text-align: center; font-family: 'Inter', sans-serif;">
-    <div style="width: 100%; margin: 0 auto; padding: 0 20px; margin-bottom: 50px;">
+    <div style="max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 20px; margin-bottom: 50px;">
         <div style="display: inline-block; border-top: 1px solid #3b71ca; border-bottom: 1px solid #3b71ca; padding: 5px 0; margin-bottom: 25px;">
             <h5 style="color: #3b71ca; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">IN THEIR WORDS</h5>
         </div>
@@ -454,6 +456,7 @@
 
 <!-- Blog Section -->
 <div class="blog-section">
+    <div style="max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 20px;">
     <div class="blog-section-header">
         <span class="blog-section-subtitle">INSIGHTS</span>
         <h2 class="blog-section-title">Ideas from our practice.</h2>
@@ -475,6 +478,7 @@
     @else
         <p style="color: #666;">No blogs published yet.</p>
     @endif
+    </div>
 </div>
 
 @push('scripts')
