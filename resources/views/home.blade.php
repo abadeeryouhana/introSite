@@ -86,7 +86,7 @@
     <div style="position: absolute; top: -50px; right: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(59,113,202,0.05) 0%, rgba(255,255,255,0) 70%); border-radius: 50%; pointer-events: none;"></div>
     <div style="position: absolute; bottom: -50px; left: -50px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(59,113,202,0.05) 0%, rgba(255,255,255,0) 70%); border-radius: 50%; pointer-events: none;"></div>
     
-    <div style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; gap: 60px; flex-wrap: wrap;">
+    <div style="width: 100%; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; gap: 60px; flex-wrap: wrap;">
         
         <div style="flex: 1; min-width: 300px; padding-right: 20px;">
             <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
@@ -118,7 +118,7 @@
 <!-- How we work Section  -->
 <div class="section how-we-work-section" style="background-color: #f4f7fb;  position: relative;">
     
-    <div style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+    <div style="width: 100%; padding: 0 20px;">
         
         <!-- Header Row -->
         <div style="text-align: center; ">
@@ -175,15 +175,13 @@
 
 <!-- Our Brands Section -->
 <div id="brands" class="section group-structure-section" style="background-color: #f8f9fa; text-align: left; padding: 60px 0; overflow: hidden; position: relative;">
-    <div style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-        <div style="display: inline-flex; align-items: center; justify-content: center; gap: 15px;">
-            <div style="height: 2px; width: 40px; background-color: var(--primary-color, #22456E);"></div>
-            <h5 style="color: var(--primary-color, #22456E); font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.95rem;">The Group Structure</h5>
-            <div style="height: 2px; width: 40px; background-color: var(--primary-color, #22456E);"></div>
-        </div>
-        <h2 style="font-weight: 800; color: #22456E; margin-bottom: 15px; font-size: 2.5rem;">Five Sectors. A Family of Brands.</h2>
-        <p style="color: #555; font-size: 1.1rem; max-width: 600px; margin: 0 0 50px 0;">One group operating specialized brands across the disciplines enterprises rely on most.</p>
+    <div style="display: inline-flex; align-items: center; justify-content: center; gap: 15px;">
+        <div style="height: 2px; width: 40px; background-color: var(--primary-color, #22456E);"></div>
+        <h5 style="color: var(--primary-color, #22456E); font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.95rem;">The Group Structure</h5>
+        <div style="height: 2px; width: 40px; background-color: var(--primary-color, #22456E);"></div>
     </div>
+    <h2 style="font-weight: 800; color: #22456E; margin-bottom: 15px; font-size: 2.5rem;">Five Sectors. A Family of Brands.</h2>
+    <p style="color: #555; font-size: 1.1rem; max-width: 600px; margin: 0 0 50px 0;">One group operating specialized brands across the disciplines enterprises rely on most.</p>
     
     <!-- Swiper -->
     <div class="swiper group-swiper" style="width: 100%; margin: 0 auto; padding: 0 40px;">
@@ -226,14 +224,14 @@
 
 <!-- What We Do Section -->
 <div class="section services-section" style="background-color: white; padding: 80px 0; text-align: left;">
-    <div style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+    <div style="width: 100%; margin: 0 auto; padding: 0 20px;">
         <div style="display: inline-flex; align-items: center; justify-content: center; gap: 15px;">
         <div style="height: 2px; width: 40px; background-color: var(--primary-color, #22456E);"></div>
         <h5 style="color: var(--primary-color, #22456E); font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.95rem;">What We Do</h5>
         <div style="height: 2px; width: 40px; background-color: var(--primary-color, #22456E);"></div>
     </div>
 
-        <h2 style="font-weight: 800; color: #22456E; margin-bottom: 15px; font-size: 2.5rem;">Smart Business Solutions</h2>
+        <h2 style="font-weight: 800; color: #22456E; margin-bottom: 15px; font-size: 2.5rem;">    <h2 style="font-weight: 800; color: #22456E; margin-bottom: 15px; font-size: 2.5rem;">Smart Business Solutions</h2>
     <p style="color: #555; font-size: 1.1rem; max-width: 600px; margin: 0 0 50px 0;">Ten services. One integrated engine.</p>
 
         <div style="height: 1px; width: 100%; background-color: #eee; margin-bottom: 20px; max-width: 250px;"></div>
@@ -253,12 +251,11 @@
             @endforeach
         </div>
     </div>
-</div>
 
 
 <!-- Partners Section -->
-<div class="section partners-section" style="background-color: #e2ebf3; padding: 60px 0; font-family: 'Inter', sans-serif;">
-    <div style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 40px; text-align: left;">
+<div class="section partners-section" style="background-color: #e2ebf3; padding: 60px 0; margin: 80px 0; font-family: 'Inter', sans-serif;">
+    <div style="width: 100%; margin: 0 auto; padding: 0 20px; display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 40px; text-align: left;">
         <!-- Left Content -->
         <div style="flex: 1; min-width: 300px; max-width: 550px;">
             <div style="display: inline-block; border-top: 1px solid #3b71ca; border-bottom: 1px solid #3b71ca; padding: 5px 0; margin-bottom: 25px;">
@@ -293,7 +290,7 @@
 
 <!-- Case Studies / Portfolio Section -->
 <div class="section portfolio-section" style="background-color: white; padding: 80px 0; font-family: 'Inter', sans-serif;">
-    <div style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+    <div style="width: 100%; margin: 0 auto; padding: 0 20px;">
         <div style="text-align: left;">
             <div style="display: inline-block; border-top: 1px solid #3b71ca; border-bottom: 1px solid #3b71ca; padding: 5px 0; margin-bottom: 25px;">
                 <h5 style="color: #3b71ca; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">PORTFOLIO</h5>
@@ -350,7 +347,7 @@
 
 <!-- Clients Section -->
 <div class="section clients-section" style="background-color: #f0f4f8; padding: 80px 0 100px; overflow: hidden; text-align: center; font-family: 'Inter', sans-serif;">
-    <div style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; margin-bottom: 50px;">
+    <div style="width: 100%; margin: 0 auto; padding: 0 20px; margin-bottom: 50px;">
         <div style="display: inline-block; border-top: 1px solid #3b71ca; border-bottom: 1px solid #3b71ca; padding: 5px 0; margin-bottom: 25px;">
             <h5 style="color: #3b71ca; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">OUR CLIENTS</h5>
         </div>
@@ -413,7 +410,7 @@
 
 <!-- Testimonials Section -->
 <div class="section testimonials-section" style="background-color: white; padding: 80px 0; text-align: center; font-family: 'Inter', sans-serif;">
-    <div style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; margin-bottom: 50px;">
+    <div style="width: 100%; margin: 0 auto; padding: 0 20px; margin-bottom: 50px;">
         <div style="display: inline-block; border-top: 1px solid #3b71ca; border-bottom: 1px solid #3b71ca; padding: 5px 0; margin-bottom: 25px;">
             <h5 style="color: #3b71ca; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">IN THEIR WORDS</h5>
         </div>
