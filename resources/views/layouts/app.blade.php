@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $global_settings['site_name'] ?? 'Bayan Group' }}</title>
+    @if(isset($global_settings['site_logo']))
+        <link rel="icon" href="{{ asset('storage/' . $global_settings['site_logo']) }}">
+    @else
+        <link rel="icon" href="{{ asset('favicon.ico') }}">
+    @endif
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ filemtime(public_path('css/style.css')) }}">
@@ -37,7 +42,7 @@
             <li><a href="{{ route('services.page') }}">Services</a></li>
             <li><a href="{{ route('portfolio') }}">Portfolio</a></li>
             <li><a href="{{ route('blog') }}">Blog</a></li>
-            <li><a href="#">Careers</a></li>
+            <li><a href="{{ route('careers') }}">Careers</a></li>
             <li><a href="{{ route('contact') }}" class="btn" style="color: white; border-radius: 30px; padding: 10px 25px;">Contact Us</a></li>
         </ul>
     </nav>

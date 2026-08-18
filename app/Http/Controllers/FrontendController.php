@@ -85,4 +85,9 @@ class FrontendController extends Controller
         $blog = Blog::with('category')->findOrFail($id);
         return view('blog_details', compact('blog'));
     }
+
+    public function careers()
+    {
+        return view('careers');
+    }
 }

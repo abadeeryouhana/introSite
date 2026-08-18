@@ -23,6 +23,7 @@ use App\Http\Controllers\Auth\LoginController;
 */
 
 Route::get('/', [FrontendController::class, 'home'])->name('home');
+Route::get('/careers', [FrontendController::class, 'careers'])->name('careers');
 Route::get('/about-us', [FrontendController::class, 'about'])->name('about');
 Route::get('/sectors-brands', [FrontendController::class, 'sectorsBrands'])->name('sectors.brands');
 Route::get('/portfolio', [FrontendController::class, 'portfolio'])->name('portfolio');
