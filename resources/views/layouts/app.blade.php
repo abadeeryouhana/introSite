@@ -24,20 +24,21 @@
             <a href="{{ route('home') }}" style="display: flex; align-items: center; gap: 12px;">
                 @if(isset($global_settings['site_logo']))
                     <img src="{{ asset('storage/' . $global_settings['site_logo']) }}" alt="Logo" class="logo">
-                    <h2 style="margin: 0; color: var(--primary-color); font-weight: 400; font-size: 1.6rem; letter-spacing: -0.5px;">Bayan Group</h2>
-                @else
-                    <h2 style="margin: 0; color: var(--primary-color); font-weight: 400; font-size: 1.6rem; letter-spacing: -0.5px;">Bayan Group</h2>
                 @endif
+                <div style="display: flex; flex-direction: column;">
+                    <h2 style="margin: 0; color: var(--primary-color); font-weight: 800; font-size: 1.6rem; letter-spacing: -0.5px; text-transform: uppercase; line-height: 1.1;">Bayan Group</h2>
+                    <span style="font-size: 0.7rem; color: #666; letter-spacing: 1px; text-transform: uppercase; font-weight: 600;">Digital Innovation & Business Solutions</span>
+                </div>
             </a>
         </div>
-        <ul>
-            <li><a href="{{ route('home') }}">Home</a></li>
+        <ul style="margin-right: 50px; align-items: center;">
             <li><a href="{{ route('about') }}">About Us</a></li>
             <li><a href="{{ route('sectors.brands') }}">Sectors & Brands</a></li>
-            <li><a href="{{ route('portfolio') }}">Portfolio</a></li>
             <li><a href="{{ route('services.page') }}">Services</a></li>
+            <li><a href="{{ route('portfolio') }}">Portfolio</a></li>
             <li><a href="{{ route('blog') }}">Blog</a></li>
-            <li><a href="{{ route('contact') }}">Contact Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="{{ route('contact') }}" class="btn" style="color: white; border-radius: 30px; padding: 10px 25px;">Contact Us</a></li>
         </ul>
     </nav>
 
