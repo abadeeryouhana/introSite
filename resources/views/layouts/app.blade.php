@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('css/layout.css') }}?v={{ filemtime(public_path('css/layout.css')) }}">
     <link rel="stylesheet" href="{{ asset('css/components.css') }}?v={{ filemtime(public_path('css/components.css')) }}">
     <link rel="stylesheet" href="{{ asset('css/animations.css') }}?v={{ filemtime(public_path('css/animations.css')) }}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     @stack('styles')
     <style>
         :root {
@@ -164,5 +165,20 @@
     @stack('scripts')
     <script src="{{ asset('js/animations.js') }}"></script>
     <script src="{{ asset('js/modal.js') }}"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    @if(session('success'))
+    <script>
+        Toastify({
+            text: "{{ session('success') }}",
+            duration: 3000,
+            close: true,
+            gravity: "top", 
+            position: "right",
+            style: {
+                background: "var(--secondary-color, #2BB295)",
+            }
+        }).showToast();
+    </script>
+    @endif
 </body>
 </html>

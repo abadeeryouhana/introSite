@@ -56,7 +56,8 @@ class FrontendController extends Controller
 
     public function contact()
     {
-        return view('contact');
+        $services = Service::orderBy('order')->get();
+        return view('contact', compact('services'));
     }
 
     public function submitContact(Request $request)
@@ -66,6 +67,9 @@ class FrontendController extends Controller
             'last_name' => 'nullable|string|max:255',
             'email' => 'required|email|max:255',
             'phone' => 'nullable|string|max:50',
+            'company' => 'nullable|string|max:500',
+            'title' => 'nullable|string|max:500',
+            'service' => 'nullable|string|max:500',
             'message' => 'required|string'
         ]);
 
