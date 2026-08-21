@@ -4,13 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\BlogCategory;
+use App\Services\BlogCategoryService;
 use Illuminate\Http\Request;
 
 class BlogCategoryController extends Controller
 {
+    protected $blogCategoryService;
+
+    public function __construct(BlogCategoryService $blogCategoryService)
+    {
+        $this->blogCategoryService = $blogCategoryService;
+    }
+
     public function index()
     {
-        $categories = BlogCategory::all();
+        $categories = $this->blogCategoryService->getAll();
         return view('admin.blog_categories.index', compact('categories'));
     }
 
@@ -25,7 +33,7 @@ class BlogCategoryController extends Controller
             'name' => 'required|string|max:255',
         ]);
 
-        BlogCategory::create($request->all());
+        $this->blogCategoryService->create($request->all());
         return redirect()->route('admin.blog-categories.index')->with('success', 'Blog Category created successfully.');
     }
 
@@ -40,13 +48,13 @@ class BlogCategoryController extends Controller
             'name' => 'required|string|max:255',
         ]);
 
-        $blogCategory->update($request->all());
+        $this->blogCategoryService->update($blogCategory->id, $request->all());
         return redirect()->route('admin.blog-categories.index')->with('success', 'Blog Category updated successfully.');
     }
 
     public function destroy(BlogCategory $blogCategory)
     {
-        $blogCategory->delete();
+        $this->blogCategoryService->delete($blogCategory->id);
         return redirect()->route('admin.blog-categories.index')->with('success', 'Blog Category deleted successfully.');
     }
 }

@@ -4,14 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Services\UserService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    protected $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
     public function index()
     {
-        $users = User::latest()->get();
+        $users = $this->userService->getLatest();
         return view('admin.users.index', compact('users'));
     }
 
@@ -28,11 +35,7 @@ class UserController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        $this->userService->handleCreate($request->only('name', 'email', 'password'));
 
         return redirect()->route('admin.users.index')->with('success', 'User created successfully.');
     }
@@ -50,27 +53,19 @@ class UserController extends Controller
             'password' => ['nullable', 'string', 'min:8', 'confirmed'],
         ]);
 
-        $data = [
-            'name' => $request->name,
-            'email' => $request->email,
-        ];
-
-        if ($request->filled('password')) {
-            $data['password'] = Hash::make($request->password);
-        }
-
-        $user->update($data);
+        $data = $request->only('name', 'email', 'password');
+        $this->userService->handleUpdate($user->id, $data, $request->filled('password'));
 
         return redirect()->route('admin.users.index')->with('success', 'User updated successfully.');
     }
 
     public function destroy(User $user)
     {
-        if (User::count() <= 1) {
+        if ($this->userService->count() <= 1) {
             return back()->with('error', 'Cannot delete the only user.');
         }
 
-        $user->delete();
+        $this->userService->delete($user->id);
         return back()->with('success', 'User deleted successfully.');
     }
 }

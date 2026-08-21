@@ -4,14 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\TeamMember;
+use App\Services\TeamMemberService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class TeamMemberController extends Controller
 {
+    protected $teamMemberService;
+
+    public function __construct(TeamMemberService $teamMemberService)
+    {
+        $this->teamMemberService = $teamMemberService;
+    }
+
     public function index()
     {
-        $team_members = TeamMember::orderBy('order')->get();
+        $team_members = $this->teamMemberService->getOrdered('order', 'asc');
         return view('admin.team-members.index', compact('team_members'));
     }
 
@@ -29,12 +36,7 @@ class TeamMemberController extends Controller
             'image' => 'nullable|image'
         ]);
 
-        if ($request->hasFile('image')) {
-            $validated['image_path'] = $request->file('image')->store('team', 'public');
-        }
-        unset($validated['image']);
-
-        TeamMember::create($validated);
+        $this->teamMemberService->handleCreate($validated, $request->file('image'));
         return redirect()->route('admin.team-members.index')->with('success', 'Team Member created successfully.');
     }
 
@@ -52,24 +54,13 @@ class TeamMemberController extends Controller
             'image' => 'nullable|image'
         ]);
 
-        if ($request->hasFile('image')) {
-            if ($team_member->image_path) {
-                Storage::disk('public')->delete($team_member->image_path);
-            }
-            $validated['image_path'] = $request->file('image')->store('team', 'public');
-        }
-        unset($validated['image']);
-
-        $team_member->update($validated);
+        $this->teamMemberService->handleUpdate($team_member->id, $validated, $request->file('image'));
         return redirect()->route('admin.team-members.index')->with('success', 'Team Member updated successfully.');
     }
 
     public function destroy(TeamMember $team_member)
     {
-        if ($team_member->image_path) {
-            Storage::disk('public')->delete($team_member->image_path);
-        }
-        $team_member->delete();
+        $this->teamMemberService->handleDelete($team_member->id);
         return redirect()->route('admin.team-members.index')->with('success', 'Team Member deleted successfully.');
     }
 }

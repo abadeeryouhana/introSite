@@ -3,60 +3,91 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Client;
-use App\Models\Sector;
-use App\Models\Service;
-use App\Models\TeamMember;
-use App\Models\ContactMessage;
-use App\Models\Setting;
-use App\Models\SocialLink;
-use App\Models\Blog;
-use App\Models\BlogCategory;
-use App\Models\ClientTestimonial;
+use App\Services\ClientService;
+use App\Services\SectorService;
+use App\Services\AppServiceService;
+use App\Services\TeamMemberService;
+use App\Services\ContactMessageService;
+use App\Services\BlogService;
+use App\Services\BlogCategoryService;
+use App\Services\ClientTestimonialService;
+use App\Services\CaseStudyService;
 
 class FrontendController extends Controller
 {
+    protected $clientService;
+    protected $sectorService;
+    protected $appServiceService;
+    protected $teamMemberService;
+    protected $contactMessageService;
+    protected $blogService;
+    protected $blogCategoryService;
+    protected $clientTestimonialService;
+    protected $caseStudyService;
+
+    public function __construct(
+        ClientService $clientService,
+        SectorService $sectorService,
+        AppServiceService $appServiceService,
+        TeamMemberService $teamMemberService,
+        ContactMessageService $contactMessageService,
+        BlogService $blogService,
+        BlogCategoryService $blogCategoryService,
+        ClientTestimonialService $clientTestimonialService,
+        CaseStudyService $caseStudyService
+    ) {
+        $this->clientService = $clientService;
+        $this->sectorService = $sectorService;
+        $this->appServiceService = $appServiceService;
+        $this->teamMemberService = $teamMemberService;
+        $this->contactMessageService = $contactMessageService;
+        $this->blogService = $blogService;
+        $this->blogCategoryService = $blogCategoryService;
+        $this->clientTestimonialService = $clientTestimonialService;
+        $this->caseStudyService = $caseStudyService;
+    }
+
     public function home()
     {
-        $sectors = Sector::with('brands')->take(5)->get();
-        $services = Service::orderBy('order')->take(10)->get();
-        $clients = Client::orderBy('order')->get();
-        $caseStudies = \App\Models\CaseStudy::with('sector')->orderBy('order')->take(4)->get();
-        $latestBlogs = Blog::with('category')->latest()->take(4)->get();
-        $testimonials = ClientTestimonial::with('client')->latest()->get();
+        $sectors = $this->sectorService->getAll(['brands'])->take(5);
+        $services = $this->appServiceService->getOrdered('order', 'asc', 10);
+        $clients = $this->clientService->getOrdered('order', 'asc');
+        $caseStudies = $this->caseStudyService->getOrdered('order', 'asc', 4, ['sector']);
+        $latestBlogs = $this->blogService->getLatest(4, ['category']);
+        $testimonials = $this->clientTestimonialService->getLatest(null, ['client']);
         return view('home', compact('sectors', 'services', 'clients', 'caseStudies', 'latestBlogs', 'testimonials'));
     }
 
     public function sectorsBrands()
     {
-        $sectors = Sector::with('brands')->get();
+        $sectors = $this->sectorService->getAll(['brands']);
         return view('sectors_brands', compact('sectors'));
     }
 
     public function portfolio()
     {
-        $sectors = Sector::has('caseStudies')->get();
-        $caseStudies = \App\Models\CaseStudy::with('sector')->orderBy('order')->get();
+        $sectors = $this->sectorService->getHas('caseStudies');
+        $caseStudies = $this->caseStudyService->getOrdered('order', 'asc', null, ['sector']);
         return view('portfolio', compact('sectors', 'caseStudies'));
     }
 
     public function about()
     {
-        $team = TeamMember::orderBy('order')->get();
-        $clients = Client::orderBy('order')->get();
-        $testimonials = ClientTestimonial::with('client')->latest()->get();
+        $team = $this->teamMemberService->getOrdered('order', 'asc');
+        $clients = $this->clientService->getOrdered('order', 'asc');
+        $testimonials = $this->clientTestimonialService->getLatest(null, ['client']);
         return view('about', compact('team', 'clients', 'testimonials'));
     }
 
     public function services()
     {
-        $services = Service::orderBy('order')->get();
+        $services = $this->appServiceService->getOrdered('order', 'asc');
         return view('services', compact('services'));
     }
 
     public function contact()
     {
-        $services = Service::orderBy('order')->get();
+        $services = $this->appServiceService->getOrdered('order', 'asc');
         return view('contact', compact('services'));
     }
 
@@ -73,20 +104,20 @@ class FrontendController extends Controller
             'message' => 'required|string'
         ]);
 
-        ContactMessage::create($validated);
+        $this->contactMessageService->create($validated);
         return redirect()->route('contact')->with('success', 'Your message has been sent successfully.');
     }
 
     public function blog()
     {
-        $categories = BlogCategory::has('blogs')->get();
-        $blogs = Blog::with('category')->latest()->get();
+        $categories = $this->blogCategoryService->getHas('blogs');
+        $blogs = $this->blogService->getLatest(null, ['category']);
         return view('blog', compact('categories', 'blogs'));
     }
 
     public function blogDetails($id)
     {
-        $blog = Blog::with('category')->findOrFail($id);
+        $blog = $this->blogService->getById($id, ['category']);
         return view('blog_details', compact('blog'));
     }
 

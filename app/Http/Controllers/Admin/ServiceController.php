@@ -4,14 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Service;
+use App\Services\AppServiceService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class ServiceController extends Controller
 {
+    protected $appServiceService;
+
+    public function __construct(AppServiceService $appServiceService)
+    {
+        $this->appServiceService = $appServiceService;
+    }
+
     public function index()
     {
-        $services = Service::orderBy('order')->get();
+        $services = $this->appServiceService->getOrdered('order', 'asc');
         return view('admin.services.index', compact('services'));
     }
 
@@ -29,12 +36,7 @@ class ServiceController extends Controller
             'icon' => 'nullable|image'
         ]);
 
-        if ($request->hasFile('icon')) {
-            $validated['icon_path'] = $request->file('icon')->store('services', 'public');
-        }
-        unset($validated['icon']);
-
-        Service::create($validated);
+        $this->appServiceService->handleCreate($validated, $request->file('icon'));
         return redirect()->route('admin.services.index')->with('success', 'Service created successfully.');
     }
 
@@ -52,24 +54,13 @@ class ServiceController extends Controller
             'icon' => 'nullable|image'
         ]);
 
-        if ($request->hasFile('icon')) {
-            if ($service->icon_path) {
-                Storage::disk('public')->delete($service->icon_path);
-            }
-            $validated['icon_path'] = $request->file('icon')->store('services', 'public');
-        }
-        unset($validated['icon']);
-
-        $service->update($validated);
+        $this->appServiceService->handleUpdate($service->id, $validated, $request->file('icon'));
         return redirect()->route('admin.services.index')->with('success', 'Service updated successfully.');
     }
 
     public function destroy(Service $service)
     {
-        if ($service->icon_path) {
-            Storage::disk('public')->delete($service->icon_path);
-        }
-        $service->delete();
+        $this->appServiceService->handleDelete($service->id);
         return redirect()->route('admin.services.index')->with('success', 'Service deleted successfully.');
     }
 }

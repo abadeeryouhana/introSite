@@ -3,30 +3,28 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Setting;
+use App\Services\SettingService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class SettingController extends Controller
 {
+    protected $settingService;
+
+    public function __construct(SettingService $settingService)
+    {
+        $this->settingService = $settingService;
+    }
+
     public function index()
     {
-        $settings = Setting::pluck('value', 'key')->all();
+        $settings = $this->settingService->getAllSettings();
         return view('admin.settings.index', compact('settings'));
     }
 
     public function update(Request $request)
     {
         $data = $request->except(['_token', 'site_logo']);
-
-        foreach ($data as $key => $value) {
-            Setting::updateOrCreate(['key' => $key], ['value' => $value]);
-        }
-
-        if ($request->hasFile('site_logo')) {
-            $path = $request->file('site_logo')->store('settings', 'public');
-            Setting::updateOrCreate(['key' => 'site_logo'], ['value' => $path]);
-        }
+        $this->settingService->updateSettings($data, $request->file('site_logo'));
 
         return redirect()->route('admin.settings.index')->with('success', 'Settings updated successfully.');
     }

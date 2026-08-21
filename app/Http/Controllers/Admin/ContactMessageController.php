@@ -4,13 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ContactMessage;
+use App\Services\ContactMessageService;
 use Illuminate\Http\Request;
 
 class ContactMessageController extends Controller
 {
+    protected $contactMessageService;
+
+    public function __construct(ContactMessageService $contactMessageService)
+    {
+        $this->contactMessageService = $contactMessageService;
+    }
+
     public function index()
     {
-        $messages = ContactMessage::latest()->get();
+        $messages = $this->contactMessageService->getLatest();
         return view('admin.contact-messages.index', compact('messages'));
     }
 
@@ -21,7 +29,7 @@ class ContactMessageController extends Controller
 
     public function destroy(ContactMessage $contact_message)
     {
-        $contact_message->delete();
+        $this->contactMessageService->delete($contact_message->id);
         return redirect()->route('admin.contact-messages.index')->with('success', 'Message deleted successfully.');
     }
 }

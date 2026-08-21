@@ -4,13 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Sector;
+use App\Services\SectorService;
 use Illuminate\Http\Request;
 
 class SectorController extends Controller
 {
+    protected $sectorService;
+
+    public function __construct(SectorService $sectorService)
+    {
+        $this->sectorService = $sectorService;
+    }
+
     public function index()
     {
-        $sectors = Sector::all();
+        $sectors = $this->sectorService->getAll();
         return view('admin.sectors.index', compact('sectors'));
     }
 
@@ -24,7 +32,7 @@ class SectorController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
         ]);
-        Sector::create($validated);
+        $this->sectorService->create($validated);
         return redirect()->route('admin.sectors.index')->with('success', 'Sector created successfully.');
     }
 
@@ -38,16 +46,16 @@ class SectorController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
         ]);
-        $sector->update($validated);
+        $this->sectorService->update($sector->id, $validated);
         return redirect()->route('admin.sectors.index')->with('success', 'Sector updated successfully.');
     }
 
     public function destroy(Sector $sector)
     {
-        if ($sector->brands()->count() > 0) {
+        if ($this->sectorService->hasBrands($sector->id)) {
             return redirect()->route('admin.sectors.index')->with('error', 'Cannot delete sector with associated brands.');
         }
-        $sector->delete();
+        $this->sectorService->delete($sector->id);
         return redirect()->route('admin.sectors.index')->with('success', 'Sector deleted successfully.');
     }
 }

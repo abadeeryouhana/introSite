@@ -3,37 +3,74 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\ContactMessage;
-use App\Models\Client;
-use App\Models\ClientTestimonial;
-use App\Models\Sector;
-use App\Models\CaseStudy;
-use App\Models\Brand;
-use App\Models\Service;
-use App\Models\TeamMember;
-use App\Models\User;
-use App\Models\BlogCategory;
-use App\Models\Blog;
-use Illuminate\Http\Request;
+use App\Services\ContactMessageService;
+use App\Services\ClientService;
+use App\Services\ClientTestimonialService;
+use App\Services\SectorService;
+use App\Services\CaseStudyService;
+use App\Services\BrandService;
+use App\Services\AppServiceService;
+use App\Services\TeamMemberService;
+use App\Services\UserService;
+use App\Services\BlogCategoryService;
+use App\Services\BlogService;
 
 class DashboardController extends Controller
 {
+    protected $contactMessageService;
+    protected $clientService;
+    protected $clientTestimonialService;
+    protected $sectorService;
+    protected $caseStudyService;
+    protected $brandService;
+    protected $appServiceService;
+    protected $teamMemberService;
+    protected $userService;
+    protected $blogCategoryService;
+    protected $blogService;
+
+    public function __construct(
+        ContactMessageService $contactMessageService,
+        ClientService $clientService,
+        ClientTestimonialService $clientTestimonialService,
+        SectorService $sectorService,
+        CaseStudyService $caseStudyService,
+        BrandService $brandService,
+        AppServiceService $appServiceService,
+        TeamMemberService $teamMemberService,
+        UserService $userService,
+        BlogCategoryService $blogCategoryService,
+        BlogService $blogService
+    ) {
+        $this->contactMessageService = $contactMessageService;
+        $this->clientService = $clientService;
+        $this->clientTestimonialService = $clientTestimonialService;
+        $this->sectorService = $sectorService;
+        $this->caseStudyService = $caseStudyService;
+        $this->brandService = $brandService;
+        $this->appServiceService = $appServiceService;
+        $this->teamMemberService = $teamMemberService;
+        $this->userService = $userService;
+        $this->blogCategoryService = $blogCategoryService;
+        $this->blogService = $blogService;
+    }
+
     public function index()
     {
-        $recentMessages = ContactMessage::latest()->take(5)->get();
+        $recentMessages = $this->contactMessageService->getLatest(5);
         
         $stats = [
-            'Clients' => Client::count(),
-            'Testimonials' => ClientTestimonial::count(),
-            'Sectors' => Sector::count(),
-            'Case Studies' => CaseStudy::count(),
-            'Brands' => Brand::count(),
-            'Services' => Service::count(),
-            'Team Members' => TeamMember::count(),
-            'Users' => User::count(),
-            'Blog Categories' => BlogCategory::count(),
-            'Blogs' => Blog::count(),
-            'Messages' => ContactMessage::count(),
+            'Clients' => $this->clientService->count(),
+            'Testimonials' => $this->clientTestimonialService->count(),
+            'Sectors' => $this->sectorService->count(),
+            'Case Studies' => $this->caseStudyService->count(),
+            'Brands' => $this->brandService->count(),
+            'Services' => $this->appServiceService->count(),
+            'Team Members' => $this->teamMemberService->count(),
+            'Users' => $this->userService->count(),
+            'Blog Categories' => $this->blogCategoryService->count(),
+            'Blogs' => $this->blogService->count(),
+            'Messages' => $this->contactMessageService->count(),
         ];
 
         return view('admin.dashboard', compact('recentMessages', 'stats'));

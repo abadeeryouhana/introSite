@@ -4,13 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\SocialLink;
+use App\Services\SocialLinkService;
 use Illuminate\Http\Request;
 
 class SocialLinkController extends Controller
 {
+    protected $socialLinkService;
+
+    public function __construct(SocialLinkService $socialLinkService)
+    {
+        $this->socialLinkService = $socialLinkService;
+    }
+
     public function index()
     {
-        $social_links = SocialLink::all();
+        $social_links = $this->socialLinkService->getAll();
         return view('admin.social-links.index', compact('social_links'));
     }
 
@@ -26,7 +34,7 @@ class SocialLinkController extends Controller
             'url' => 'required|url'
         ]);
 
-        SocialLink::create($validated);
+        $this->socialLinkService->create($validated);
         return redirect()->route('admin.social-links.index')->with('success', 'Link created successfully.');
     }
 
@@ -42,13 +50,13 @@ class SocialLinkController extends Controller
             'url' => 'required|url'
         ]);
 
-        $social_link->update($validated);
+        $this->socialLinkService->update($social_link->id, $validated);
         return redirect()->route('admin.social-links.index')->with('success', 'Link updated successfully.');
     }
 
     public function destroy(SocialLink $social_link)
     {
-        $social_link->delete();
+        $this->socialLinkService->delete($social_link->id);
         return redirect()->route('admin.social-links.index')->with('success', 'Link deleted successfully.');
     }
 }

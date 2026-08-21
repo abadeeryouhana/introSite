@@ -4,21 +4,30 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\CaseStudy;
-use App\Models\Sector;
+use App\Services\CaseStudyService;
+use App\Services\SectorService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class CaseStudyController extends Controller
 {
+    protected $caseStudyService;
+    protected $sectorService;
+
+    public function __construct(CaseStudyService $caseStudyService, SectorService $sectorService)
+    {
+        $this->caseStudyService = $caseStudyService;
+        $this->sectorService = $sectorService;
+    }
+
     public function index()
     {
-        $caseStudies = CaseStudy::with('sector')->orderBy('order')->get();
+        $caseStudies = $this->caseStudyService->getOrdered('order', 'asc', null, ['sector']);
         return view('admin.case_studies.index', compact('caseStudies'));
     }
 
     public function create()
     {
-        $sectors = Sector::all();
+        $sectors = $this->sectorService->getAll();
         return view('admin.case_studies.create', compact('sectors'));
     }
 
@@ -36,17 +45,13 @@ class CaseStudyController extends Controller
             'image' => 'nullable|image'
         ]);
 
-        if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('case_studies', 'public');
-        }
-
-        CaseStudy::create($validated);
+        $this->caseStudyService->handleCreate($validated, $request->file('image'));
         return redirect()->route('admin.case-studies.index')->with('success', 'Case Study created successfully.');
     }
 
     public function edit(CaseStudy $caseStudy)
     {
-        $sectors = Sector::all();
+        $sectors = $this->sectorService->getAll();
         return view('admin.case_studies.edit', compact('caseStudy', 'sectors'));
     }
 
@@ -64,23 +69,13 @@ class CaseStudyController extends Controller
             'image' => 'nullable|image'
         ]);
 
-        if ($request->hasFile('image')) {
-            if ($caseStudy->image) {
-                Storage::disk('public')->delete($caseStudy->image);
-            }
-            $validated['image'] = $request->file('image')->store('case_studies', 'public');
-        }
-
-        $caseStudy->update($validated);
+        $this->caseStudyService->handleUpdate($caseStudy->id, $validated, $request->file('image'));
         return redirect()->route('admin.case-studies.index')->with('success', 'Case Study updated successfully.');
     }
 
     public function destroy(CaseStudy $caseStudy)
     {
-        if ($caseStudy->image) {
-            Storage::disk('public')->delete($caseStudy->image);
-        }
-        $caseStudy->delete();
+        $this->caseStudyService->handleDelete($caseStudy->id);
         return redirect()->route('admin.case-studies.index')->with('success', 'Case Study deleted successfully.');
     }
 }

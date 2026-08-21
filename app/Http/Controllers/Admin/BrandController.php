@@ -4,21 +4,30 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
-use App\Models\Sector;
+use App\Services\BrandService;
+use App\Services\SectorService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class BrandController extends Controller
 {
+    protected $brandService;
+    protected $sectorService;
+
+    public function __construct(BrandService $brandService, SectorService $sectorService)
+    {
+        $this->brandService = $brandService;
+        $this->sectorService = $sectorService;
+    }
+
     public function index()
     {
-        $brands = Brand::with('sector')->orderBy('order')->get();
+        $brands = $this->brandService->getOrdered('order', 'asc', null, ['sector']);
         return view('admin.brands.index', compact('brands'));
     }
 
     public function create()
     {
-        $sectors = Sector::all();
+        $sectors = $this->sectorService->getAll();
         return view('admin.brands.create', compact('sectors'));
     }
 
@@ -34,18 +43,13 @@ class BrandController extends Controller
             'logo' => 'nullable|image'
         ]);
 
-        if ($request->hasFile('logo')) {
-            $validated['logo_path'] = $request->file('logo')->store('brands', 'public');
-        }
-        unset($validated['logo']);
-
-        Brand::create($validated);
+        $this->brandService->handleCreate($validated, $request->file('logo'));
         return redirect()->route('admin.brands.index')->with('success', 'Brand created successfully.');
     }
 
     public function edit(Brand $brand)
     {
-        $sectors = Sector::all();
+        $sectors = $this->sectorService->getAll();
         return view('admin.brands.edit', compact('brand', 'sectors'));
     }
 
@@ -61,24 +65,13 @@ class BrandController extends Controller
             'logo' => 'nullable|image'
         ]);
 
-        if ($request->hasFile('logo')) {
-            if ($brand->logo_path) {
-                Storage::disk('public')->delete($brand->logo_path);
-            }
-            $validated['logo_path'] = $request->file('logo')->store('brands', 'public');
-        }
-        unset($validated['logo']);
-
-        $brand->update($validated);
+        $this->brandService->handleUpdate($brand->id, $validated, $request->file('logo'));
         return redirect()->route('admin.brands.index')->with('success', 'Brand updated successfully.');
     }
 
     public function destroy(Brand $brand)
     {
-        if ($brand->logo_path) {
-            Storage::disk('public')->delete($brand->logo_path);
-        }
-        $brand->delete();
+        $this->brandService->handleDelete($brand->id);
         return redirect()->route('admin.brands.index')->with('success', 'Brand deleted successfully.');
     }
 }

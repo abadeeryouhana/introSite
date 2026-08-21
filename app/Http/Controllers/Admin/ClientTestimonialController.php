@@ -4,21 +4,30 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ClientTestimonial;
-use App\Models\Client;
+use App\Services\ClientTestimonialService;
+use App\Services\ClientService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class ClientTestimonialController extends Controller
 {
+    protected $clientTestimonialService;
+    protected $clientService;
+
+    public function __construct(ClientTestimonialService $clientTestimonialService, ClientService $clientService)
+    {
+        $this->clientTestimonialService = $clientTestimonialService;
+        $this->clientService = $clientService;
+    }
+
     public function index()
     {
-        $testimonials = ClientTestimonial::with('client')->latest()->get();
+        $testimonials = $this->clientTestimonialService->getLatest(null, ['client']);
         return view('admin.client_testimonials.index', compact('testimonials'));
     }
 
     public function create()
     {
-        $clients = Client::all();
+        $clients = $this->clientService->getAll();
         return view('admin.client_testimonials.create', compact('clients'));
     }
 
@@ -31,17 +40,13 @@ class ClientTestimonialController extends Controller
             'image' => 'nullable|image'
         ]);
 
-        if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('client_testimonials', 'public');
-        }
-
-        ClientTestimonial::create($validated);
+        $this->clientTestimonialService->handleCreate($validated, $request->file('image'));
         return redirect()->route('admin.client-testimonials.index')->with('success', 'Client testimonial created successfully.');
     }
 
     public function edit(ClientTestimonial $clientTestimonial)
     {
-        $clients = Client::all();
+        $clients = $this->clientService->getAll();
         return view('admin.client_testimonials.edit', compact('clientTestimonial', 'clients'));
     }
 
@@ -54,23 +59,13 @@ class ClientTestimonialController extends Controller
             'image' => 'nullable|image'
         ]);
 
-        if ($request->hasFile('image')) {
-            if ($clientTestimonial->image) {
-                Storage::disk('public')->delete($clientTestimonial->image);
-            }
-            $validated['image'] = $request->file('image')->store('client_testimonials', 'public');
-        }
-
-        $clientTestimonial->update($validated);
+        $this->clientTestimonialService->handleUpdate($clientTestimonial->id, $validated, $request->file('image'));
         return redirect()->route('admin.client-testimonials.index')->with('success', 'Client testimonial updated successfully.');
     }
 
     public function destroy(ClientTestimonial $clientTestimonial)
     {
-        if ($clientTestimonial->image) {
-            Storage::disk('public')->delete($clientTestimonial->image);
-        }
-        $clientTestimonial->delete();
+        $this->clientTestimonialService->handleDelete($clientTestimonial->id);
         return redirect()->route('admin.client-testimonials.index')->with('success', 'Client testimonial deleted successfully.');
     }
 }

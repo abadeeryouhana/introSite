@@ -1,0 +1,62 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Services\ClientService;
+use App\Services\SectorService;
+use App\Services\AppServiceService;
+use App\Services\TeamMemberService;
+use App\Services\ContactMessageService;
+use App\Services\SettingService;
+use App\Services\SocialLinkService;
+use App\Services\BlogService;
+use App\Services\BlogCategoryService;
+use App\Services\ClientTestimonialService;
+use App\Services\CaseStudyService;
+
+class FrontendController extends Controller
+{
+    protected $clientService;
+    protected $sectorService;
+    protected $appServiceService;
+    protected $teamMemberService;
+    protected $contactMessageService;
+    protected $blogService;
+    protected $blogCategoryService;
+    protected $clientTestimonialService;
+    protected $caseStudyService;
+
+    public function __construct(
+        ClientService $clientService,
+        SectorService $sectorService,
+        AppServiceService $appServiceService,
+        TeamMemberService $teamMemberService,
+        ContactMessageService $contactMessageService,
+        BlogService $blogService,
+        BlogCategoryService $blogCategoryService,
+        ClientTestimonialService $clientTestimonialService,
+        CaseStudyService $caseStudyService
+    ) {
+        $this->clientService = $clientService;
+        $this->sectorService = $sectorService;
+        $this->appServiceService = $appServiceService;
+        $this->teamMemberService = $teamMemberService;
+        $this->contactMessageService = $contactMessageService;
+        $this->blogService = $blogService;
+        $this->blogCategoryService = $blogCategoryService;
+        $this->clientTestimonialService = $clientTestimonialService;
+        $this->caseStudyService = $caseStudyService;
+    }
+
+    public function home()
+    {
+        $sectors = $this->sectorService->getAll(['brands'])->take(5); // Wait, getAll returns collection, take() works on collection. Let's use getOrdered or just use the collection methods.
+        // Better to use getOrdered from DB. But base getAll doesn't support take. 
+        // Oh I added getOrdered and getLatest which have `take` as 3rd and 1st argument respectively. Let's rewrite correctly.
+        // $sectors = Sector::with('brands')->take(5)->get(); -> doesn't have order
+        // $this->sectorService->getOrdered('id', 'asc', 5, ['brands']) - wait, original didn't have order. Just getLatest() without take? 
+        // original: Sector::with('brands')->take(5)->get(); Let's just use getAll and take on collection, or create getWithLimit in repo. 
+        // For simplicity, let's use the collection method if it's fine, or I will update the query.
+    }
+}

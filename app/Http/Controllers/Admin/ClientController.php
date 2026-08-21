@@ -4,14 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Client;
+use App\Services\ClientService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class ClientController extends Controller
 {
+    protected $clientService;
+
+    public function __construct(ClientService $clientService)
+    {
+        $this->clientService = $clientService;
+    }
+
     public function index()
     {
-        $clients = Client::orderBy('order')->get();
+        $clients = $this->clientService->getOrdered('order', 'asc');
         return view('admin.clients.index', compact('clients'));
     }
 
@@ -29,12 +36,7 @@ class ClientController extends Controller
             'logo' => 'nullable|image'
         ]);
 
-        if ($request->hasFile('logo')) {
-            $validated['logo_path'] = $request->file('logo')->store('clients', 'public');
-        }
-        unset($validated['logo']);
-
-        Client::create($validated);
+        $this->clientService->handleCreate($validated, $request->file('logo'));
         return redirect()->route('admin.clients.index')->with('success', 'Client created successfully.');
     }
 
@@ -52,24 +54,13 @@ class ClientController extends Controller
             'logo' => 'nullable|image'
         ]);
 
-        if ($request->hasFile('logo')) {
-            if ($client->logo_path) {
-                Storage::disk('public')->delete($client->logo_path);
-            }
-            $validated['logo_path'] = $request->file('logo')->store('clients', 'public');
-        }
-        unset($validated['logo']);
-
-        $client->update($validated);
+        $this->clientService->handleUpdate($client->id, $validated, $request->file('logo'));
         return redirect()->route('admin.clients.index')->with('success', 'Client updated successfully.');
     }
 
     public function destroy(Client $client)
     {
-        if ($client->logo_path) {
-            Storage::disk('public')->delete($client->logo_path);
-        }
-        $client->delete();
+        $this->clientService->handleDelete($client->id);
         return redirect()->route('admin.clients.index')->with('success', 'Client deleted successfully.');
     }
 }

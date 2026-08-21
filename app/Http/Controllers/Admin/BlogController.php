@@ -4,21 +4,30 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
-use App\Models\BlogCategory;
+use App\Services\BlogService;
+use App\Services\BlogCategoryService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
+    protected $blogService;
+    protected $blogCategoryService;
+
+    public function __construct(BlogService $blogService, BlogCategoryService $blogCategoryService)
+    {
+        $this->blogService = $blogService;
+        $this->blogCategoryService = $blogCategoryService;
+    }
+
     public function index()
     {
-        $blogs = Blog::with('category')->latest()->get();
+        $blogs = $this->blogService->getLatest(null, ['category']);
         return view('admin.blogs.index', compact('blogs'));
     }
 
     public function create()
     {
-        $categories = BlogCategory::all();
+        $categories = $this->blogCategoryService->getAll();
         return view('admin.blogs.create', compact('categories'));
     }
 
@@ -33,18 +42,14 @@ class BlogController extends Controller
         ]);
 
         $data = $request->except('image');
+        $this->blogService->handleCreate($data, $request->file('image'));
 
-        if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('blogs', 'public');
-        }
-
-        Blog::create($data);
         return redirect()->route('admin.blogs.index')->with('success', 'Blog created successfully.');
     }
 
     public function edit(Blog $blog)
     {
-        $categories = BlogCategory::all();
+        $categories = $this->blogCategoryService->getAll();
         return view('admin.blogs.edit', compact('blog', 'categories'));
     }
 
@@ -59,24 +64,14 @@ class BlogController extends Controller
         ]);
 
         $data = $request->except('image');
+        $this->blogService->handleUpdate($blog->id, $data, $request->file('image'));
 
-        if ($request->hasFile('image')) {
-            if ($blog->image) {
-                Storage::disk('public')->delete($blog->image);
-            }
-            $data['image'] = $request->file('image')->store('blogs', 'public');
-        }
-
-        $blog->update($data);
         return redirect()->route('admin.blogs.index')->with('success', 'Blog updated successfully.');
     }
 
     public function destroy(Blog $blog)
     {
-        if ($blog->image) {
-            Storage::disk('public')->delete($blog->image);
-        }
-        $blog->delete();
+        $this->blogService->handleDelete($blog->id);
         return redirect()->route('admin.blogs.index')->with('success', 'Blog deleted successfully.');
     }
 }
