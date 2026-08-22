@@ -14,6 +14,7 @@ use App\Services\TeamMemberService;
 use App\Services\UserService;
 use App\Services\BlogCategoryService;
 use App\Services\BlogService;
+use App\Services\ChatbotQuestionService;
 
 class DashboardController extends Controller
 {
@@ -28,6 +29,7 @@ class DashboardController extends Controller
     protected $userService;
     protected $blogCategoryService;
     protected $blogService;
+    protected $chatbotQuestionService;
 
     public function __construct(
         ContactMessageService $contactMessageService,
@@ -40,7 +42,8 @@ class DashboardController extends Controller
         TeamMemberService $teamMemberService,
         UserService $userService,
         BlogCategoryService $blogCategoryService,
-        BlogService $blogService
+        BlogService $blogService,
+        ChatbotQuestionService $chatbotQuestionService
     ) {
         $this->contactMessageService = $contactMessageService;
         $this->clientService = $clientService;
@@ -53,6 +56,7 @@ class DashboardController extends Controller
         $this->userService = $userService;
         $this->blogCategoryService = $blogCategoryService;
         $this->blogService = $blogService;
+        $this->chatbotQuestionService = $chatbotQuestionService;
     }
 
     public function index()
@@ -71,6 +75,7 @@ class DashboardController extends Controller
             'Blog Categories' => $this->blogCategoryService->count(),
             'Blogs' => $this->blogService->count(),
             'Messages' => $this->contactMessageService->count(),
+            'Chatbot FAQs' => $this->chatbotQuestionService->count(),
         ];
 
         return view('admin.dashboard', compact('recentMessages', 'stats'));

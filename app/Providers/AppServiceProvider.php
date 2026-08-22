@@ -28,5 +28,10 @@ class AppServiceProvider extends ServiceProvider
             $social_links = \App\Models\SocialLink::all();
             \Illuminate\Support\Facades\View::share('social_links', $social_links);
         }
+
+        if (\Illuminate\Support\Facades\Schema::hasTable('chatbot_questions')) {
+            $chatbot_questions = \App\Models\ChatbotQuestion::where('is_active', true)->orderBy('order', 'asc')->get();
+            \Illuminate\Support\Facades\View::share('chatbot_questions', $chatbot_questions);
+        }
     }
 }

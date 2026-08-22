@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ClientTestimonialController;
+use App\Http\Controllers\Admin\ChatbotQuestionController;
 use App\Http\Controllers\Auth\LoginController;
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
     Route::resource('blog-categories', BlogCategoryController::class);
     Route::resource('blogs', BlogController::class);
     Route::resource('contact-messages', ContactMessageController::class)->only(['index', 'show', 'destroy']);
+    Route::resource('chatbot-questions', ChatbotQuestionController::class);
     Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
     Route::post('settings', [SettingController::class, 'update'])->name('settings.update');
 });

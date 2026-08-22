@@ -17,6 +17,7 @@ use App\Models\CaseStudy;
 use App\Models\BlogCategory;
 use App\Models\Blog;
 use App\Models\ContactMessage;
+use App\Models\ChatbotQuestion;
 
 class DatabaseSeeder extends Seeder
 {
@@ -162,6 +163,39 @@ class DatabaseSeeder extends Seeder
             'email' => 'michael@dundermifflin.test',
             'phone' => '123-456-789',
             'message' => 'I would like to inquire about your web development services.'
+        ]);
+
+        // 14. Chatbot Questions
+        ChatbotQuestion::truncate();
+        ChatbotQuestion::create([
+            'question' => 'What services does Bayan Group provide?',
+            'answer' => 'We provide comprehensive digital solutions including: Custom Web & Mobile App Development, UI/UX Design, Cloud Infrastructure & Hosting, and Strategic Digital Marketing.',
+            'order' => 1,
+            'is_active' => true
+        ]);
+        ChatbotQuestion::create([
+            'question' => 'How can I request a quote or consultation?',
+            'answer' => 'You can reach out to us via our "Contact Us" page or send an email directly to info@bayangroup.net. Our consultants will get back to you promptly.',
+            'order' => 2,
+            'is_active' => true
+        ]);
+        ChatbotQuestion::create([
+            'question' => 'Where are your corporate offices located?',
+            'answer' => 'We operate regional offices in Cairo (HQ), Muscat, and Florida (USA), providing support to our clients globally.',
+            'order' => 3,
+            'is_active' => true
+        ]);
+        ChatbotQuestion::create([
+            'question' => 'Are there current job opportunities available?',
+            'answer' => 'Yes! We are always looking for outstanding talent. Please visit our "Careers" page to explore open positions and submit your application.',
+            'order' => 4,
+            'is_active' => true
+        ]);
+        ChatbotQuestion::create([
+            'question' => 'How do you ensure project quality and delivery on time?',
+            'answer' => 'We follow agile development methodologies, continuous integration, and milestone-driven delivery to ensure maximum quality and timely execution.',
+            'order' => 5,
+            'is_active' => true
         ]);
 
         \Illuminate\Support\Facades\Schema::enableForeignKeyConstraints();

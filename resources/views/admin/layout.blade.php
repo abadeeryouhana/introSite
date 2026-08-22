@@ -46,6 +46,7 @@
             <a href="{{ route('admin.blog-categories.index') }}" class="{{ request()->routeIs('admin.blog-categories.*') ? 'active' : '' }}"><i class="fa-solid fa-list"></i> Blog Categories</a>
             <a href="{{ route('admin.blogs.index') }}" class="{{ request()->routeIs('admin.blogs.*') ? 'active' : '' }}"><i class="fa-solid fa-newspaper"></i> Blogs</a>
             <a href="{{ route('admin.contact-messages.index') }}" class="{{ request()->routeIs('admin.contact-messages.*') ? 'active' : '' }}"><i class="fa-solid fa-envelope"></i> Messages</a>
+            <a href="{{ route('admin.chatbot-questions.index') }}" class="{{ request()->routeIs('admin.chatbot-questions.*') ? 'active' : '' }}"><i class="fa-solid fa-robot"></i> Chatbot FAQs</a>
             <a href="{{ route('admin.settings.index') }}" class="{{ request()->routeIs('admin.settings.*') ? 'active' : '' }}"><i class="fa-solid fa-gear"></i> Settings</a>
         </div>
 

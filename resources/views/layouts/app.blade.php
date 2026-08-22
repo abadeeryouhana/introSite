@@ -180,5 +180,7 @@
         }).showToast();
     </script>
     @endif
+
+    @include('partials.chatbot')
 </body>
 </html>
