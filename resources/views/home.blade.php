@@ -28,52 +28,45 @@
 </div>
 
 <!-- Statistics Numbers Section -->
-<div class="section achievements-section" style="background-color: #f8f9fa;text-align: center;">
-    <div class="achievements-grid" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+<div class="section achievements-section" style="background-color: transparent; text-align: center; margin-top: -170px; position: relative; z-index: 10;">
+    <div class="achievements-container" style="background: white; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); display: flex; justify-content: center; align-items: center; width: 100%; max-width: 1100px; margin: 0 auto; padding: 40px 0;">
         
-        <!-- Card 1 -->
-        <div class="achievement-card animate-fade-up delay-100" style="background: linear-gradient(180deg, #edf7f0 0%, #ffffff 30%); border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); padding: 40px 20px 30px; width: 190px; text-align: center;">
-            <div style="color: #3b71ca;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 640 512"><path fill="currentColor" d="M544 240.2c-5.4 0-10.7-.8-15.8-2.4L373.9 184.6c-4.4-1.4-9.1-2.2-13.9-2.2H320v-48h40c8.8 0 16-7.2 16-16s-7.2-16-16-16H280c-8.8 0-16 7.2-16 16s7.2 16 16 16h40v48h-40c-4.8 0-9.5.8-13.9 2.2L111.8 237.8c-5.1 1.6-10.4 2.4-15.8 2.4H32c-17.7 0-32 14.3-32 32v192c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32v-16h210.8c12.3 0 24.3-3.6 34.3-10.3l57.7-38.4c6.7-4.4 15-6.8 23.4-6.8h191.8c17.7 0 32-14.3 32-32V272c0-17.7-14.3-32-32-32h-64zM240 376c0 13.3-10.7 24-24 24s-24-10.7-24-24 10.7-24 24-24 24 10.7 24 24zm128 0c0 13.3-10.7 24-24 24s-24-10.7-24-24 10.7-24 24-24 24 10.7 24 24z"/></svg>
-            </div>
-            <h3 style="font-size: 1.8rem; font-weight: 600; color: #222; margin: 10px 0;" class="animate-number">2,300+</h3>
-            <p style="color: #666; font-size: 0.9rem; margin: 0;">Clients</p>
+        <!-- Stat 1 -->
+        <div class="achievement-item animate-fade-up delay-100" style="text-align: center; flex: 1; padding: 0 10px;">
+            <h3 style="font-size: 2.5rem; font-weight: 800; color: #22456E; margin: 0 0 8px 0;" class="animate-number">23+</h3>
+            <p style="color: #888; font-size: 0.9rem; margin: 0; font-weight: 600;">Years of Growth</p>
         </div>
 
-        <!-- Card 2 -->
-        <div class="achievement-card animate-fade-up delay-200" style="background: linear-gradient(180deg, #eef4ff 0%, #ffffff 30%); border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); padding: 40px 20px 30px; width: 190px; text-align: center;">
-            <div style="color: #3b71ca; ">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 640 512"><path fill="currentColor" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3zM504 256c0 13.3 10.7 24 24 24h40v40c0 13.3 10.7 24 24 24s24-10.7 24-24V280h40c13.3 0 24-10.7 24-24s-10.7-24-24-24H592V192c0-13.3-10.7-24-24-24s-24 10.7-24 24v40H528c-13.3 0-24 10.7-24 24z"/></svg>
-            </div>
-            <h3 style="font-size: 1.8rem; font-weight: 600; color: #222; margin: 10px 0;" class="animate-number">480+</h3>
-            <p style="color: #666; font-size: 0.9rem; margin: 0;">Certified Experts</p>
+        <div style="width: 1px; height: 70px; background-color: #eaeaea;"></div>
+
+        <!-- Stat 2 -->
+        <div class="achievement-item animate-fade-up delay-200" style="text-align: center; flex: 1; padding: 0 10px;">
+            <h3 style="font-size: 2.5rem; font-weight: 800; color: #22456E; margin: 0 0 8px 0;" class="animate-number">2,300+</h3>
+            <p style="color: #888; font-size: 0.9rem; margin: 0; font-weight: 600;">Clients Served</p>
         </div>
 
-        <!-- Card 3 -->
-        <div class="achievement-card animate-fade-up delay-300" style="background: linear-gradient(180deg, #fbeeee 0%, #ffffff 30%); border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); padding: 40px 20px 30px; width: 190px; text-align: center;">
-            <div style="color: #3b71ca; ">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 512 512"><path fill="currentColor" d="M184 48c0-26.5 21.5-48 48-48h48c26.5 0 48 21.5 48 48V96H184V48zM64 96c-35.3 0-64 28.7-64 64V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V160c0-35.3-28.7-64-64-64H384V48c0-53-43-96-96-96H232c-53 0-96 43-96 96V96H64zM400 256a40 40 0 1 1 -80 0 40 40 0 1 1 80 0zM192 256a40 40 0 1 1 -80 0 40 40 0 1 1 80 0zM256 384c-35.3 0-64-28.7-64-64c0-17.7 14.3-32 32-32s32 14.3 32 32c0 17.7 14.3 32 32 32s32-14.3 32-32c0-17.7 14.3-32 32-32s32 14.3 32 32c0 35.3-28.7 64-64 64z"/></svg>
-            </div>
-            <h3 style="font-size: 1.8rem; font-weight: 600; color: #222; margin: 10px 0;" class="animate-number">170+</h3>
-            <p style="color: #666; font-size: 0.9rem; margin: 0;">Industries Served</p>
+        <div style="width: 1px; height: 70px; background-color: #eaeaea;"></div>
+
+        <!-- Stat 3 -->
+        <div class="achievement-item animate-fade-up delay-300" style="text-align: center; flex: 1; padding: 0 10px;">
+            <h3 style="font-size: 2.5rem; font-weight: 800; color: #22456E; margin: 0 0 8px 0;" class="animate-number">200,000+</h3>
+            <p style="color: #888; font-size: 0.9rem; margin: 0; font-weight: 600;">Projects Completed</p>
         </div>
 
-        <!-- Card 4 -->
-        <div class="achievement-card animate-fade-up delay-400" style="background: linear-gradient(180deg, #f5f5f5 0%, #ffffff 30%); border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); padding: 40px 20px 30px; width: 190px; text-align: center;">
-            <div style="color: #3b71ca;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 576 512"><path fill="currentColor" d="M400 0H176c-26.5 0-48.1 21.8-47.1 48.2c.2 5.3 .4 10.6 .7 15.8H24C10.7 64 0 74.7 0 88c0 92.6 33.5 157 78.5 200.7c44.3 43.1 98.3 64.8 138.1 75.8c23.4 6.5 39.4 26 39.4 45.6c0 20.9-17 37.9-37.9 37.9H192c-17.7 0-32 14.3-32 32s14.3 32 32 32H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H357.9C337 448 320 431 320 410.1c0-19.6 15.9-39.2 39.4-45.6c39.9-11 93.9-32.7 138.2-75.8C542.5 245 576 180.6 576 88c0-13.3-10.7-24-24-24H446.4c.3-5.2 .5-10.4 .7-15.8C448.1 21.8 426.5 0 400 0zM48.9 112h84.4c9.1 90.1 29.2 150.3 51.9 190.6c-24.9-11-50.8-26.5-73.2-48.3c-32-31.1-58-76-63-142.3zM464.1 254.3c-22.4 21.8-48.3 37.3-73.2 48.3c22.7-40.3 42.8-100.5 51.9-190.6h84.4c-5.1 66.3-31.1 111.2-63 142.3z"/></svg>
-            </div>
-            <h3 style="font-size: 1.8rem; font-weight: 600; color: #222; margin: 10px 0;" class="animate-number">2</h3>
-            <p style="color: #666; font-size: 0.9rem; margin: 0;">ISO Certifications</p>
+        <div style="width: 1px; height: 70px; background-color: #eaeaea;"></div>
+
+        <!-- Stat 4 -->
+        <div class="achievement-item animate-fade-up delay-400" style="text-align: center; flex: 1; padding: 0 10px;">
+            <h3 style="font-size: 2.5rem; font-weight: 800; color: #22456E; margin: 0 0 8px 0;" class="animate-number">40+</h3>
+            <p style="color: #888; font-size: 0.9rem; margin: 0; font-weight: 600;">Countries Reached</p>
         </div>
 
-        <!-- Card 5 -->
-        <div class="achievement-card animate-fade-up delay-500" style="background: linear-gradient(180deg, #f5f5f5 0%, #ffffff 30%); border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); padding: 40px 20px 30px; width: 190px; text-align: center;">
-            <div style="color: #3b71ca; ">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 384 512"><path fill="currentColor" d="M272 384c9.6-31.9 29.5-59.1 49.2-86.2l0 0c5.2-7.1 10.4-14.2 15.4-21.4c19.8-28.5 31.4-63 31.4-100.3C368 78.8 289.2 0 192 0S16 78.8 16 176c0 37.3 11.6 71.9 31.4 100.3c5 7.2 10.2 14.3 15.4 21.4l0 0c19.8 27.1 39.7 54.4 49.2 86.2H272zM192 512c44.2 0 80-35.8 80-80V416H112v16c0 44.2 35.8 80 80 80zM112 176c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16s7.2-16 16-16H96c8.8 0 16 7.2 16 16zm80-112c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16s-16-7.2-16-16V80c0-8.8 7.2-16 16-16zm80 112c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16s-7.2 16-16 16H288c-8.8 0-16-7.2-16-16z"/></svg>
-            </div>
-            <h3 style="font-size: 1.8rem; font-weight: 600; color: #222; margin: 10px 0;" class="animate-number">23+</h3>
-            <p style="color: #666; font-size: 0.9rem; margin: 0;">Years Of Experience</p>
+        <div style="width: 1px; height: 70px; background-color: #eaeaea;"></div>
+
+        <!-- Stat 5 -->
+        <div class="achievement-item animate-fade-up delay-500" style="text-align: center; flex: 1; padding: 0 10px;">
+            <h3 style="font-size: 2.5rem; font-weight: 800; color: #22456E; margin: 0 0 8px 0;" class="animate-number">900+</h3>
+            <p style="color: #888; font-size: 0.9rem; margin: 0; font-weight: 600;">Experts & Vendors</p>
         </div>
 
     </div>
@@ -176,13 +169,12 @@
 <!-- Our Brands Section -->
 <div id="brands" class="section group-structure-section" style="background-color: #f8f9fa; text-align: left; padding: 60px 0; overflow: hidden; position: relative;">
     <div style="max-width: 1200px; margin: 0 auto; width: 100%; padding: 0 20px;">
-    <div style="display: inline-flex; align-items: center; justify-content: center; gap: 15px;">
+    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
         <div style="height: 2px; width: 40px; background-color: var(--primary-color, #22456E);"></div>
         <h5 style="color: var(--primary-color, #22456E); font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.95rem;">The Group Structure</h5>
-        <div style="height: 2px; width: 40px; background-color: var(--primary-color, #22456E);"></div>
     </div>
-    <h2 style="font-weight: 800; color: #22456E; margin-bottom: 15px; font-size: 2.5rem;">Five Sectors. A Family of Brands.</h2>
-    <p style="color: #555; font-size: 1.1rem; max-width: 600px; margin: 0 0 50px 0;">One group operating specialized brands across the disciplines enterprises rely on most.</p>
+    <h2 style="font-weight: 800; color: #22456E; margin-bottom: 15px; font-size: 2.5rem; text-align: left;">Five Sectors. A Family of Brands.</h2>
+    <p style="color: #555; font-size: 1.1rem; max-width: 600px; margin: 0 0 50px 0; text-align: left;">One group operating specialized brands across the disciplines enterprises rely on most.</p>
     
     <!-- Swiper -->
     <div class="swiper group-swiper" style="width: 100%; margin: 0 auto; padding: 0 40px;">
@@ -227,14 +219,13 @@
 <!-- What We Do Section -->
 <div class="section services-section" style="background-color: white; padding: 80px 0; text-align: left;">
     <div style="max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 20px;">
-        <div style="display: inline-flex; align-items: center; justify-content: center; gap: 15px;">
+        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
         <div style="height: 2px; width: 40px; background-color: var(--primary-color, #22456E);"></div>
         <h5 style="color: var(--primary-color, #22456E); font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.95rem;">What We Do</h5>
-        <div style="height: 2px; width: 40px; background-color: var(--primary-color, #22456E);"></div>
     </div>
 
-        <h2 style="font-weight: 800; color: #22456E; margin-bottom: 15px; font-size: 2.5rem;">    <h2 style="font-weight: 800; color: #22456E; margin-bottom: 15px; font-size: 2.5rem;">Smart Business Solutions</h2>
-    <p style="color: #555; font-size: 1.1rem; max-width: 600px; margin: 0 0 50px 0;">Ten services. One integrated engine.</p>
+        <h2 style="font-weight: 800; color: #22456E; margin-bottom: 15px; font-size: 2.5rem; text-align: left;">Smart Business Solutions</h2>
+    <p style="color: #555; font-size: 1.1rem; max-width: 600px; margin: 0 0 50px 0; text-align: left;">Ten services. One integrated engine.</p>
 
         <div style="height: 1px; width: 100%; background-color: #eee; margin-bottom: 20px; max-width: 250px;"></div>
         
@@ -293,12 +284,11 @@
 <!-- Case Studies / Portfolio Section -->
 <div class="section portfolio-section" style="background-color: white; padding: 80px 0; font-family: 'Inter', sans-serif;">
     <div style="max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 20px;">
-        <div style="text-align: left;">
-            <div style="display: inline-block; border-top: 1px solid #3b71ca; border-bottom: 1px solid #3b71ca; padding: 5px 0; margin-bottom: 25px;">
-                <h5 style="color: #3b71ca; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">PORTFOLIO</h5>
-            </div>
-            <h2 style="font-size: 3.2rem; font-weight: 800; color: #22456E; margin-bottom: 50px; line-height: 1.15; letter-spacing: -1px;">A powerful portfolio.</h2>
+        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+            <div style="height: 2px; width: 40px; background-color: var(--primary-color, #22456E);"></div>
+            <h5 style="color: var(--primary-color, #22456E); font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.95rem;">PORTFOLIO</h5>
         </div>
+        <h2 style="font-size: 3.2rem; font-weight: 800; color: #22456E; margin-bottom: 50px; line-height: 1.15; letter-spacing: -1px; text-align: left;">A powerful portfolio.</h2>
 
         <div class="portfolio-grid">
             @foreach($caseStudies as $caseStudy)
@@ -348,12 +338,13 @@
 @include('partials.case_study_modal')
 
 <!-- Clients Section -->
-<div class="section clients-section" style="background-color: #f0f4f8; padding: 80px 0 100px; overflow: hidden; text-align: center; font-family: 'Inter', sans-serif;">
+<div class="section clients-section" style="background-color: #f0f4f8; padding: 80px 0 100px; overflow: hidden; text-align: left; font-family: 'Inter', sans-serif;">
     <div style="max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 20px; margin-bottom: 50px;">
-        <div style="display: inline-block; border-top: 1px solid #3b71ca; border-bottom: 1px solid #3b71ca; padding: 5px 0; margin-bottom: 25px;">
-            <h5 style="color: #3b71ca; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">OUR CLIENTS</h5>
+        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+            <div style="height: 2px; width: 40px; background-color: var(--primary-color, #22456E);"></div>
+            <h5 style="color: var(--primary-color, #22456E); font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.95rem;">OUR CLIENTS</h5>
         </div>
-        <h2 style="font-size: 2.8rem; font-weight: 800; color: #22456E; margin-bottom: 20px; letter-spacing: -0.5px;">Trusted by 2,300+ organizations in 40+ countries.</h2>
+        <h2 style="font-size: 2.8rem; font-weight: 800; color: #22456E; margin-bottom: 20px; letter-spacing: -0.5px; text-align: left;">Trusted by 2,300+ organizations in 40+ countries.</h2>
     </div>
 
     <!-- Animated Slider Marquee -->
@@ -411,17 +402,18 @@
 </div>
 
 <!-- Testimonials Section -->
-<div class="section testimonials-section" style="background-color: white; padding: 80px 0; text-align: center; font-family: 'Inter', sans-serif;">
+<div class="section testimonials-section" style="background-color: white; padding: 80px 0; text-align: left; font-family: 'Inter', sans-serif;">
     <div style="max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 20px; margin-bottom: 50px;">
-        <div style="display: inline-block; border-top: 1px solid #3b71ca; border-bottom: 1px solid #3b71ca; padding: 5px 0; margin-bottom: 25px;">
-            <h5 style="color: #3b71ca; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">IN THEIR WORDS</h5>
+        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+            <div style="height: 2px; width: 40px; background-color: var(--primary-color, #22456E);"></div>
+            <h5 style="color: var(--primary-color, #22456E); font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.95rem;">IN THEIR WORDS</h5>
         </div>
-        <h2 style="font-size: 2.8rem; font-weight: 800; color: #22456E; margin-bottom: 20px; letter-spacing: -0.5px;">Some Of Our Clients' Testimonials</h2>
-        <p style="color: #66768f; font-size: 1.15rem; line-height: 1.6;">Why organizations across 40+ countries keep choosing Bayan Group</p>
+        <h2 style="font-size: 2.8rem; font-weight: 800; color: #22456E; margin-bottom: 20px; letter-spacing: -0.5px; text-align: left;">Some Of Our Clients' Testimonials</h2>
+        <p style="color: #66768f; font-size: 1.15rem; line-height: 1.6; text-align: left;">Why organizations across 40+ countries keep choosing Bayan Group</p>
     </div>
 
     <!-- Swiper for Testimonials -->
-    <div class="swiper testimonials-swiper" style="width: 100%; max-width: 900px; margin: 0 auto; padding: 20px 40px 60px;">
+    <div class="swiper testimonials-swiper" style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 20px 20px 60px;">
         <div class="swiper-wrapper">
             @foreach($testimonials as $testimonial)
             <div class="swiper-slide">
@@ -456,10 +448,13 @@
 
 <!-- Blog Section -->
 <div class="blog-section">
-    <div style="max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 20px;">
+    <div style="max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 20px; text-align: left;">
+    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+        <div style="height: 2px; width: 40px; background-color: var(--primary-color, #22456E);"></div>
+        <h5 style="color: var(--primary-color, #22456E); font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.95rem;">INSIGHTS</h5>
+    </div>
     <div class="blog-section-header">
-        <span class="blog-section-subtitle">INSIGHTS</span>
-        <h2 class="blog-section-title">Ideas from our practice.</h2>
+        <h2 class="blog-section-title" style="text-align: left;">Ideas from our practice.</h2>
     </div>
     
     @if(isset($latestBlogs) && $latestBlogs->count() > 0)

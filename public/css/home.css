@@ -227,7 +227,7 @@
     display: inline-flex;
     gap: 20px;
     padding: 0 10px;
-    animation: marquee 40s linear infinite;
+    animation: marquee 100s linear infinite;
 }
 
 .clients-marquee-content.reverse {
