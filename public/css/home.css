@@ -247,8 +247,8 @@
 }
 
 .client-pill img {
-    max-height: 30px;
-    max-width: 120px;
+    max-height: 45px;
+    max-width: 100%;
     object-fit: contain;
 }
 
