@@ -44,6 +44,23 @@ class DatabaseSeeder extends Seeder
             ['key' => 'contact_email', 'value' => 'info@bayangroup.test'],
             ['key' => 'contact_phone', 'value' => '+1234567890'],
             ['key' => 'address', 'value' => '123 Tech Avenue, Riyadh, KSA'],
+            // Social Links in Settings
+            ['key' => 'social_facebook', 'value' => 'https://www.facebook.com/globalbayan'],
+            ['key' => 'social_instagram', 'value' => 'https://www.instagram.com/globalbayan/'],
+            ['key' => 'social_x', 'value' => 'https://x.com/globalbayan'],
+            ['key' => 'social_linkedin', 'value' => 'https://www.linkedin.com/company/globalbayan'],
+            ['key' => 'social_youtube', 'value' => 'https://www.youtube.com/@globalbayan'],
+            ['key' => 'social_tiktok', 'value' => 'https://www.tiktok.com/@globalbayan'],
+            ['key' => 'social_snapchat', 'value' => 'https://www.snapchat.com/@globalbayan'],
+            ['key' => 'social_telegram', 'value' => 'https://t.me/globalbayan'],
+            ['key' => 'facebook', 'value' => 'https://www.facebook.com/globalbayan'],
+            ['key' => 'instagram', 'value' => 'https://www.instagram.com/globalbayan/'],
+            ['key' => 'x', 'value' => 'https://x.com/globalbayan'],
+            ['key' => 'linkedin', 'value' => 'https://www.linkedin.com/company/globalbayan'],
+            ['key' => 'youtube', 'value' => 'https://www.youtube.com/@globalbayan'],
+            ['key' => 'tiktok', 'value' => 'https://www.tiktok.com/@globalbayan'],
+            ['key' => 'snapchat', 'value' => 'https://www.snapchat.com/@globalbayan'],
+            ['key' => 'telegram', 'value' => 'https://t.me/globalbayan'],
         ];
         foreach ($settings as $setting) {
             Setting::updateOrCreate(['key' => $setting['key']], ['value' => $setting['value']]);
@@ -51,9 +68,14 @@ class DatabaseSeeder extends Seeder
 
         // 3. Social Links
         SocialLink::truncate();
-        SocialLink::create(['platform' => 'Facebook', 'url' => 'https://facebook.com/bayangroup']);
-        SocialLink::create(['platform' => 'Twitter', 'url' => 'https://twitter.com/bayangroup']);
-        SocialLink::create(['platform' => 'LinkedIn', 'url' => 'https://linkedin.com/company/bayangroup']);
+        SocialLink::create(['platform' => 'Facebook', 'url' => 'https://www.facebook.com/globalbayan']);
+        SocialLink::create(['platform' => 'Instagram', 'url' => 'https://www.instagram.com/globalbayan/']);
+        SocialLink::create(['platform' => 'X', 'url' => 'https://x.com/globalbayan']);
+        SocialLink::create(['platform' => 'LinkedIn', 'url' => 'https://www.linkedin.com/company/globalbayan']);
+        SocialLink::create(['platform' => 'YouTube', 'url' => 'https://www.youtube.com/@globalbayan']);
+        SocialLink::create(['platform' => 'TikTok', 'url' => 'https://www.tiktok.com/@globalbayan']);
+        SocialLink::create(['platform' => 'Snapchat', 'url' => 'https://www.snapchat.com/@globalbayan']);
+        SocialLink::create(['platform' => 'Telegram', 'url' => 'https://t.me/globalbayan']);
 
         // 4. Sectors
         Sector::truncate();

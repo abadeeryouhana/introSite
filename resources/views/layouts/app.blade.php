@@ -10,7 +10,7 @@
         <link rel="icon" href="{{ asset('favicon.ico') }}">
     @endif
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ filemtime(public_path('css/style.css')) }}">
     <link rel="stylesheet" href="{{ asset('css/layout.css') }}?v={{ filemtime(public_path('css/layout.css')) }}">
     <link rel="stylesheet" href="{{ asset('css/components.css') }}?v={{ filemtime(public_path('css/components.css')) }}">
@@ -86,23 +86,42 @@
                     @if(isset($social_links) && $social_links->count() > 0)
                         @foreach($social_links as $link)
                             @php
-                                $platform = strtolower($link->platform);
-                                $iconClass = 'fa-solid fa-link';
-                                $brands = ['facebook', 'twitter', 'linkedin', 'instagram', 'youtube', 'tiktok', 'github', 'whatsapp'];
-                                if (in_array($platform, $brands)) {
-                                    $iconClass = 'fa-brands fa-' . $platform;
-                                } elseif ($platform === 'X') {
-                                    $iconClass = 'fa-brands fa-x-twitter';
-                                }
+                                $platform = strtolower(trim($link->platform));
+                                $iconMap = [
+                                    'facebook'  => 'fa-brands fa-facebook-f',
+                                    'instagram' => 'fa-brands fa-instagram',
+                                    'x'         => 'fa-brands fa-x-twitter',
+                                    'twitter'   => 'fa-brands fa-x-twitter',
+                                    'linkedin'  => 'fa-brands fa-linkedin-in',
+                                    'youtube'   => 'fa-brands fa-youtube',
+                                    'tiktok'    => 'fa-brands fa-tiktok',
+                                    'snapchat'  => 'fa-brands fa-snapchat',
+                                    'telegram'  => 'fa-brands fa-telegram',
+                                    'whatsapp'  => 'fa-brands fa-whatsapp',
+                                    'github'    => 'fa-brands fa-github',
+                                ];
+                                $iconClass = $iconMap[$platform] ?? ('fa-brands fa-' . $platform);
                             @endphp
-                            <a href="{{ $link->url }}" target="_blank" title="{{ $link->platform }}"><i class="{{ $iconClass }}"></i></a>
+                            <a href="{{ $link->url }}" target="_blank" rel="noopener noreferrer" title="{{ $link->platform }}"><i class="{{ $iconClass }}"></i></a>
                         @endforeach
-                    @else
-                        <a href="#">L</a>
-                        <a href="#">F</a>
-                        <a href="#">Y</a>
-                        <a href="#">I</a>
-                        <a href="#">X</a>
+                    @elseif(isset($global_settings))
+                        @php
+                            $settingsSocialMap = [
+                                'Facebook'  => ['url' => $global_settings['social_facebook'] ?? $global_settings['facebook'] ?? null, 'icon' => 'fa-brands fa-facebook-f'],
+                                'Instagram' => ['url' => $global_settings['social_instagram'] ?? $global_settings['instagram'] ?? null, 'icon' => 'fa-brands fa-instagram'],
+                                'X'         => ['url' => $global_settings['social_x'] ?? $global_settings['x'] ?? $global_settings['social_twitter'] ?? $global_settings['twitter'] ?? null, 'icon' => 'fa-brands fa-x-twitter'],
+                                'LinkedIn'  => ['url' => $global_settings['social_linkedin'] ?? $global_settings['linkedin'] ?? null, 'icon' => 'fa-brands fa-linkedin-in'],
+                                'YouTube'   => ['url' => $global_settings['social_youtube'] ?? $global_settings['youtube'] ?? null, 'icon' => 'fa-brands fa-youtube'],
+                                'TikTok'    => ['url' => $global_settings['social_tiktok'] ?? $global_settings['tiktok'] ?? null, 'icon' => 'fa-brands fa-tiktok'],
+                                'Snapchat'  => ['url' => $global_settings['social_snapchat'] ?? $global_settings['snapchat'] ?? null, 'icon' => 'fa-brands fa-snapchat'],
+                                'Telegram'  => ['url' => $global_settings['social_telegram'] ?? $global_settings['telegram'] ?? null, 'icon' => 'fa-brands fa-telegram'],
+                            ];
+                        @endphp
+                        @foreach($settingsSocialMap as $plat => $data)
+                            @if(!empty($data['url']))
+                                <a href="{{ $data['url'] }}" target="_blank" rel="noopener noreferrer" title="{{ $plat }}"><i class="{{ $data['icon'] }}"></i></a>
+                            @endif
+                        @endforeach
                     @endif
                 </div>
             </div>
