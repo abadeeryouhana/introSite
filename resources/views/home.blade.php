@@ -265,16 +265,16 @@
         <!-- Right Content (Logos) -->
         <div style="flex: 1; min-width: 300px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
             <div style="background: white; border-radius: 12px; height: 140px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                <img src="{{ asset('images/zoho-logo.svg') }}" alt="Zoho" style="max-width: 70%; max-height: 60px; object-fit: contain;">
+                <img src="{{ asset('images/zoho-logo.svg') }}" alt="Zoho Enterprise Partner" style="max-width: 70%; max-height: 60px; object-fit: contain;">
             </div>
             <div style="background: white; border-radius: 12px; height: 140px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                <img src="{{ asset('images/odoo-logo.webp') }}" alt="Odoo" style="max-width: 70%; max-height: 60px; object-fit: contain;">
+                <img src="{{ asset('images/odoo-logo.webp') }}" alt="Odoo ERP Partner" style="max-width: 70%; max-height: 60px; object-fit: contain;">
             </div>
             <div style="background: white; border-radius: 12px; height: 140px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                <img src="{{ asset('images/partner-3.png') }}" alt="Partner 3" style="max-width: 70%; max-height: 60px; object-fit: contain;">
+                <img src="{{ asset('images/partner-3.png') }}" alt="Strategic Technology Partner - Bayan Group" style="max-width: 70%; max-height: 60px; object-fit: contain;">
             </div>
             <div style="background: white; border-radius: 12px; height: 140px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                <img src="{{ asset('images/partner-4.png') }}" alt="Partner 4" style="max-width: 70%; max-height: 60px; object-fit: contain;">
+                <img src="{{ asset('images/partner-4.png') }}" alt="Integration Partner - Bayan Group" style="max-width: 70%; max-height: 60px; object-fit: contain;">
             </div>
         </div>
     </div>
@@ -427,7 +427,7 @@
                     <p style="color: #555; font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; font-style: italic;">"{{ $testimonial->description }}"</p>
                     <div style="display: flex; align-items: center; gap: 15px;">
                         @if($testimonial->image)
-                            <img src="{{ asset('storage/' . $testimonial->image) }}" alt="Testimonial Image" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                            <img src="{{ asset('storage/' . $testimonial->image) }}" alt="{{ $testimonial->client->name ?? 'Client' }} Testimonial - Bayan Group" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
                         @endif
                         <div>
                             <h5 style="margin: 0; font-size: 1.1rem; font-weight: 700; color: #22456E;">{{ $testimonial->client->name ?? 'Client' }}</h5>

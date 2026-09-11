@@ -1,7 +1,19 @@
 @extends('admin.layout')
 @section('content')
-<div class="header">
+<div class="header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
     <h1>Settings</h1>
+    <a href="{{ route('admin.seo.index') }}" class="btn" style="background: var(--admin-primary); color: white; display: inline-flex; align-items: center; gap: 8px;">
+        <i class="fa-solid fa-magnifying-glass-chart"></i> Manage Page SEO
+    </a>
+</div>
+<div style="background: linear-gradient(135deg, #3D81C3 0%, #2BB295 100%); color: white; border-radius: 8px; padding: 20px 25px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center;">
+    <div>
+        <h3 style="margin: 0 0 6px 0; font-size: 1.2rem; font-weight: 700;">Looking for Page SEO & Keywords?</h3>
+        <p style="margin: 0; opacity: 0.9; font-size: 0.9rem;">Manage Meta Titles, Descriptions, Keywords, Open Graph tags and Google SERP previews per page.</p>
+    </div>
+    <a href="{{ route('admin.seo.index') }}" style="background: white; color: #1e1e2d; font-weight: 700; text-decoration: none; padding: 10px 20px; border-radius: 6px; font-size: 0.9rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1); white-space: nowrap;">
+        Open SEO Settings &rarr;
+    </a>
 </div>
 <div class="card">
     @if($errors->any())

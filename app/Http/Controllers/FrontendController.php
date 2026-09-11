@@ -125,4 +125,46 @@ class FrontendController extends Controller
     {
         return view('careers');
     }
+
+    public function sitemap()
+    {
+        $baseUrl = url('/');
+        $staticPages = [
+            ['url' => route('home'),           'priority' => '1.0', 'changefreq' => 'daily',   'lastmod' => date('Y-m-d')],
+            ['url' => route('about'),          'priority' => '0.8', 'changefreq' => 'weekly',  'lastmod' => date('Y-m-d')],
+            ['url' => route('sectors.brands'), 'priority' => '0.8', 'changefreq' => 'weekly',  'lastmod' => date('Y-m-d')],
+            ['url' => route('services.page'),  'priority' => '0.8', 'changefreq' => 'weekly',  'lastmod' => date('Y-m-d')],
+            ['url' => route('portfolio'),      'priority' => '0.8', 'changefreq' => 'weekly',  'lastmod' => date('Y-m-d')],
+            ['url' => route('blog'),           'priority' => '0.8', 'changefreq' => 'daily',   'lastmod' => date('Y-m-d')],
+            ['url' => route('careers'),        'priority' => '0.7', 'changefreq' => 'weekly',  'lastmod' => date('Y-m-d')],
+            ['url' => route('contact'),        'priority' => '0.7', 'changefreq' => 'monthly', 'lastmod' => date('Y-m-d')],
+        ];
+
+        $blogs = \App\Models\Blog::all();
+
+        $xml = '<?xml version="1.0" encoding="UTF-8"?>';
+        $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+
+        foreach ($staticPages as $page) {
+            $xml .= '<url>';
+            $xml .= '<loc>' . htmlspecialchars($page['url']) . '</loc>';
+            $xml .= '<lastmod>' . $page['lastmod'] . '</lastmod>';
+            $xml .= '<changefreq>' . $page['changefreq'] . '</changefreq>';
+            $xml .= '<priority>' . $page['priority'] . '</priority>';
+            $xml .= '</url>';
+        }
+
+        foreach ($blogs as $blog) {
+            $xml .= '<url>';
+            $xml .= '<loc>' . htmlspecialchars(route('blog.details', $blog->id)) . '</loc>';
+            $xml .= '<lastmod>' . $blog->updated_at->format('Y-m-d') . '</lastmod>';
+            $xml .= '<changefreq>monthly</changefreq>';
+            $xml .= '<priority>0.6</priority>';
+            $xml .= '</url>';
+        }
+
+        $xml .= '</urlset>';
+
+        return response($xml, 200)->header('Content-Type', 'application/xml');
+    }
 }

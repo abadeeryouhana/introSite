@@ -16,12 +16,15 @@ use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ClientTestimonialController;
 use App\Http\Controllers\Admin\ChatbotQuestionController;
+use App\Http\Controllers\Admin\SeoSettingController;
 use App\Http\Controllers\Auth\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 */
+
+Route::get('sitemap.xml', [FrontendController::class, 'sitemap'])->name('sitemap');
 
 Route::get('/', [FrontendController::class, 'home'])->name('home');
 Route::get('/careers', [FrontendController::class, 'careers'])->name('careers');
@@ -55,4 +58,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
     Route::resource('chatbot-questions', ChatbotQuestionController::class);
     Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
     Route::post('settings', [SettingController::class, 'update'])->name('settings.update');
+    Route::get('seo', [SeoSettingController::class, 'index'])->name('seo.index');
+    Route::post('seo/{page}', [SeoSettingController::class, 'update'])->name('seo.update');
 });

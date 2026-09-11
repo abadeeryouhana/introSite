@@ -3,7 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $global_settings['site_name'] ?? 'Bayan Group' }}</title>
+    <!-- Primary Meta Tags -->
+    @php
+        $siteTitle = $global_settings['site_name'] ?? 'Bayan Group';
+        $pageTitle = trim($__env->yieldContent('seo_title'));
+        if (empty($pageTitle)) {
+            $pageTitle = $current_seo->meta_title ?? ($global_seo->meta_title ?? $siteTitle);
+        }
+
+        $pageDesc = trim($__env->yieldContent('seo_description'));
+        if (empty($pageDesc)) {
+            $pageDesc = $current_seo->meta_description ?? ($global_seo->meta_description ?? 'Bayan Group empowers organizations with smart solutions across communication, technology, education, and digital transformation.');
+        }
+
+        $pageKeywords = trim($__env->yieldContent('seo_keywords'));
+        if (empty($pageKeywords)) {
+            $pageKeywords = $current_seo->meta_keywords ?? ($global_seo->meta_keywords ?? 'Bayan Group, digital innovation, business solutions, corporate communication, enterprise technology');
+        }
+
+        $pageRobots = trim($__env->yieldContent('seo_robots'));
+        if (empty($pageRobots)) {
+            $pageRobots = $current_seo->robots ?? 'index, follow';
+        }
+
+        $canonicalUrl = trim($__env->yieldContent('seo_canonical'));
+        if (empty($canonicalUrl)) {
+            $canonicalUrl = !empty($current_seo->canonical_url) ? $current_seo->canonical_url : url()->current();
+        }
+
+        $ogImage = trim($__env->yieldContent('og_image'));
+        if (empty($ogImage)) {
+            if (!empty($current_seo->og_image)) {
+                $ogImage = asset('storage/' . $current_seo->og_image);
+            } elseif (!empty($global_seo->og_image)) {
+                $ogImage = asset('storage/' . $global_seo->og_image);
+            } elseif (!empty($global_settings['site_logo'])) {
+                $ogImage = asset('storage/' . $global_settings['site_logo']);
+            } else {
+                $ogImage = asset('favicon.ico');
+            }
+        }
+
+        $ogTitle = trim($__env->yieldContent('og_title'));
+        if (empty($ogTitle)) {
+            $ogTitle = $current_seo->og_title ?: $pageTitle;
+        }
+
+        $ogDesc = trim($__env->yieldContent('og_description'));
+        if (empty($ogDesc)) {
+            $ogDesc = $current_seo->og_description ?: $pageDesc;
+        }
+    @endphp
+
+    <title>{{ $pageTitle }}</title>
+    <meta name="title" content="{{ $pageTitle }}">
+    <meta name="description" content="{{ $pageDesc }}">
+    <meta name="keywords" content="{{ $pageKeywords }}">
+    <meta name="robots" content="{{ $pageRobots }}">
+    <link rel="canonical" href="{{ $canonicalUrl }}">
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="@yield('og_type', 'website')">
+    <meta property="og:url" content="{{ $canonicalUrl }}">
+    <meta property="og:site_name" content="{{ $siteTitle }}">
+    <meta property="og:title" content="{{ $ogTitle }}">
+    <meta property="og:description" content="{{ $ogDesc }}">
+    <meta property="og:image" content="{{ $ogImage }}">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ $canonicalUrl }}">
+    <meta name="twitter:title" content="@yield('twitter_title', $current_seo->twitter_title ?: $ogTitle)">
+    <meta name="twitter:description" content="@yield('twitter_description', $current_seo->twitter_description ?: $ogDesc)">
+    <meta name="twitter:image" content="@yield('twitter_image', $ogImage)">
+
+    <!-- Search Engine Verification -->
+    @if(!empty($global_settings['google_site_verification']))
+        <meta name="google-site-verification" content="{{ $global_settings['google_site_verification'] }}">
+    @endif
+    @if(!empty($global_settings['bing_site_verification']))
+        <meta name="msvalidate.01" content="{{ $global_settings['bing_site_verification'] }}">
+    @endif
+
+    <!-- JSON-LD Structured Data: Organization & WebSite -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "{{ url('/#organization') }}",
+                "name": "{{ $siteTitle }}",
+                "url": "{{ url('/') }}",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "{{ isset($global_settings['site_logo']) ? asset('storage/' . $global_settings['site_logo']) : asset('favicon.ico') }}"
+                },
+                @if(isset($social_links) && $social_links->count() > 0)
+                "sameAs": [
+                    @foreach($social_links as $slink)
+                        "{{ $slink->url }}"{{ !$loop->last ? ',' : '' }}
+                    @endforeach
+                ],
+                @endif
+                "contactPoint": [
+                    @if(!empty($global_settings['contact_phone_1']))
+                    {
+                        "@type": "ContactPoint",
+                        "telephone": "{{ $global_settings['contact_phone_1'] }}",
+                        "contactType": "customer service"
+                    }
+                    @endif
+                ]
+            },
+            {
+                "@type": "WebSite",
+                "@id": "{{ url('/#website') }}",
+                "url": "{{ url('/') }}",
+                "name": "{{ $siteTitle }}",
+                "publisher": {
+                    "@id": "{{ url('/#organization') }}"
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- Page Specific Structured Data -->
+    @if(!empty($current_seo->schema_markup))
+        {!! $current_seo->schema_markup !!}
+    @endif
+    @yield('schema_markup')
+
     @if(isset($global_settings['site_logo']))
         <link rel="icon" href="{{ asset('storage/' . $global_settings['site_logo']) }}">
     @else
@@ -29,7 +160,7 @@
         <div class="logo">
             <a href="{{ route('home') }}" style="display: flex; align-items: center; gap: 12px;">
                 @if(isset($global_settings['site_logo']))
-                    <img src="{{ asset('storage/' . $global_settings['site_logo']) }}" alt="Logo" class="logo">
+                    <img src="{{ asset('storage/' . $global_settings['site_logo']) }}" alt="{{ $global_settings['site_name'] ?? 'Bayan Group' }} - Digital Innovation & Business Solutions" class="logo">
                 @endif
                 <div style="display: flex; flex-direction: column;">
                     <h2 style="margin: 0; color: var(--primary-color); font-weight: 800; font-size: 1.6rem; letter-spacing: -0.5px; text-transform: uppercase; line-height: 1.1;">Bayan Group</h2>
@@ -69,7 +200,7 @@
             <div class="footer-col-1">
                 <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
                     @if(isset($global_settings['site_logo']))
-                        <img src="{{ asset('storage/' . $global_settings['site_logo']) }}" alt="Logo" style="height: 45px;">
+                        <img src="{{ asset('storage/' . $global_settings['site_logo']) }}" alt="{{ $global_settings['site_name'] ?? 'Bayan Group' }} - Integrated Business Solutions" style="height: 45px;">
                     @else
                         <!-- fallback logo -->
                         <div style="width: 45px; height: 45px; background: #3b71ca; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.2rem;">BG</div>

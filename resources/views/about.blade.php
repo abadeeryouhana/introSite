@@ -380,7 +380,7 @@
                     <p style="color: #555; font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; font-style: italic;">"{{ $testimonial->description }}"</p>
                     <div style="display: flex; align-items: center; gap: 15px;">
                         @if($testimonial->image)
-                            <img src="{{ asset('storage/' . $testimonial->image) }}" alt="Testimonial Image" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                            <img src="{{ asset('storage/' . $testimonial->image) }}" alt="{{ $testimonial->client->name ?? 'Client' }} Testimonial - Bayan Group" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
                         @endif
                         <div>
                             <h5 style="margin: 0; font-size: 1.1rem; font-weight: 700; color: #22456E;">{{ $testimonial->client->name ?? 'Client' }}</h5>

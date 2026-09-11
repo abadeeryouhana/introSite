@@ -33,5 +33,32 @@ class AppServiceProvider extends ServiceProvider
             $chatbot_questions = \App\Models\ChatbotQuestion::where('is_active', true)->orderBy('order', 'asc')->get();
             \Illuminate\Support\Facades\View::share('chatbot_questions', $chatbot_questions);
         }
+
+        if (\Illuminate\Support\Facades\Schema::hasTable('seo_settings')) {
+            \Illuminate\Support\Facades\View::composer('layouts.app', function ($view) {
+                $routeName = \Illuminate\Support\Facades\Route::currentRouteName();
+                $routeMap = [
+                    'home'           => 'home',
+                    'about'          => 'about',
+                    'sectors.brands' => 'sectors_brands',
+                    'services.page'  => 'services',
+                    'portfolio'      => 'portfolio',
+                    'blog'           => 'blog',
+                    'blog.details'   => 'blog',
+                    'careers'        => 'careers',
+                    'contact'        => 'contact',
+                ];
+
+                $pageKey = $routeMap[$routeName] ?? 'home';
+                $allSeo = \App\Models\SeoSetting::all()->keyBy('page_key');
+                $currentSeo = $allSeo[$pageKey] ?? ($allSeo['global'] ?? null);
+                $globalSeo = $allSeo['global'] ?? null;
+
+                $view->with([
+                    'current_seo' => $currentSeo,
+                    'global_seo'  => $globalSeo,
+                ]);
+            });
+        }
     }
 }

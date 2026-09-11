@@ -47,6 +47,7 @@
             <a href="{{ route('admin.blogs.index') }}" class="{{ request()->routeIs('admin.blogs.*') ? 'active' : '' }}"><i class="fa-solid fa-newspaper"></i> Blogs</a>
             <a href="{{ route('admin.contact-messages.index') }}" class="{{ request()->routeIs('admin.contact-messages.*') ? 'active' : '' }}"><i class="fa-solid fa-envelope"></i> Messages</a>
             <a href="{{ route('admin.chatbot-questions.index') }}" class="{{ request()->routeIs('admin.chatbot-questions.*') ? 'active' : '' }}"><i class="fa-solid fa-robot"></i> Chatbot FAQs</a>
+            <a href="{{ route('admin.seo.index') }}" class="{{ request()->routeIs('admin.seo.*') ? 'active' : '' }}"><i class="fa-solid fa-magnifying-glass-chart"></i> SEO Settings</a>
             <a href="{{ route('admin.settings.index') }}" class="{{ request()->routeIs('admin.settings.*') ? 'active' : '' }}"><i class="fa-solid fa-gear"></i> Settings</a>
         </div>
 
@@ -134,7 +135,7 @@
             }).showToast();
         @endif
 
-        @if($errors->any())
+        @if(isset($errors) && $errors->any())
             @foreach($errors->all() as $error)
                 Toastify({
                     text: "{{ $error }}",

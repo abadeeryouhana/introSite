@@ -1,5 +1,46 @@
 @extends('layouts.app')
 
+@section('seo_title', $blog->title . ' | ' . ($global_settings['site_name'] ?? 'Bayan Group'))
+@section('seo_description', Str::limit(strip_tags($blog->sub_title ?: $blog->content), 155))
+@section('seo_keywords', ($blog->category ? $blog->category->name . ', ' : '') . 'Bayan Group, business insights, ' . strtolower($blog->title))
+@section('og_type', 'article')
+@if($blog->image)
+    @section('og_image', asset('storage/' . $blog->image))
+    @section('twitter_image', asset('storage/' . $blog->image))
+@endif
+
+@section('schema_markup')
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{ addslashes($blog->title) }}",
+    "description": "{{ addslashes(Str::limit(strip_tags($blog->sub_title ?: $blog->content), 155)) }}",
+    @if($blog->image)
+    "image": "{{ asset('storage/' . $blog->image) }}",
+    @endif
+    "datePublished": "{{ $blog->created_at->toIso8601String() }}",
+    "dateModified": "{{ $blog->updated_at->toIso8601String() }}",
+    "author": {
+        "@type": "Organization",
+        "name": "{{ $global_settings['site_name'] ?? 'Bayan Group' }}"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "{{ $global_settings['site_name'] ?? 'Bayan Group' }}",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{ isset($global_settings['site_logo']) ? asset('storage/' . $global_settings['site_logo']) : asset('favicon.ico') }}"
+        }
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ route('blog.details', $blog->id) }}"
+    }
+}
+</script>
+@endsection
+
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/blog.css') }}">
 @endpush
