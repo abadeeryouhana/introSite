@@ -304,7 +304,7 @@
         </div>
 
         <div class="footer-bottom-bar">
-            <div>&copy; {{ date('Y') }} Bayan Group &mdash; Developed by Bayan Technology. All Rights Reserved.</div>
+            <div>&copy; {{ date('Y') }} <a href="http://bayangroup.net/" target="_blank" rel="noopener noreferrer">Bayan Group</a> &mdash; Developed by <a href="https://bayantechnology.com/" target="_blank" rel="noopener noreferrer">Bayan Technology</a>. All Rights Reserved.</div>
             <div class="footer-bottom-links">
                 <a href="{{ route('privacy') }}">Privacy Policy</a>
                 <a href="{{ route('terms') }}">Terms & Conditions</a>
