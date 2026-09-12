@@ -36,6 +36,10 @@ Route::get('/blog', [FrontendController::class, 'blog'])->name('blog');
 Route::get('/blog/{id}', [FrontendController::class, 'blogDetails'])->name('blog.details');
 Route::get('/contact-us', [FrontendController::class, 'contact'])->name('contact');
 Route::post('/contact-us', [FrontendController::class, 'submitContact'])->name('contact.submit');
+Route::get('/terms-and-conditions', [FrontendController::class, 'terms'])->name('terms');
+Route::get('/terms', function () { return redirect()->route('terms'); });
+Route::get('/privacy-policy', [FrontendController::class, 'privacy'])->name('privacy');
+Route::get('/privacy', function () { return redirect()->route('privacy'); });
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login']);

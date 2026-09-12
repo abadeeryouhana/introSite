@@ -93,6 +93,18 @@ class SeoSettingService extends BaseService
                 'url' => '/contact-us',
                 'description' => 'Get in touch with regional offices and inquiry form'
             ],
+            'terms' => [
+                'name' => 'Terms & Conditions',
+                'route' => 'terms',
+                'url' => '/terms-and-conditions',
+                'description' => 'Terms and conditions governing site use and digital services'
+            ],
+            'privacy' => [
+                'name' => 'Privacy Policy',
+                'route' => 'privacy',
+                'url' => '/privacy-policy',
+                'description' => 'Privacy policy and data processing information'
+            ],
             'global' => [
                 'name' => 'Global Defaults',
                 'route' => null,

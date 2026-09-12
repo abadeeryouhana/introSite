@@ -263,7 +263,7 @@
                     <li><a href="{{ route('about') }}">About Us</a></li>
                     <li><a href="#">Partnerships</a></li>
                     <li><a href="#">Our Clients</a></li>
-                    <li><a href="#">Careers</a></li>
+                    <li><a href="{{ route('careers') }}">Careers</a></li>
                 </ul>
             </div>
 
@@ -306,8 +306,8 @@
         <div class="footer-bottom-bar">
             <div>&copy; {{ date('Y') }} Bayan Group. All rights reserved.</div>
             <div class="footer-bottom-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms & Conditions</a>
+                <a href="{{ route('privacy') }}">Privacy Policy</a>
+                <a href="{{ route('terms') }}">Terms & Conditions</a>
             </div>
         </div>
     </footer>

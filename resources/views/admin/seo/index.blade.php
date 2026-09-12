@@ -280,10 +280,10 @@
                 <div style="padding: 12px;">
                     <span style="font-size: 0.75rem; text-transform: uppercase; color: #8899a6; font-weight: 600; letter-spacing: 0.5px;">{{ parse_url(url('/'), PHP_URL_HOST) ?? 'bayangroup.net' }}</span>
                     <h5 id="socialCardTitle" style="margin: 4px 0 6px 0; font-size: 0.95rem; font-weight: 700; color: #14171a; line-height: 1.3;">
-                        {{ $activeSeo->og_title ?: ($activeSeo->meta_title ?? 'Bayan Group') }}
+                        {{ ($activeSeo->og_title ?? null) ?: ($activeSeo->meta_title ?? 'Bayan Group') }}
                     </h5>
                     <p id="socialCardDesc" style="margin: 0; font-size: 0.82rem; color: #657786; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-                        {{ $activeSeo->og_description ?: ($activeSeo->meta_description ?? 'Bayan Group empowers organizations with business solutions.') }}
+                        {{ ($activeSeo->og_description ?? null) ?: ($activeSeo->meta_description ?? 'Bayan Group empowers organizations with business solutions.') }}
                     </p>
                 </div>
             </div>

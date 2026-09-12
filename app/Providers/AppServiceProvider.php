@@ -47,6 +47,8 @@ class AppServiceProvider extends ServiceProvider
                     'blog.details'   => 'blog',
                     'careers'        => 'careers',
                     'contact'        => 'contact',
+                    'terms'          => 'terms',
+                    'privacy'        => 'privacy',
                 ];
 
                 $pageKey = $routeMap[$routeName] ?? 'home';

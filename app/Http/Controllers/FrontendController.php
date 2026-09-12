@@ -126,6 +126,16 @@ class FrontendController extends Controller
         return view('careers');
     }
 
+    public function terms()
+    {
+        return view('terms');
+    }
+
+    public function privacy()
+    {
+        return view('privacy');
+    }
+
     public function sitemap()
     {
         $baseUrl = url('/');
@@ -138,6 +148,8 @@ class FrontendController extends Controller
             ['url' => route('blog'),           'priority' => '0.8', 'changefreq' => 'daily',   'lastmod' => date('Y-m-d')],
             ['url' => route('careers'),        'priority' => '0.7', 'changefreq' => 'weekly',  'lastmod' => date('Y-m-d')],
             ['url' => route('contact'),        'priority' => '0.7', 'changefreq' => 'monthly', 'lastmod' => date('Y-m-d')],
+            ['url' => route('terms'),          'priority' => '0.5', 'changefreq' => 'monthly', 'lastmod' => date('Y-m-d')],
+            ['url' => route('privacy'),        'priority' => '0.5', 'changefreq' => 'monthly', 'lastmod' => date('Y-m-d')],
         ];
 
         $blogs = \App\Models\Blog::all();
