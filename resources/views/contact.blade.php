@@ -22,6 +22,12 @@
         <!-- Left: Form -->
         <div class="contact-form-side">
             <div class="form-card-new">
+                @if(session('success'))
+                    <div style="background: #e6fffa; border: 1px solid #38b2ac; color: #234e52; padding: 14px 18px; border-radius: 8px; margin-bottom: 25px; font-weight: 500;">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
                 <form action="{{ route('contact.submit') }}" method="POST">
                     @csrf
                     
@@ -38,23 +44,47 @@
 
                     <div class="form-row-new">
                         <div class="form-group-new">
-                            <label>PHONE</label>
-                            <input type="text" name="phone">
+                            <label>COUNTRY</label>
+                            <select name="country" id="country_select">
+                                <option value="">Select Country...</option>
+                                @foreach($countries as $country)
+                                    <option value="{{ $country->name }}" data-code="{{ $country->phone_code }}" data-country="{{ $country->name }}">
+                                        {{ $country->name }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group-new">
-                            <label>COMPANY</label>
-                            <input type="text" name="company">
+                            <label>PHONE</label>
+                            <div class="phone-input-group">
+                                <select name="country_code" id="country_code_select" class="phone-code-select">
+                                    <option value="">Code</option>
+                                    @foreach($countries as $c)
+                                        <option value="{{ $c->phone_code }}" data-country="{{ $c->name }}">
+                                            {{ $c->phone_code }} ({{ $c->code ?? $c->name }})
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <input type="tel" name="phone" id="phone_input" class="phone-number-input" placeholder="Phone number">
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-row-new">
                         <div class="form-group-new">
+                            <label>COMPANY</label>
+                            <input type="text" name="company">
+                        </div>
+                        <div class="form-group-new">
                             <label>TITLE</label>
                             <input type="text" name="title">
                         </div>
+                    </div>
+
+                    <div class="form-row-new">
                         <div class="form-group-new">
                             <label>SERVICE</label>
-                            <select name="service">
+                            <select name="service" id="service_select">
                                 <option value="">Select Service...</option>
                                 @foreach($services as $svc)
                                     <option value="{{ $svc->title }}">{{ $svc->title }}</option>
@@ -108,7 +138,9 @@
 </div>
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="{{ asset('css/tom-select.css') }}">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="{{ asset('js/tom-select.js') }}"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var map = L.map('locations-map', {
@@ -140,6 +172,67 @@
         if (bounds.length > 0) {
             map.fitBounds(bounds, {padding: [30, 30], maxZoom: 5});
         }
+
+        // Country & Country Code Synchronizer
+        var countrySelect = document.getElementById('country_select');
+        var countryCodeSelect = document.getElementById('country_code_select');
+
+        if (countrySelect && countryCodeSelect) {
+            countrySelect.addEventListener('change', function () {
+                var selectedOption = countrySelect.options[countrySelect.selectedIndex];
+                var countryName = countrySelect.value;
+                var phoneCode = selectedOption ? selectedOption.getAttribute('data-code') : null;
+
+                if (countryName) {
+                    var matched = false;
+                    for (var i = 0; i < countryCodeSelect.options.length; i++) {
+                        var opt = countryCodeSelect.options[i];
+                        if (opt.getAttribute('data-country') === countryName) {
+                            countryCodeSelect.selectedIndex = i;
+                            matched = true;
+                            break;
+                        }
+                    }
+                    if (!matched && phoneCode) {
+                        for (var j = 0; j < countryCodeSelect.options.length; j++) {
+                            var opt2 = countryCodeSelect.options[j];
+                            if (opt2.value === phoneCode) {
+                                countryCodeSelect.selectedIndex = j;
+                                break;
+                            }
+                        }
+                    }
+                }
+            });
+
+            countryCodeSelect.addEventListener('change', function () {
+                var selectedOpt = countryCodeSelect.options[countryCodeSelect.selectedIndex];
+                var countryName = selectedOpt ? selectedOpt.getAttribute('data-country') : null;
+                if (countryName && (!countrySelect.value || countrySelect.options[countrySelect.selectedIndex].getAttribute('data-code') !== selectedOpt.value)) {
+                    countrySelect.value = countryName;
+                }
+            });
+        }
+
+        // Initialize Searchable Service Dropdown
+        if (document.getElementById('service_select') && typeof TomSelect !== 'undefined') {
+            new TomSelect('#service_select', {
+                create: false,
+                placeholder: 'Select or search service...',
+                allowEmptyOption: true,
+                maxOptions: 100
+            });
+        }
+            // Initialize Tom-Select for country_select
+            if (document.getElementById('country_select') && typeof TomSelect !== 'undefined') {
+            new TomSelect('#country_select', {
+                create: false,
+                placeholder: 'Select Country...',
+                allowEmptyOption: true,
+                maxOptions: 100
+            });
+        }
+            
     });
 </script>
 @endsection

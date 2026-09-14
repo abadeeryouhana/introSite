@@ -5,12 +5,13 @@
 </div>
 <div class="card">
     <table>
-        <tr><th>Name</th><th>Email</th><th>Phone</th><th>Date</th><th>Actions</th></tr>
+        <tr><th>Name</th><th>Email</th><th>Country</th><th>Phone</th><th>Date</th><th>Actions</th></tr>
         @foreach($messages as $message)
         <tr>
             <td>{{ $message->first_name }} {{ $message->last_name }}</td>
             <td>{{ $message->email }}</td>
-            <td>{{ $message->phone }}</td>
+            <td>{{ $message->country ?? 'N/A' }}</td>
+            <td>{{ $message->country_code ? $message->country_code . ' ' : '' }}{{ $message->phone }}</td>
             <td>{{ $message->created_at }}</td>
             <td>
                 <a href="{{ route('admin.contact-messages.show', $message) }}" class="btn">View</a>

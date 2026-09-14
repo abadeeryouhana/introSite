@@ -48,15 +48,17 @@
 
 <!-- CHAIRMAN'S WORD -->
 <div class="chairman-section">
-    <div class="chairman-left animate-fade-up">
-        <img src="{{ asset('images/fadel.png') }}" class="chairman-img" alt="Chairman">
-    </div>
-    <div class="chairman-right animate-fade-up" style="animation-delay: 0.2s;">
-        <div class="chairman-subtitle">CHAIRMAN'S WORD</div>
-        <div class="chairman-quote">"Building a legacy of excellence through innovation and dedicated partnership."</div>
-        <p class="chairman-text">Since our inception, Bayan Group has been driven by a singular vision: to empower organizations with the tools, strategies, and talent they need to thrive in a dynamic world. Our journey from a local studio to a global group is a testament to the trust our clients place in us.</p>
-        <div class="chairman-name"> Dr. Muhammad Fadel</div>
-        <div class="chairman-title">Chairman & Managing Director</div>
+    <div class="chairman-container">
+        <div class="chairman-left animate-fade-up">
+            <img src="{{ asset('images/fadel.webp') }}" class="chairman-img" alt="Chairman">
+        </div>
+        <div class="chairman-right animate-fade-up" style="animation-delay: 0.2s;">
+            <div class="chairman-subtitle">CHAIRMAN'S WORD</div>
+            <div class="chairman-quote">"Building a legacy of excellence through innovation and dedicated partnership."</div>
+            <p class="chairman-text">Since our inception, Bayan Group has been driven by a singular vision: to empower organizations with the tools, strategies, and talent they need to thrive in a dynamic world. Our journey from a local studio to a global group is a testament to the trust our clients place in us.</p>
+            <div class="chairman-name"> Dr. Muhammad Fadel</div>
+            <div class="chairman-title">Chairman & Managing Director</div>
+        </div>
     </div>
 </div>
 

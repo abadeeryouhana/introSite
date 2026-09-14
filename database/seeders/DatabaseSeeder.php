@@ -220,6 +220,9 @@ class DatabaseSeeder extends Seeder
             'is_active' => true
         ]);
 
+        // 15. Countries
+        $this->call(CountrySeeder::class);
+
         \Illuminate\Support\Facades\Schema::enableForeignKeyConstraints();
     }
 }

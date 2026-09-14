@@ -7,7 +7,8 @@
 <div class="card">
     <p><strong>Name:</strong> {{ $contact_message->first_name }} {{ $contact_message->last_name }}</p>
     <p><strong>Email:</strong> {{ $contact_message->email }}</p>
-    <p><strong>Phone:</strong> {{ $contact_message->phone }}</p>
+    <p><strong>Country:</strong> {{ $contact_message->country ?? 'N/A' }}</p>
+    <p><strong>Phone:</strong> {{ $contact_message->country_code ? $contact_message->country_code . ' ' : '' }}{{ $contact_message->phone ?? 'N/A' }}</p>
     <p><strong>Company:</strong> {{ $contact_message->company ?? 'N/A' }}</p>
     <p><strong>Title:</strong> {{ $contact_message->title ?? 'N/A' }}</p>
     <p><strong>Service:</strong> {{ $contact_message->service ?? 'N/A' }}</p>

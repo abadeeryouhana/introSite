@@ -12,6 +12,7 @@ use App\Services\BlogService;
 use App\Services\BlogCategoryService;
 use App\Services\ClientTestimonialService;
 use App\Services\CaseStudyService;
+use App\Services\CountryService;
 
 class FrontendController extends Controller
 {
@@ -24,6 +25,7 @@ class FrontendController extends Controller
     protected $blogCategoryService;
     protected $clientTestimonialService;
     protected $caseStudyService;
+    protected $countryService;
 
     public function __construct(
         ClientService $clientService,
@@ -34,7 +36,8 @@ class FrontendController extends Controller
         BlogService $blogService,
         BlogCategoryService $blogCategoryService,
         ClientTestimonialService $clientTestimonialService,
-        CaseStudyService $caseStudyService
+        CaseStudyService $caseStudyService,
+        CountryService $countryService
     ) {
         $this->clientService = $clientService;
         $this->sectorService = $sectorService;
@@ -45,6 +48,7 @@ class FrontendController extends Controller
         $this->blogCategoryService = $blogCategoryService;
         $this->clientTestimonialService = $clientTestimonialService;
         $this->caseStudyService = $caseStudyService;
+        $this->countryService = $countryService;
     }
 
     public function home()
@@ -88,7 +92,8 @@ class FrontendController extends Controller
     public function contact()
     {
         $services = $this->appServiceService->getOrdered('order', 'asc');
-        return view('contact', compact('services'));
+        $countries = $this->countryService->getOrdered('name', 'asc');
+        return view('contact', compact('services', 'countries'));
     }
 
     public function submitContact(Request $request)
@@ -97,6 +102,8 @@ class FrontendController extends Controller
             'first_name' => 'required|string|max:255',
             'last_name' => 'nullable|string|max:255',
             'email' => 'required|email|max:255',
+            'country' => 'nullable|string|max:255',
+            'country_code' => 'nullable|string|max:20',
             'phone' => 'nullable|string|max:50',
             'company' => 'nullable|string|max:500',
             'title' => 'nullable|string|max:500',
