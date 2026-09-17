@@ -25,15 +25,23 @@
 </div>
 
 <div class="sb-nav-bar">
-    <div class="sb-nav-container">
-        <button class="sb-nav-pill active" data-filter="all" onclick="filterBlog(event, 'all', this)">
-            All Posts
+    <div class="sb-nav-wrapper">
+        <button type="button" class="sb-nav-arrow sb-nav-arrow-left" aria-label="Previous" onclick="scrollNavSlider(this, -1)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
         </button>
-        @foreach($categories as $category)
-            <button class="sb-nav-pill" data-filter="{{ $category->id }}" onclick="filterBlog(event, '{{ $category->id }}', this)">
-                {{ $category->name }}
+        <div class="sb-nav-container">
+            <button class="sb-nav-pill active" data-filter="all" onclick="filterBlog(event, 'all', this)">
+                All Posts
             </button>
-        @endforeach
+            @foreach($categories as $category)
+                <button class="sb-nav-pill" data-filter="{{ $category->id }}" onclick="filterBlog(event, '{{ $category->id }}', this)">
+                    {{ $category->name }}
+                </button>
+            @endforeach
+        </div>
+        <button type="button" class="sb-nav-arrow sb-nav-arrow-right" aria-label="Next" onclick="scrollNavSlider(this, 1)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
     </div>
 </div>
 

@@ -86,53 +86,73 @@
     
     <div class="values-grid">
         <div class="value-card animate-fade-up">
-            <div class="value-icon"><i class="fa-solid fa-shield-halved"></i></div>
-            <h4>Integrity</h4>
+            <div class="value-card-header">
+                <div class="value-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h4>Integrity</h4>
+            </div>
             <p>We do what's right, even when no one is watching.</p>
         </div>
         <div class="value-card animate-fade-up" style="animation-delay: 0.1s;">
-            <div class="value-icon"><i class="fa-regular fa-lightbulb"></i></div>
-            <h4>Innovation</h4>
+            <div class="value-card-header">
+                <div class="value-icon"><i class="fa-regular fa-lightbulb"></i></div>
+                <h4>Innovation</h4>
+            </div>
             <p>We turn complexity into smart, scalable solutions.</p>
         </div>
         <div class="value-card animate-fade-up" style="animation-delay: 0.2s;">
-            <div class="value-icon"><i class="fa-solid fa-handshake-angle"></i></div>
-            <h4>Partnership</h4>
+            <div class="value-card-header">
+                <div class="value-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+                <h4>Partnership</h4>
+            </div>
             <p>We win only when our clients win.</p>
         </div>
         <div class="value-card animate-fade-up" style="animation-delay: 0.3s;">
-            <div class="value-icon"><i class="fa-solid fa-bullseye"></i></div>
-            <h4>Excellence</h4>
+            <div class="value-card-header">
+                <div class="value-icon"><i class="fa-solid fa-bullseye"></i></div>
+                <h4>Excellence</h4>
+            </div>
             <p>ISO-certified standards in everything we deliver.</p>
         </div>
         <div class="value-card animate-fade-up" style="animation-delay: 0.4s;">
-            <div class="value-icon"><i class="fa-solid fa-globe"></i></div>
-            <h4>Diversity</h4>
+            <div class="value-card-header">
+                <div class="value-icon"><i class="fa-solid fa-globe"></i></div>
+                <h4>Diversity</h4>
+            </div>
             <p>69 nationalities, one shared standard of quality.</p>
         </div>
         <div class="value-card animate-fade-up" style="animation-delay: 0.5s;">
-            <div class="value-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
-            <h4>Impact</h4>
+            <div class="value-card-header">
+                <div class="value-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+                <h4>Impact</h4>
+            </div>
             <p>We measure success by the outcomes we create.</p>
         </div>
         <div class="value-card animate-fade-up" style="animation-delay: 0.6s;">
-            <div class="value-icon"><i class="fa-solid fa-bolt"></i></div>
-            <h4>Agility</h4>
+            <div class="value-card-header">
+                <div class="value-icon"><i class="fa-solid fa-bolt"></i></div>
+                <h4>Agility</h4>
+            </div>
             <p>We move fast to embrace change and new opportunities.</p>
         </div>
         <div class="value-card animate-fade-up" style="animation-delay: 0.7s;">
-            <div class="value-icon"><i class="fa-solid fa-clipboard-check"></i></div>
-            <h4>Accountability</h4>
+            <div class="value-card-header">
+                <div class="value-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+                <h4>Accountability</h4>
+            </div>
             <p>We take full ownership of our actions and outcomes.</p>
         </div>
         <div class="value-card animate-fade-up" style="animation-delay: 0.8s;">
-            <div class="value-icon"><i class="fa-regular fa-heart"></i></div>
-            <h4>Customer Focus</h4>
+            <div class="value-card-header">
+                <div class="value-icon"><i class="fa-regular fa-heart"></i></div>
+                <h4>Customer Focus</h4>
+            </div>
             <p>Putting the needs of our clients at the center of all we do.</p>
         </div>
         <div class="value-card animate-fade-up" style="animation-delay: 0.9s;">
-            <div class="value-icon"><i class="fa-solid fa-book-open-reader"></i></div>
-            <h4>Continuous Learning</h4>
+            <div class="value-card-header">
+                <div class="value-icon"><i class="fa-solid fa-book-open-reader"></i></div>
+                <h4>Continuous Learning</h4>
+            </div>
             <p>We never stop growing, exploring, and adapting to the future.</p>
         </div>
     </div>

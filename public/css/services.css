@@ -141,28 +141,47 @@
     background: white;
     border-radius: 12px;
     border: 1px solid #eaeaea;
-    padding: 26px 20px;
+    padding: 24px 20px;
     text-align: left;
     transition: transform 0.3s, box-shadow 0.3s;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    box-sizing: border-box;
 }
 .service-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.05);
     border-color: transparent;
 }
-.service-icon {
-    font-size: 1.85rem;
-    color: #3b71ca;
-    margin-bottom: 16px;
+.service-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    width: 100%;
 }
-.service-card h3 {
+.service-card-header .service-icon {
+    font-size: 1.75rem;
+    color: #3b71ca;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.service-card-icon-img {
+    max-width: 32px;
+    max-height: 32px;
+    object-fit: contain;
+    flex-shrink: 0;
+    display: block;
+}
+.service-card-header h3 {
     font-size: 1.15rem;
     color: #22456E;
-    margin-bottom: 10px;
+    margin: 0;
     font-weight: 700;
     line-height: 1.35;
 }
@@ -170,6 +189,7 @@
     font-size: 0.92rem;
     color: #777;
     line-height: 1.5;
+    margin: 0;
 }
 .cta-section {
     background: linear-gradient(135deg, #4b7bb3 0%, #3a5c9a 100%);

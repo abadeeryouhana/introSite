@@ -24,15 +24,23 @@
 </div>
 
 <div class="sb-nav-bar">
-    <div class="sb-nav-container">
-        <a href="#all" class="sb-nav-pill active" onclick="setActiveSector(event, 'all', this)">
-            All Brands
-        </a>
-        @foreach($sectors as $sector)
-            <a href="#sector-{{ $sector->id }}" class="sb-nav-pill" onclick="setActiveSector(event, 'sector-{{ $sector->id }}', this)">
-                {{ $sector->name }}
+    <div class="sb-nav-wrapper">
+        <button type="button" class="sb-nav-arrow sb-nav-arrow-left" aria-label="Previous" onclick="scrollNavSlider(this, -1)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <div class="sb-nav-container">
+            <a href="#all" class="sb-nav-pill active" onclick="setActiveSector(event, 'all', this)">
+                All Brands
             </a>
-        @endforeach
+            @foreach($sectors as $sector)
+                <a href="#sector-{{ $sector->id }}" class="sb-nav-pill" onclick="setActiveSector(event, 'sector-{{ $sector->id }}', this)">
+                    {{ $sector->name }}
+                </a>
+            @endforeach
+        </div>
+        <button type="button" class="sb-nav-arrow sb-nav-arrow-right" aria-label="Next" onclick="scrollNavSlider(this, 1)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
     </div>
 </div>
 

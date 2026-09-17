@@ -80,4 +80,57 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.animate-fade-up, .animate-fade-in, .animate-slide-in').forEach(el => {
         elementObserver.observe(el);
     });
+
+    // Nav Slider Scroll Listeners
+    document.querySelectorAll('.sb-nav-wrapper .sb-nav-container').forEach(container => {
+        container.addEventListener('scroll', updateNavSliderArrows, { passive: true });
+    });
+    window.addEventListener('resize', updateNavSliderArrows, { passive: true });
+    updateNavSliderArrows();
+    setTimeout(updateNavSliderArrows, 300);
 });
+
+// Nav Slider Arrow Navigation
+window.scrollNavSlider = function(button, direction) {
+    const wrapper = button.closest('.sb-nav-wrapper') || button.closest('.sb-nav-bar');
+    if (!wrapper) return;
+    const container = wrapper.querySelector('.sb-nav-container');
+    if (!container) return;
+    
+    const scrollAmount = Math.max(container.clientWidth * 0.5, 220);
+    container.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+    });
+};
+
+function updateNavSliderArrows() {
+    document.querySelectorAll('.sb-nav-wrapper').forEach(wrapper => {
+        const container = wrapper.querySelector('.sb-nav-container');
+        const prevBtn = wrapper.querySelector('.sb-nav-arrow-left');
+        const nextBtn = wrapper.querySelector('.sb-nav-arrow-right');
+        if (!container || !prevBtn || !nextBtn) return;
+        
+        const isScrollable = container.scrollWidth > container.clientWidth + 2;
+        if (!isScrollable) {
+            prevBtn.classList.add('disabled');
+            nextBtn.classList.add('disabled');
+            return;
+        }
+        
+        const scrollLeft = container.scrollLeft;
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        
+        if (scrollLeft <= 4) {
+            prevBtn.classList.add('disabled');
+        } else {
+            prevBtn.classList.remove('disabled');
+        }
+        
+        if (scrollLeft >= maxScroll - 4) {
+            nextBtn.classList.add('disabled');
+        } else {
+            nextBtn.classList.remove('disabled');
+        }
+    });
+}

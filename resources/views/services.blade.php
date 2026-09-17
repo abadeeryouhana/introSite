@@ -27,12 +27,14 @@
     <div class="services-grid">
         @foreach($services as $service)
         <div class="service-card animate-fade-up">
-            @if($service->icon_path)
-                <img src="{{ asset('storage/' . $service->icon_path) }}" alt="{{ $service->title }}" style="max-width: 32px; margin-bottom: 15px; object-fit: contain;">
-            @else
-                <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="32" height="32"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
-            @endif
-            <h3>{{ $service->title }}</h3>
+            <div class="service-card-header">
+                @if($service->icon_path)
+                    <img src="{{ asset('storage/' . $service->icon_path) }}" alt="{{ $service->title }}" class="service-card-icon-img">
+                @else
+                    <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="28" height="28"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
+                @endif
+                <h3>{{ $service->title }}</h3>
+            </div>
             <p>{{ $service->description }}</p>
         </div>
         @endforeach
