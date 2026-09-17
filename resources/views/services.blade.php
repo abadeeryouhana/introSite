@@ -2,7 +2,7 @@
 
 @section('content')
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/services.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/services.css') }}?v={{ filemtime(public_path('css/services.css')) }}">
 @endpush
 
 <div class="sb-hero">
@@ -36,6 +36,35 @@
             <p>{{ $service->description }}</p>
         </div>
         @endforeach
+    </div>
+</div>
+
+<!-- INDUSTRIES SERVED BANNER -->
+<div class="industries-banner">
+    <div class="industries-container animate-fade-up">
+        <p class="industries-text">
+            <strong class="industries-highlight">Serving 70+ industries</strong>
+            <span class="industries-dash">&mdash;</span>
+            <span class="industry-item">Energy &amp; Oil</span>
+            <span class="industry-dot">&middot;</span>
+            <span class="industry-item">Education</span>
+            <span class="industry-dot">&middot;</span>
+            <span class="industry-item">Technology</span>
+            <span class="industry-dot">&middot;</span>
+            <span class="industry-item">Finance</span>
+            <span class="industry-dot">&middot;</span>
+            <span class="industry-item">Legal</span>
+            <span class="industry-dot">&middot;</span>
+            <span class="industry-item">Healthcare</span>
+            <span class="industry-dot">&middot;</span>
+            <span class="industry-item">Government</span>
+            <span class="industry-dot">&middot;</span>
+            <span class="industry-item">FMCG &amp; Retail</span>
+            <span class="industry-dot">&middot;</span>
+            <span class="industry-item">Media</span>
+            <span class="industry-dot">&middot;</span>
+            <span class="industry-item">Real Estate &amp; more</span>
+        </p>
     </div>
 </div>
 

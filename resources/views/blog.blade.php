@@ -38,24 +38,26 @@
 </div>
 
 <div class="blog-section" style="background-color: #f8f9fa;">
-    @if($blogs->count() > 0)
-        <div class="blog-grid">
-            @foreach($blogs as $blog)
-                <a href="{{ route('blog.details', $blog->id) }}" class="blog-card blog-item animate-fade-up" data-category-id="{{ $blog->category ? $blog->category->id : 'none' }}">
-                    <div class="blog-image" style="background-image: url('{{ $blog->image ? asset('storage/' . $blog->image) : '' }}');"></div>
-                    <div class="blog-content">
-                        <div class="blog-category-tag">{{ $blog->category ? $blog->category->name : 'Uncategorized' }}</div>
-                        <h3 class="blog-card-title">{{ $blog->title }}</h3>
-                        <div class="blog-date">{{ $blog->created_at->format('M d, Y') }}</div>
-                    </div>
-                </a>
-            @endforeach
-        </div>
-    @else
-        <div style="text-align: center; padding: 50px;">
-            <h3 style="color: #555; font-weight: 600;">No blogs available yet.</h3>
-        </div>
-    @endif
+    <div class="blog-container">
+        @if($blogs->count() > 0)
+            <div class="blog-grid">
+                @foreach($blogs as $blog)
+                    <a href="{{ route('blog.details', $blog->id) }}" class="blog-card blog-item animate-fade-up" data-category-id="{{ $blog->category ? $blog->category->id : 'none' }}">
+                        <div class="blog-image" style="background-image: url('{{ $blog->image ? asset('storage/' . $blog->image) : '' }}');"></div>
+                        <div class="blog-content">
+                            <div class="blog-category-tag">{{ $blog->category ? $blog->category->name : 'Uncategorized' }}</div>
+                            <h3 class="blog-card-title">{{ $blog->title }}</h3>
+                            <div class="blog-date">{{ $blog->created_at->format('M d, Y') }}</div>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+        @else
+            <div style="text-align: center; padding: 50px;">
+                <h3 style="color: #555; font-weight: 600;">No blogs available yet.</h3>
+            </div>
+        @endif
+    </div>
 </div>
 
 @push('scripts')

@@ -38,32 +38,110 @@
 }
 .services-frame {
     background-color: white;
-    padding: 80px 20px;
+    padding: 80px clamp(20px, 4vw, 60px);
+    width: 100%;
     margin: 0 auto;
     position: relative;
+    box-sizing: border-box;
 }
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    max-width: 1200px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
+    box-sizing: border-box;
 }
-@media (max-width: 900px) {
+@media (max-width: 1300px) {
     .services-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
     }
 }
-@media (max-width: 600px) {
+@media (max-width: 850px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+}
+@media (max-width: 550px) {
     .services-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+/* Industries Served Banner */
+.industries-banner {
+    width: 100%;
+    background-color: #ebf3fa;
+    border-top: 1px solid #dce7f3;
+    border-bottom: 1px solid #dce7f3;
+    padding: 26px clamp(20px, 4vw, 60px);
+    box-sizing: border-box;
+}
+
+.industries-container {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.industries-text {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: #5b6e85;
+}
+
+.industries-highlight {
+    color: #1a2b49;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.industries-dash {
+    color: #7a8fa6;
+    margin: 0 4px;
+}
+
+.industry-item {
+    white-space: nowrap;
+    color: #5b6e85;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.industry-item:hover {
+    color: #1a2b49;
+}
+
+.industry-dot {
+    color: #8fa4bb;
+    margin: 0 6px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+@media (max-width: 768px) {
+    .industries-banner {
+        padding: 20px clamp(15px, 3vw, 30px);
+    }
+    .industries-text {
+        font-size: 0.95rem;
+        line-height: 2;
+    }
+    .industry-dot {
+        margin: 0 4px;
     }
 }
 .service-card {
     background: white;
     border-radius: 12px;
     border: 1px solid #eaeaea;
-    padding: 30px 25px;
+    padding: 26px 20px;
     text-align: left;
     transition: transform 0.3s, box-shadow 0.3s;
     height: 100%;
@@ -77,18 +155,19 @@
     border-color: transparent;
 }
 .service-icon {
-    font-size: 2rem;
+    font-size: 1.85rem;
     color: #3b71ca;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 .service-card h3 {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     color: #22456E;
     margin-bottom: 10px;
     font-weight: 700;
+    line-height: 1.35;
 }
 .service-card p {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     color: #777;
     line-height: 1.5;
 }

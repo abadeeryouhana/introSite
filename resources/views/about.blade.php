@@ -402,6 +402,53 @@
     </div>
 </div>
 
+<!-- CORPORATE SOCIAL RESPONSIBILITY -->
+<div class="csr-section">
+    <div class="csr-header animate-fade-up">
+        <div class="csr-kicker">
+            <span class="csr-kicker-line"></span>
+            <span>GIVING BACK</span>
+        </div>
+        <h2 class="csr-title">Corporate Social Responsibility</h2>
+        <p class="csr-desc">We invest in the communities and talent that shape our region’s future.</p>
+    </div>
+
+    <div class="csr-grid">
+        <!-- Card 1: Academic Research Support -->
+        <div class="csr-card animate-fade-up">
+            <div class="csr-icon-badge">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+            </div>
+            <h3 class="csr-card-title">Academic Research Support</h3>
+            <p class="csr-card-text">Backing higher-education institutions and research programs across the region.</p>
+        </div>
+
+        <!-- Card 2: Learning & Education -->
+        <div class="csr-card animate-fade-up" style="animation-delay: 0.15s;">
+            <div class="csr-icon-badge">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+            </div>
+            <h3 class="csr-card-title">Learning &amp; Education</h3>
+            <p class="csr-card-text">Scholarships and upskilling initiatives that build future talent.</p>
+        </div>
+
+        <!-- Card 3: Community Development -->
+        <div class="csr-card animate-fade-up" style="animation-delay: 0.3s;">
+            <div class="csr-icon-badge">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                </svg>
+            </div>
+            <h3 class="csr-card-title">Community Development</h3>
+            <p class="csr-card-text">Volunteering and social programs that give back where we operate.</p>
+        </div>
+    </div>
+</div>
 @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>

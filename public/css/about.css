@@ -689,3 +689,144 @@
         height: 120px;
     }
 }
+
+/* Corporate Social Responsibility (CSR) Section */
+.csr-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 90px auto;
+    padding: 0 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+.csr-header {
+    margin-bottom: 45px;
+    text-align: left;
+}
+
+.csr-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #3b71ca;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+
+.csr-kicker-line {
+    display: inline-block;
+    width: 24px;
+    height: 2px;
+    background-color: #3b71ca;
+    border-radius: 2px;
+}
+
+.csr-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #22456e;
+    margin: 0 0 16px;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+.csr-desc {
+    color: #64748b;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.csr-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.csr-card {
+    background: #ffffff;
+    border: 1px solid #e8edf4;
+    border-radius: 20px;
+    padding: 38px 32px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.csr-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px rgba(34, 69, 110, 0.08);
+    border-color: #cbd5e1;
+}
+
+.csr-icon-badge {
+    width: 54px;
+    height: 54px;
+    background-color: #eafaf1;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+    color: #198754;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.csr-card:hover .csr-icon-badge {
+    transform: scale(1.06);
+    background-color: #dcfce7;
+}
+
+.csr-icon-badge svg {
+    width: 24px;
+    height: 24px;
+}
+
+.csr-card-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #22456e;
+    margin: 0 0 12px;
+    line-height: 1.3;
+}
+
+.csr-card-text {
+    color: #64748b;
+    font-size: 1.02rem;
+    line-height: 1.65;
+    margin: 0;
+}
+
+@media (max-width: 992px) {
+    .csr-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    .csr-title {
+        font-size: 2.3rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .csr-section {
+        margin: 55px auto;
+    }
+    .csr-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .csr-card {
+        padding: 30px 24px;
+    }
+    .csr-title {
+        font-size: 1.9rem;
+    }
+    .csr-desc {
+        font-size: 1.05rem;
+    }
+}

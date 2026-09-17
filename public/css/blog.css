@@ -1,9 +1,18 @@
 /* Blog Section on Homepage & Blog Listing Page */
 .blog-section {
-    padding: 80px 0;
+    padding: 60px 0 80px;
     background-color: #ffffff;
     width: 100%;
     margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.blog-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .blog-section-header {
@@ -34,17 +43,21 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 992px) {
     .blog-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
 }
 
 @media (max-width: 600px) {
     .blog-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
 }
 
