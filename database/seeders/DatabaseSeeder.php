@@ -223,6 +223,9 @@ class DatabaseSeeder extends Seeder
         // 15. Countries
         $this->call(CountrySeeder::class);
 
+        // 16. Job Positions
+        $this->call(JobPositionSeeder::class);
+
         \Illuminate\Support\Facades\Schema::enableForeignKeyConstraints();
     }
 }

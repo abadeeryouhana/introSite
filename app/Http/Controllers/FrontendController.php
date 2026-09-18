@@ -13,6 +13,9 @@ use App\Services\BlogCategoryService;
 use App\Services\ClientTestimonialService;
 use App\Services\CaseStudyService;
 use App\Services\CountryService;
+use App\Services\JobPositionService;
+use App\Services\JobApplicationService;
+use Illuminate\Support\Facades\Storage;
 
 class FrontendController extends Controller
 {
@@ -26,6 +29,8 @@ class FrontendController extends Controller
     protected $clientTestimonialService;
     protected $caseStudyService;
     protected $countryService;
+    protected $jobPositionService;
+    protected $jobApplicationService;
 
     public function __construct(
         ClientService $clientService,
@@ -37,7 +42,9 @@ class FrontendController extends Controller
         BlogCategoryService $blogCategoryService,
         ClientTestimonialService $clientTestimonialService,
         CaseStudyService $caseStudyService,
-        CountryService $countryService
+        CountryService $countryService,
+        JobPositionService $jobPositionService,
+        JobApplicationService $jobApplicationService
     ) {
         $this->clientService = $clientService;
         $this->sectorService = $sectorService;
@@ -49,6 +56,8 @@ class FrontendController extends Controller
         $this->clientTestimonialService = $clientTestimonialService;
         $this->caseStudyService = $caseStudyService;
         $this->countryService = $countryService;
+        $this->jobPositionService = $jobPositionService;
+        $this->jobApplicationService = $jobApplicationService;
     }
 
     public function home()
@@ -130,7 +139,33 @@ class FrontendController extends Controller
 
     public function careers()
     {
-        return view('careers');
+        $positions = $this->jobPositionService->getActive();
+        $countries = $this->countryService->getOrdered('name', 'asc');
+        $sectors   = $positions->pluck('sector')->filter()->unique()->values();
+        return view('careers', compact('positions', 'countries', 'sectors'));
+    }
+
+    public function submitCareerApplication(Request $request)
+    {
+        $validated = $request->validate([
+            'full_name'       => 'required|string|max:255',
+            'email'           => 'required|email|max:255',
+            'country'         => 'nullable|string|max:255',
+            'country_code'    => 'nullable|string|max:20',
+            'phone'           => 'nullable|string|max:50',
+            'subject'         => 'required|string|max:255',
+            'message'         => 'nullable|string',
+            'job_position_id' => 'nullable|exists:job_positions,id',
+            'cv'              => 'nullable|file|mimes:pdf,doc,docx|max:5120',
+        ]);
+
+        if ($request->hasFile('cv')) {
+            $validated['cv_path'] = $request->file('cv')->store('cvs', 'public');
+        }
+        unset($validated['cv']);
+
+        $this->jobApplicationService->create($validated);
+        return redirect()->route('careers')->with('success', 'Your application has been submitted successfully. We will be in touch soon!');
     }
 
     public function terms()
