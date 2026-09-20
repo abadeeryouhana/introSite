@@ -156,28 +156,94 @@
     </style>
 </head>
 <body>
-    <nav>
+    <nav class="site-navbar">
         <div class="logo">
-            <a href="{{ route('home') }}" style="display: flex; align-items: center; gap: 12px;">
+            <a href="{{ route('home') }}" class="brand-link">
                 @if(isset($global_settings['site_logo']))
                     <img src="{{ asset('storage/' . $global_settings['site_logo']) }}" alt="{{ $global_settings['site_name'] ?? 'Bayan Group' }} - Digital Innovation & Business Solutions" class="logo">
                 @endif
-                <div style="display: flex; flex-direction: column;">
-                    <h2 style="margin: 0; color: var(--primary-color); font-weight: 800; font-size: 1.6rem; letter-spacing: -0.5px; text-transform: uppercase; line-height: 1.1;">Bayan Group</h2>
-                    <span style="font-size: 0.7rem; color: #666; letter-spacing: 1px; text-transform: uppercase; font-weight: 600;">Digital Innovation & Business Solutions</span>
+                <div class="brand-text">
+                    <h2 class="brand-title">Bayan Group</h2>
+                    <span class="brand-subtitle">Digital Innovation & Business Solutions</span>
                 </div>
             </a>
         </div>
-        <ul style="margin-right: 50px; align-items: center;">
+        <ul class="desktop-nav-links">
             <li><a href="{{ route('about') }}">About Us</a></li>
             <li><a href="{{ route('sectors.brands') }}">Sectors & Brands</a></li>
             <li><a href="{{ route('services.page') }}">Services</a></li>
             <li><a href="{{ route('portfolio') }}">Portfolio</a></li>
             <li><a href="{{ route('blog') }}">Blog</a></li>
             <li><a href="{{ route('careers') }}">Careers</a></li>
-            <li><a href="{{ route('contact') }}" class="btn" style="color: white; border-radius: 30px; padding: 10px 25px;">Contact Us</a></li>
+            <li><a href="{{ route('contact') }}" class="btn nav-cta-btn">Contact Us</a></li>
         </ul>
+        <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileNavDrawer">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
     </nav>
+
+    <!-- Mobile Navigation Drawer Overlay & Panel -->
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
+    <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+        <div class="mobile-nav-header">
+            <div class="logo">
+                <a href="{{ route('home') }}" class="brand-link">
+                    @if(isset($global_settings['site_logo']))
+                        <img src="{{ asset('storage/' . $global_settings['site_logo']) }}" alt="{{ $global_settings['site_name'] ?? 'Bayan Group' }}" class="logo-drawer">
+                    @endif
+                    <div class="brand-text">
+                        <span class="brand-title-drawer">Bayan Group</span>
+                        <span class="brand-subtitle-drawer">Business Solutions</span>
+                    </div>
+                </a>
+            </div>
+            <button type="button" class="mobile-nav-close" id="mobileNavClose" aria-label="Close navigation menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="mobile-nav-body">
+            <ul class="mobile-nav-links">
+                <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}"><i class="fa-solid fa-house"></i> <span>Home</span></a></li>
+                <li><a href="{{ route('about') }}" class="{{ request()->routeIs('about') ? 'active' : '' }}"><i class="fa-solid fa-users"></i> <span>About Us</span></a></li>
+                <li><a href="{{ route('sectors.brands') }}" class="{{ request()->routeIs('sectors.brands') ? 'active' : '' }}"><i class="fa-solid fa-layer-group"></i> <span>Sectors & Brands</span></a></li>
+                <li><a href="{{ route('services.page') }}" class="{{ request()->routeIs('services.page') ? 'active' : '' }}"><i class="fa-solid fa-cubes"></i> <span>Services</span></a></li>
+                <li><a href="{{ route('portfolio') }}" class="{{ request()->routeIs('portfolio') ? 'active' : '' }}"><i class="fa-solid fa-briefcase"></i> <span>Portfolio</span></a></li>
+                <li><a href="{{ route('blog') }}" class="{{ request()->routeIs('blog*') ? 'active' : '' }}"><i class="fa-solid fa-newspaper"></i> <span>Blog</span></a></li>
+                <li><a href="{{ route('careers') }}" class="{{ request()->routeIs('careers') ? 'active' : '' }}"><i class="fa-solid fa-user-plus"></i> <span>Careers</span></a></li>
+            </ul>
+            <div class="mobile-nav-cta">
+                <a href="{{ route('contact') }}" class="btn-mobile-contact">
+                    <i class="fa-solid fa-paper-plane"></i> Contact Us
+                </a>
+            </div>
+            @if(isset($social_links) && $social_links->count() > 0)
+                <div class="mobile-nav-socials">
+                    @foreach($social_links as $link)
+                        @php
+                            $platform = strtolower(trim($link->platform));
+                            $iconMap = [
+                                'facebook'  => 'fa-brands fa-facebook-f',
+                                'instagram' => 'fa-brands fa-instagram',
+                                'x'         => 'fa-brands fa-x-twitter',
+                                'twitter'   => 'fa-brands fa-x-twitter',
+                                'linkedin'  => 'fa-brands fa-linkedin-in',
+                                'youtube'   => 'fa-brands fa-youtube',
+                                'tiktok'    => 'fa-brands fa-tiktok',
+                                'snapchat'  => 'fa-brands fa-snapchat',
+                                'telegram'  => 'fa-brands fa-telegram',
+                                'whatsapp'  => 'fa-brands fa-whatsapp',
+                                'github'    => 'fa-brands fa-github',
+                            ];
+                            $iconClass = $iconMap[$platform] ?? ('fa-brands fa-' . $platform);
+                        @endphp
+                        <a href="{{ $link->url }}" target="_blank" rel="noopener noreferrer" title="{{ $link->platform }}"><i class="{{ $iconClass }}"></i></a>
+                    @endforeach
+                </div>
+            @endif
+        </div>
+    </div>
 
     <main style="flex: 1; display: flex; flex-direction: column;">
         @yield('content')
@@ -312,6 +378,64 @@
         </div>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtn = document.getElementById('mobileNavToggle');
+            const drawer = document.getElementById('mobileNavDrawer');
+            const backdrop = document.getElementById('mobileNavBackdrop');
+            const closeBtn = document.getElementById('mobileNavClose');
+
+            function openDrawer() {
+                if (!drawer || !backdrop) return;
+                drawer.classList.add('open');
+                backdrop.classList.add('show');
+                drawer.setAttribute('aria-hidden', 'false');
+                if (toggleBtn) {
+                    toggleBtn.classList.add('active');
+                    toggleBtn.setAttribute('aria-expanded', 'true');
+                }
+                document.body.classList.add('drawer-locked');
+            }
+
+            function closeDrawer() {
+                if (!drawer || !backdrop) return;
+                drawer.classList.remove('open');
+                backdrop.classList.remove('show');
+                drawer.setAttribute('aria-hidden', 'true');
+                if (toggleBtn) {
+                    toggleBtn.classList.remove('active');
+                    toggleBtn.setAttribute('aria-expanded', 'false');
+                }
+                document.body.classList.remove('drawer-locked');
+            }
+
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function() {
+                    if (drawer && drawer.classList.contains('open')) {
+                        closeDrawer();
+                    } else {
+                        openDrawer();
+                    }
+                });
+            }
+
+            if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+            if (backdrop) backdrop.addEventListener('click', closeDrawer);
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && drawer && drawer.classList.contains('open')) {
+                    closeDrawer();
+                }
+            });
+
+            // Close on drawer link click
+            if (drawer) {
+                drawer.querySelectorAll('.mobile-nav-links a, .btn-mobile-contact').forEach(function(link) {
+                    link.addEventListener('click', closeDrawer);
+                });
+            }
+        });
+    </script>
     @stack('scripts')
     <script src="{{ asset('js/animations.js') }}"></script>
     <script src="{{ asset('js/modal.js') }}"></script>

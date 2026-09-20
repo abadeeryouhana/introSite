@@ -351,3 +351,119 @@ tr:hover td {
 .alert {
     display: none; 
 }
+
+/* =========================================
+   Mobile Navigation & Responsive Styles
+   ========================================= */
+.admin-sidebar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: var(--admin-text-dark);
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.admin-sidebar-toggle:hover {
+    background-color: var(--admin-light);
+}
+
+.admin-sidebar-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(14, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 999;
+}
+
+.admin-sidebar-backdrop.active {
+    display: block;
+}
+
+/* Responsive Table Wrapper */
+.card {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+table {
+    min-width: 580px;
+}
+
+@media (max-width: 992px) {
+    .admin-sidebar-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .admin-sidebar {
+        transform: translateX(-100%);
+        box-shadow: 0 0 35px rgba(0, 0, 0, 0.3);
+    }
+
+    .admin-sidebar.open {
+        transform: translateX(0);
+    }
+
+    .admin-main {
+        margin-left: 0;
+        width: 100%;
+        max-width: 100vw;
+    }
+
+    .admin-header {
+        padding: 0 20px;
+    }
+
+    .admin-content {
+        padding: 20px 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .admin-header {
+        padding: 0 14px;
+        height: 60px;
+    }
+
+    .admin-header-title {
+        font-size: 1rem;
+    }
+
+    .admin-welcome-text {
+        display: none;
+    }
+
+    .admin-content {
+        padding: 14px 10px;
+    }
+
+    .card {
+        padding: 18px 14px;
+        border-radius: 6px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .header .btn {
+        width: 100%;
+    }
+
+    th, td {
+        padding: 10px 12px;
+        font-size: 0.88rem;
+    }
+}

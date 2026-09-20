@@ -28,83 +28,73 @@
 </div>
 
 <!-- Statistics Numbers Section -->
-<div class="section achievements-section" style="background-color: transparent; text-align: center; margin-top: -170px; position: relative; z-index: 10;">
-    <div class="achievements-container" style="background: white; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); display: flex; justify-content: center; align-items: center; width: 100%; max-width: 1100px; margin: 0 auto; padding: 40px 0;">
-        
+<div class="section achievements-section">
+    <div class="achievements-container">
         <!-- Stat 1 -->
-        <div class="achievement-item animate-fade-up delay-100" style="text-align: center; flex: 1; padding: 0 10px;">
-            <h3 style="font-size: 2.5rem; font-weight: 800; color: #22456E; margin: 0 0 8px 0;" class="animate-number">23+</h3>
-            <p style="color: #888; font-size: 0.9rem; margin: 0; font-weight: 600;">Years of Growth</p>
+        <div class="achievement-item animate-fade-up delay-100">
+            <h3 class="animate-number">23+</h3>
+            <p>Years of Growth</p>
         </div>
 
-        <div style="width: 1px; height: 70px; background-color: #eaeaea;"></div>
+        <div class="achievement-divider"></div>
 
         <!-- Stat 2 -->
-        <div class="achievement-item animate-fade-up delay-200" style="text-align: center; flex: 1; padding: 0 10px;">
-            <h3 style="font-size: 2.5rem; font-weight: 800; color: #22456E; margin: 0 0 8px 0;" class="animate-number">2,300+</h3>
-            <p style="color: #888; font-size: 0.9rem; margin: 0; font-weight: 600;">Clients Served</p>
+        <div class="achievement-item animate-fade-up delay-200">
+            <h3 class="animate-number">2,300+</h3>
+            <p>Clients Served</p>
         </div>
 
-        <div style="width: 1px; height: 70px; background-color: #eaeaea;"></div>
+        <div class="achievement-divider"></div>
 
         <!-- Stat 3 -->
-        <div class="achievement-item animate-fade-up delay-300" style="text-align: center; flex: 1; padding: 0 10px;">
-            <h3 style="font-size: 2.5rem; font-weight: 800; color: #22456E; margin: 0 0 8px 0;" class="animate-number">200,000+</h3>
-            <p style="color: #888; font-size: 0.9rem; margin: 0; font-weight: 600;">Projects Completed</p>
+        <div class="achievement-item animate-fade-up delay-300">
+            <h3 class="animate-number">200,000+</h3>
+            <p>Projects Completed</p>
         </div>
 
-        <div style="width: 1px; height: 70px; background-color: #eaeaea;"></div>
+        <div class="achievement-divider"></div>
 
         <!-- Stat 4 -->
-        <div class="achievement-item animate-fade-up delay-400" style="text-align: center; flex: 1; padding: 0 10px;">
-            <h3 style="font-size: 2.5rem; font-weight: 800; color: #22456E; margin: 0 0 8px 0;" class="animate-number">40+</h3>
-            <p style="color: #888; font-size: 0.9rem; margin: 0; font-weight: 600;">Countries Reached</p>
+        <div class="achievement-item animate-fade-up delay-400">
+            <h3 class="animate-number">40+</h3>
+            <p>Countries Reached</p>
         </div>
 
-        <div style="width: 1px; height: 70px; background-color: #eaeaea;"></div>
+        <div class="achievement-divider"></div>
 
         <!-- Stat 5 -->
-        <div class="achievement-item animate-fade-up delay-500" style="text-align: center; flex: 1; padding: 0 10px;">
-            <h3 style="font-size: 2.5rem; font-weight: 800; color: #22456E; margin: 0 0 8px 0;" class="animate-number">900+</h3>
-            <p style="color: #888; font-size: 0.9rem; margin: 0; font-weight: 600;">Experts & Vendors</p>
+        <div class="achievement-item animate-fade-up delay-500">
+            <h3 class="animate-number">900+</h3>
+            <p>Experts & Vendors</p>
         </div>
-
     </div>
 </div>
 
-
 <!-- Who we are Section  -->
-<div class="section who-we-are-section" style="background-color: white; padding: 50px 0; position: relative; overflow: hidden;">
+<div class="section who-we-are-section">
     <!-- Background subtle decorations -->
-    <div style="position: absolute; top: -50px; right: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(59,113,202,0.05) 0%, rgba(255,255,255,0) 70%); border-radius: 50%; pointer-events: none;"></div>
-    <div style="position: absolute; bottom: -50px; left: -50px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(59,113,202,0.05) 0%, rgba(255,255,255,0) 70%); border-radius: 50%; pointer-events: none;"></div>
+    <div class="who-we-are-bg-circle-1"></div>
+    <div class="who-we-are-bg-circle-2"></div>
     
-    <div style="max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; gap: 60px; flex-wrap: wrap;">
-        
-        <div style="flex: 1; min-width: 300px; padding-right: 20px;">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
-                <div style="height: 3px; width: 40px; background-color: var(--primary-color, #3b71ca); border-radius: 2px;"></div>
-                <h5 style="color: var(--primary-color, #3b71ca); font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.95rem;">Who We Are</h5>
+    <div class="who-we-are-container">
+        <div class="who-we-are-text-col">
+            <div class="section-tag-row">
+                <div class="section-tag-line"></div>
+                <h5 class="section-tag-title">Who We Are</h5>
             </div>
             
-            <h3 style="font-size: 2.8rem; font-weight: 800; color: #22456E; margin-bottom: 30px; line-height: 1.25;">An Integrated Solution Engine</h3>
+            <h3 class="who-we-are-title">An Integrated Solution Engine</h3>
             
-            <p style="color: #555; font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
+            <p class="who-we-are-desc">
                 We are a dynamic and forward-thinking organization dedicated to empowering businesses through cutting-edge technology and innovative strategies.
             </p>
-
-
         </div>
 
-        <div style="flex: 1; min-width: 300px; display: flex; justify-content: center; position: relative;">
-            <div style="position: relative; z-index: 2; width: 300px;">
-                <img src="{{ asset('images/who_we_are.png') }}" alt="Who We Are" style="width: 400px; height: 300px; border-radius: 20px; box-shadow: 0 25px 50px rgba(0,0,0,0.15); object-fit: cover;">
+        <div class="who-we-are-image-col">
+            <div class="who-we-are-img-wrapper">
+                <img src="{{ asset('images/who_we_are.png') }}" alt="Who We Are" class="who-we-are-img">
             </div>
-            <!-- Decorative Elements behind image -->
-            <!-- <div style="position: absolute; width: 300px; height: 300px; border: 3px solid var(--primary-color, #3b71ca); border-radius: 20px; top: 20px; right: -20px; z-index: 1; opacity: 0.15;"></div> -->
-            <!-- <div style="position: absolute; width: 100px; height: 100px; background-color: var(--primary-color, #3b71ca); border-radius: 50%; bottom: -30px; left: -30px; z-index: 3; opacity: 0.1;"></div> -->
         </div>
-
     </div>
 </div>
 
@@ -250,12 +240,12 @@
 <div class="section partners-section" style="background-color: #e2ebf3; padding: 60px 0; margin: 80px 0; font-family: 'Inter', sans-serif;">
     <div style="max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 20px; display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 40px; text-align: left;">
         <!-- Left Content -->
-        <div style="flex: 1; min-width: 300px; max-width: 550px;">
+        <div style="flex: 1; min-width: min(100%, 300px); max-width: 550px;">
             <div style="display: inline-block; border-top: 1px solid #3b71ca; border-bottom: 1px solid #3b71ca; padding: 5px 0; margin-bottom: 25px;">
                 <h5 style="color: #3b71ca; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">CERTIFIED PARTNERS</h5>
             </div>
             
-            <h2 style="font-size: 3.2rem; font-weight: 800; color: #22456E; margin-bottom: 25px; line-height: 1.15; letter-spacing: -1px;">Powered by Zoho &<br>Odoo.</h2>
+            <h2 class="partners-title">Powered by Zoho &<br>Odoo.</h2>
             
             <p style="color: #66768f; font-size: 1.15rem; line-height: 1.6; margin-bottom: 40px;">Bayan Technology is a certified partner for the world's two leading business platforms &mdash; delivering implementation, customization, support, and training end-to-end.</p>
             
@@ -263,7 +253,7 @@
         </div>
         
         <!-- Right Content (Logos) -->
-        <div style="flex: 1; min-width: 300px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+        <div class="partners-grid-logos">
             <div style="background: white; border-radius: 12px; height: 140px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                 <img src="{{ asset('images/zoho-logo.svg') }}" alt="Zoho Enterprise Partner" style="max-width: 70%; max-height: 60px; object-fit: contain;">
             </div>
@@ -280,7 +270,6 @@
     </div>
 </div>
 
-
 <!-- Case Studies / Portfolio Section -->
 <div class="section portfolio-section" style="background-color: white; padding: 80px 0; font-family: 'Inter', sans-serif;">
     <div style="max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 20px;">
@@ -288,7 +277,7 @@
             <div style="height: 2px; width: 40px; background-color: var(--primary-color, #22456E);"></div>
             <h5 style="color: var(--primary-color, #22456E); font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.95rem;">PORTFOLIO</h5>
         </div>
-        <h2 style="font-size: 3.2rem; font-weight: 800; color: #22456E; margin-bottom: 50px; line-height: 1.15; letter-spacing: -1px; text-align: left;">A powerful portfolio.</h2>
+        <h2 class="section-big-title">A powerful portfolio.</h2>
 
         <div class="portfolio-grid">
             @foreach($caseStudies as $caseStudy)
@@ -344,7 +333,7 @@
             <div style="height: 2px; width: 40px; background-color: var(--primary-color, #22456E);"></div>
             <h5 style="color: var(--primary-color, #22456E); font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.95rem;">OUR CLIENTS</h5>
         </div>
-        <h2 style="font-size: 2.8rem; font-weight: 800; color: #22456E; margin-bottom: 20px; letter-spacing: -0.5px; text-align: left;">Trusted by 2,300+ organizations in 40+ countries.</h2>
+        <h2 class="section-big-title">Trusted by 2,300+ organizations in 40+ countries.</h2>
     </div>
 
     <!-- Animated Slider Marquee -->
@@ -408,7 +397,7 @@
             <div style="height: 2px; width: 40px; background-color: var(--primary-color, #22456E);"></div>
             <h5 style="color: var(--primary-color, #22456E); font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.95rem;">IN THEIR WORDS</h5>
         </div>
-        <h2 style="font-size: 2.8rem; font-weight: 800; color: #22456E; margin-bottom: 20px; letter-spacing: -0.5px; text-align: left;">Some Of Our Clients' Testimonials</h2>
+        <h2 class="section-big-title">Some Of Our Clients' Testimonials</h2>
         <p style="color: #66768f; font-size: 1.15rem; line-height: 1.6; text-align: left;">Why organizations across 40+ countries keep choosing Bayan Group</p>
     </div>
 

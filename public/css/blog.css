@@ -33,7 +33,7 @@
 }
 
 .blog-section-title {
-    font-size: 2.8rem;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
     font-weight: 800;
     color: #1a365d;
     margin-bottom: 0;
@@ -58,6 +58,12 @@
     .blog-grid {
         grid-template-columns: 1fr;
         gap: 20px;
+    }
+    .blog-section {
+        padding: 40px 0 60px;
+    }
+    .blog-section-header {
+        margin-bottom: 24px;
     }
 }
 
@@ -103,7 +109,7 @@
 }
 
 .blog-card-title {
-    font-size: 1.25rem;
+    font-size: clamp(1.1rem, 1.5vw, 1.25rem);
     font-weight: 800;
     color: #1a365d;
     line-height: 1.4;
@@ -120,7 +126,7 @@
 /* Blog Details Page */
 .blog-details-hero {
     background-color: #102640;
-    padding: 120px 20px 80px;
+    padding: clamp(70px, 9vw, 120px) 20px clamp(40px, 6vw, 80px);
     text-align: center;
     color: white;
 }
@@ -136,9 +142,9 @@
 }
 
 .blog-details-hero h1 {
-    font-size: 3.5rem;
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
     font-weight: 800;
-    line-height: 1.2;
+    line-height: 1.25;
     max-width: 900px;
     margin: 0 auto 20px;
 }
@@ -150,7 +156,8 @@
 
 .blog-details-image {
     max-width: 1000px;
-    margin: -50px auto 40px;
+    width: calc(100% - 32px);
+    margin: -40px auto 40px;
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
@@ -160,6 +167,7 @@
 
 .blog-details-image img {
     width: 100%;
+    height: auto;
     display: block;
 }
 
@@ -186,6 +194,7 @@
 
 .blog-details-content img {
     max-width: 100%;
+    height: auto;
     border-radius: 8px;
     margin: 30px 0;
 }
@@ -200,4 +209,21 @@
     background: #f8f9fa;
     padding: 20px;
     border-radius: 0 8px 8px 0;
+}
+
+@media (max-width: 768px) {
+    .blog-details-image {
+        margin: -25px auto 30px;
+        border-radius: 12px;
+    }
+    .blog-details-content {
+        font-size: 1.02rem;
+        line-height: 1.7;
+        margin-bottom: 50px;
+    }
+    .blog-details-content blockquote {
+        font-size: 1.15rem;
+        padding: 16px;
+        margin: 25px 0;
+    }
 }

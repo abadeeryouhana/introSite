@@ -2,7 +2,7 @@
 .sb-hero {
     background: linear-gradient(110deg, #102640 0%, #30659b 100%);
     color: white;
-    padding: 100px 20px 80px;
+    padding: clamp(60px, 9vw, 100px) 20px clamp(45px, 7vw, 80px);
     position: relative;
     overflow: hidden;
 }
@@ -17,7 +17,7 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 600;
-    margin-bottom: 30px;
+    margin-bottom: clamp(15px, 3vw, 30px);
     color: rgba(255,255,255,0.8);
 }
 .sb-breadcrumb span {
@@ -27,8 +27,8 @@
     display: inline-flex;
     align-items: center;
     gap: 15px;
-    margin-bottom: 25px;
-    font-size: 0.9rem;
+    margin-bottom: 20px;
+    font-size: clamp(0.8rem, 1.2vw, 0.9rem);
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -41,10 +41,10 @@
     background-color: white;
 }
 .sb-title {
-    font-size: 3.5rem;
+    font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 800;
     line-height: 1.2;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     max-width: 800px;
     color: white;
 }
@@ -52,7 +52,7 @@
     color: #8cb6d8;
 }
 .sb-desc {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
     line-height: 1.6;
     color: rgba(255,255,255,0.9);
     max-width: 600px;
@@ -407,4 +407,44 @@
     line-height: 1.7;
     font-size: 1.05rem;
     margin: 0;
+}
+
+@media (max-width: 600px) {
+    .cs-modal-content {
+        width: 94%;
+        max-height: 92vh;
+        border-radius: 12px;
+    }
+    .cs-modal-header {
+        height: 200px;
+        padding: 20px 16px;
+    }
+    .cs-modal-title-wrapper h2 {
+        font-size: 1.45rem;
+        margin-bottom: 6px;
+    }
+    .cs-modal-title-wrapper p {
+        font-size: 0.92rem;
+    }
+    .cs-modal-body {
+        padding: 24px 16px;
+    }
+    .cs-modal-section {
+        margin-bottom: 20px;
+    }
+    .cs-modal-section h4 {
+        font-size: 1.05rem;
+        margin-bottom: 10px;
+    }
+    .cs-modal-section p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    .cs-modal-close {
+        top: 12px;
+        right: 12px;
+        width: 34px;
+        height: 34px;
+        font-size: 1rem;
+    }
 }

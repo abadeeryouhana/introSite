@@ -19,8 +19,11 @@
 </head>
 <body>
 
+    <!-- Sidebar Backdrop for Mobile -->
+    <div class="admin-sidebar-backdrop" id="adminSidebarBackdrop"></div>
+
     <!-- Sidebar -->
-    <div class="admin-sidebar">
+    <div class="admin-sidebar" id="adminSidebar">
         <div class="sidebar-header">
             <h2>Bayan Group</h2>
         </div>
@@ -69,12 +72,17 @@
     <!-- Main Content -->
     <div class="admin-main">
         <header class="admin-header">
-            <div class="admin-header-title">
-                Dashboard
+            <div class="admin-header-left" style="display: flex; align-items: center; gap: 12px;">
+                <button type="button" class="admin-sidebar-toggle" id="adminSidebarToggle" aria-label="Toggle sidebar menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="admin-header-title">
+                    Dashboard
+                </div>
             </div>
             <div class="admin-header-actions">
-                <span>Welcome, {{ auth()->user()->name ?? 'Admin' }}</span>
-                <div style="width: 35px; height: 35px; background: var(--admin-primary); border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                <span class="admin-welcome-text">Welcome, {{ auth()->user()->name ?? 'Admin' }}</span>
+                <div style="width: 35px; height: 35px; background: var(--admin-primary); border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">
                     {{ substr(auth()->user()->name ?? 'A', 0, 1) }}
                 </div>
             </div>
@@ -89,6 +97,35 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     
     <script>
+        // Mobile Sidebar Toggle
+        const adminSidebar = document.getElementById('adminSidebar');
+        const adminSidebarToggle = document.getElementById('adminSidebarToggle');
+        const adminSidebarBackdrop = document.getElementById('adminSidebarBackdrop');
+
+        function toggleSidebar(open) {
+            if (!adminSidebar || !adminSidebarBackdrop) return;
+            const isOpen = open !== undefined ? open : !adminSidebar.classList.contains('open');
+            adminSidebar.classList.toggle('open', isOpen);
+            adminSidebarBackdrop.classList.toggle('active', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        }
+
+        if (adminSidebarToggle) {
+            adminSidebarToggle.addEventListener('click', function() {
+                toggleSidebar();
+            });
+        }
+        if (adminSidebarBackdrop) {
+            adminSidebarBackdrop.addEventListener('click', function() {
+                toggleSidebar(false);
+            });
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && adminSidebar && adminSidebar.classList.contains('open')) {
+                toggleSidebar(false);
+            }
+        });
+
         // Sidebar Search Functionality
         document.getElementById('sidebarSearch').addEventListener('keyup', function() {
             let filter = this.value.toLowerCase();
