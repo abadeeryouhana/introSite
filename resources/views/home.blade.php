@@ -234,7 +234,7 @@
             @endforeach
         </div>
     </div>
-
+</div>
 
 <!-- Partners Section -->
 <div class="section partners-section" style="background-color: #e2ebf3; padding: 60px 0; margin: 80px 0; font-family: 'Inter', sans-serif;">
