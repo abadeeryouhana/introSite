@@ -245,7 +245,7 @@
                 <h5 style="color: #3b71ca; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">CERTIFIED PARTNERS</h5>
             </div>
             
-            <h2 class="partners-title">Powered by Zoho &<br>Odoo.</h2>
+            <h2 class="partners-title" style="text-align: left;">Powered by Zoho &<br>Odoo.</h2>
             
             <p style="color: #66768f; font-size: 1.15rem; line-height: 1.6; margin-bottom: 40px;">Bayan Technology is a certified partner for the world's two leading business platforms &mdash; delivering implementation, customization, support, and training end-to-end.</p>
             
@@ -277,7 +277,7 @@
             <div style="height: 2px; width: 40px; background-color: var(--primary-color, #22456E);"></div>
             <h5 style="color: var(--primary-color, #22456E); font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.95rem;">PORTFOLIO</h5>
         </div>
-        <h2 class="section-big-title">A powerful portfolio.</h2>
+        <h2 class="section-big-title" style="text-align: left;">A powerful portfolio.</h2>
 
         <div class="portfolio-grid">
             @foreach($caseStudies as $caseStudy)
@@ -333,7 +333,7 @@
             <div style="height: 2px; width: 40px; background-color: var(--primary-color, #22456E);"></div>
             <h5 style="color: var(--primary-color, #22456E); font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.95rem;">OUR CLIENTS</h5>
         </div>
-        <h2 class="section-big-title">Trusted by 2,300+ organizations in 40+ countries.</h2>
+        <h2 class="section-big-title" style="text-align: left;">Trusted by 2,300+ organizations in 40+ countries.</h2>
     </div>
 
     <!-- Animated Slider Marquee -->
@@ -397,7 +397,7 @@
             <div style="height: 2px; width: 40px; background-color: var(--primary-color, #22456E);"></div>
             <h5 style="color: var(--primary-color, #22456E); font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.95rem;">IN THEIR WORDS</h5>
         </div>
-        <h2 class="section-big-title">Some Of Our Clients' Testimonials</h2>
+        <h2 class="section-big-title" style="text-align: left;">Some Of Our Clients' Testimonials</h2>
         <p style="color: #66768f; font-size: 1.15rem; line-height: 1.6; text-align: left;">Why organizations across 40+ countries keep choosing Bayan Group</p>
     </div>
 
@@ -448,7 +448,7 @@
     
     @if(isset($latestBlogs) && $latestBlogs->count() > 0)
     <div class="blog-grid">
-        @foreach($latestBlogs as $blog)
+        @foreach($latestBlogs->take(3) as $blog)
         <a href="{{ route('blog.details', $blog->id) }}" class="blog-card">
             <div class="blog-image" style="background-image: url('{{ $blog->image ? asset('storage/' . $blog->image) : '' }}');"></div>
             <div class="blog-content">
@@ -458,6 +458,10 @@
             </div>
         </a>
         @endforeach
+    </div>
+
+    <div style="text-align: center; margin-top: 60px;">
+        <a href="{{ route('blog') }}" style="background-color: #3b71ca; color: white; padding: 14px 40px; border-radius: 30px; font-weight: 600; text-decoration: none; display: inline-block; transition: background 0.3s, transform 0.3s; font-size: 1.05rem; box-shadow: 0 8px 20px rgba(59, 113, 202, 0.25);" onmouseover="this.style.backgroundColor='#285ba3'; this.style.transform='translateY(-3px)'" onmouseout="this.style.backgroundColor='#3b71ca'; this.style.transform='translateY(0)'">View Full Blog &rarr;</a>
     </div>
     @else
         <p style="color: #666;">No blogs published yet.</p>

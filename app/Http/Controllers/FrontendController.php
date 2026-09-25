@@ -66,7 +66,7 @@ class FrontendController extends Controller
         $services = $this->appServiceService->getOrdered('order', 'asc', 10);
         $clients = $this->clientService->getOrdered('order', 'asc');
         $caseStudies = $this->caseStudyService->getOrdered('order', 'asc', 4, ['sector']);
-        $latestBlogs = $this->blogService->getLatest(4, ['category']);
+        $latestBlogs = $this->blogService->getLatest(3, ['category']);
         $testimonials = $this->clientTestimonialService->getLatest(null, ['client']);
         return view('home', compact('sectors', 'services', 'clients', 'caseStudies', 'latestBlogs', 'testimonials'));
     }

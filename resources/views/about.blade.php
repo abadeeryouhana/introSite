@@ -54,7 +54,7 @@
         </div>
         <div class="chairman-right animate-fade-up" style="animation-delay: 0.2s;">
             <div class="chairman-subtitle">CHAIRMAN'S WORD</div>
-            <div class="chairman-quote">"Building a legacy of excellence through innovation and dedicated partnership."</div>
+            <div class="chairman-quote">“Building a legacy of excellence through innovation and dedicated partnership.”</div>
             <p class="chairman-text">Since our inception, Bayan Group has been driven by a singular vision: to empower organizations with the tools, strategies, and talent they need to thrive in a dynamic world. Our journey from a local studio to a global group is a testament to the trust our clients place in us.</p>
             <div class="chairman-name"> Dr. Muhammad Fadel</div>
             <div class="chairman-title">Chairman & Managing Director</div>
@@ -325,7 +325,7 @@
 <!-- LEADERSHIP TEAM -->
 <div class="leadership-section">
     <div class="leadership-container">
-        <div class="leadership-header animate-fade-up">
+        <div class="leadership-header animate-fade-up" style="text-align: center;">
             <div class="leadership-subtitle">LEADERSHIP</div>
             <h2 class="leadership-title">The people behind the group.</h2>
         </div>
@@ -379,7 +379,7 @@
 
 <!-- Testimonials Section -->
 <div class="section testimonials-section" style="background-color: white; padding: 80px 0; font-family: 'Inter', sans-serif;">
-    <div style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; margin-bottom: 50px; text-align: left;">
+    <div style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; margin-bottom: 50px; text-align: center;">
         <div style="display: inline-block; border-top: 1px solid #3b71ca; border-bottom: 1px solid #3b71ca; padding: 5px 0; margin-bottom: 25px;">
             <h5 style="color: #3b71ca; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem;">IN THEIR WORDS</h5>
         </div>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 16" width="24" height="16">
+  <!-- 13 stripes -->
+  <rect width="24" height="16" fill="#b22234"/>
+  <rect y="1.23" width="24" height="1.23" fill="#ffffff"/>
+  <rect y="3.69" width="24" height="1.23" fill="#ffffff"/>
+  <rect y="6.15" width="24" height="1.23" fill="#ffffff"/>
+  <rect y="8.61" width="24" height="1.23" fill="#ffffff"/>
+  <rect y="11.07" width="24" height="1.23" fill="#ffffff"/>
+  <rect y="13.53" width="24" height="1.23" fill="#ffffff"/>
+  <!-- Canton -->
+  <rect width="9.6" height="8.61" fill="#3c3b6e"/>
+  <!-- Stars pattern -->
+  <g fill="#ffffff">
+    <circle cx="2" cy="1.6" r="0.45"/>
+    <circle cx="4" cy="1.6" r="0.45"/>
+    <circle cx="6" cy="1.6" r="0.45"/>
+    <circle cx="8" cy="1.6" r="0.45"/>
+    <circle cx="3" cy="3.1" r="0.45"/>
+    <circle cx="5" cy="3.1" r="0.45"/>
+    <circle cx="7" cy="3.1" r="0.45"/>
+    <circle cx="2" cy="4.6" r="0.45"/>
+    <circle cx="4" cy="4.6" r="0.45"/>
+    <circle cx="6" cy="4.6" r="0.45"/>
+    <circle cx="8" cy="4.6" r="0.45"/>
+    <circle cx="3" cy="6.1" r="0.45"/>
+    <circle cx="5" cy="6.1" r="0.45"/>
+    <circle cx="7" cy="6.1" r="0.45"/>
+    <circle cx="2" cy="7.6" r="0.45"/>
+    <circle cx="4" cy="7.6" r="0.45"/>
+    <circle cx="6" cy="7.6" r="0.45"/>
+    <circle cx="8" cy="7.6" r="0.45"/>
+  </g>
+</svg>

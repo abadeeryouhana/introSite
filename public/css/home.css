@@ -595,24 +595,27 @@
 }
 
 /* Big Section Titles */
-.section-big-title {
+.section-big-title,
+.section h2.section-big-title {
     font-size: clamp(1.8rem, 4.2vw, 3rem);
     font-weight: 800;
     color: #22456E;
     margin-bottom: clamp(25px, 4vw, 50px);
     line-height: 1.2;
     letter-spacing: -0.5px;
-    text-align: left;
+    text-align: left !important;
 }
 
 /* Partners Section */
-.partners-title {
+.partners-title,
+.section h2.partners-title {
     font-size: clamp(2rem, 4.5vw, 3.2rem);
     font-weight: 800;
     color: #22456E;
     margin-bottom: 25px;
     line-height: 1.15;
     letter-spacing: -1px;
+    text-align: left !important;
 }
 
 .partners-grid-logos {

@@ -285,7 +285,7 @@
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    grid-template-columns: 1.5fr 0.8fr 0.8fr 1.8fr;
     gap: 40px;
     margin-bottom: 50px;
 }
@@ -319,26 +319,86 @@
     color: white;
 }
 
-.footer-contact-item {
-    margin-bottom: 20px;
+/* Contact Column Styles matching the Get In Touch design */
+.site-footer h4.footer-contact-main-title {
+    color: #ffffff;
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    text-transform: none;
+    margin-bottom: 24px;
 }
 
-.footer-contact-item span {
-    display: block;
-    color: #a0aec0;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    margin-bottom: 3px;
+.footer-office-block {
+    margin-bottom: 24px;
 }
 
-.footer-contact-item p {
-    color: white;
-    margin: 0;
+.footer-office-block:last-child {
+    margin-bottom: 0;
 }
 
-.footer-contact-item a {
-    color: #f1f0ee;
+.footer-office-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.footer-office-header span {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+}
+
+.footer-office-flag {
+    width: 22px;
+    height: 15px;
+    border-radius: 2px;
+    object-fit: cover;
+    display: inline-block;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    flex-shrink: 0;
+}
+
+.footer-office-info {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-office-info li {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 12px;
+    color: #cbd5e1 !important;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin-bottom: 0 !important;
+}
+
+.footer-office-info li span,
+.footer-office-info li a {
+    color: #cbd5e1;
     text-decoration: none;
+    transition: color 0.2s ease;
+    word-break: break-word;
+}
+
+.footer-office-info li a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.footer-info-icon {
+    width: 17px;
+    height: 17px;
+    stroke: #8ea5c0;
+    flex-shrink: 0;
+    margin-top: 3px;
 }
 
 .social-icons-footer {

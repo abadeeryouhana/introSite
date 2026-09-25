@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 16" width="24" height="16">
+  <rect width="24" height="16" fill="#000000"/>
+  <rect width="24" height="10.67" fill="#ffffff"/>
+  <rect width="24" height="5.33" fill="#ce1126"/>
+  <!-- Eagle of Saladin -->
+  <g fill="#c09300" transform="translate(10.2, 5.8) scale(0.18)">
+    <path d="M10 2 C9 2 8 3 8 5 C7 5.5 6 7 6 9 C6 11 7 13 8 15 L7 20 L13 20 L12 15 C13 13 14 11 14 9 C14 7 13 5.5 12 5 C12 3 11 2 10 2 Z"/>
+    <path d="M5 8 C3 11 2 15 3 18 L5 17 C5 14 6 11 7 9 Z"/>
+    <path d="M15 8 C17 11 18 15 17 18 L15 17 C15 14 14 11 13 9 Z"/>
+    <rect x="8.5" y="9" width="3" height="4" fill="#ffffff"/>
+  </g>
+</svg>

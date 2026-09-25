@@ -36,34 +36,78 @@
             <label>Contact Email</label>
             <input type="email" name="contact_email" value="{{ $settings['contact_email'] ?? '' }}">
         </div>
-        <div class="form-group" style="display: flex; gap: 15px; margin-bottom: 20px;">
-            <div style="flex: 1;">
-                <label>Location 1 Title (e.g. CAIRO HQ)</label>
-                <input type="text" name="contact_title_1" value="{{ $settings['contact_title_1'] ?? 'CAIRO HQ' }}">
+        <!-- Location 1 -->
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; margin-bottom: 20px;">
+            <h4 style="margin: 0 0 15px 0; color: #1e293b; font-size: 1rem; font-weight: 700;">Location 1 (Cairo)</h4>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 12px;">
+                <div class="form-group" style="margin: 0;">
+                    <label>Title</label>
+                    <input type="text" name="contact_title_1" value="{{ $settings['contact_title_1'] ?? 'Cairo Office' }}">
+                </div>
+                <div class="form-group" style="margin: 0;">
+                    <label>Phone</label>
+                    <input type="text" name="contact_phone_1" value="{{ $settings['contact_phone_1'] ?? '(+20) 127 043 2222' }}">
+                </div>
             </div>
-            <div style="flex: 1;">
-                <label>Location 1 Phone</label>
-                <input type="text" name="contact_phone_1" value="{{ $settings['contact_phone_1'] ?? '(+20) 127 0432 222' }}">
+            <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 15px;">
+                <div class="form-group" style="margin: 0;">
+                    <label>Address</label>
+                    <input type="text" name="contact_address_1" value="{{ $settings['contact_address_1'] ?? '81 Mustafa El Nahas St., Nasr City, Cairo, Egypt' }}">
+                </div>
+                <div class="form-group" style="margin: 0;">
+                    <label>Email</label>
+                    <input type="email" name="contact_email_1" value="{{ $settings['contact_email_1'] ?? ($settings['contact_email'] ?? 'info@bayantranslation.com') }}">
+                </div>
             </div>
         </div>
-        <div class="form-group" style="display: flex; gap: 15px; margin-bottom: 20px;">
-            <div style="flex: 1;">
-                <label>Location 2 Title (e.g. MUSCAT)</label>
-                <input type="text" name="contact_title_2" value="{{ $settings['contact_title_2'] ?? 'MUSCAT' }}">
+
+        <!-- Location 2 -->
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; margin-bottom: 20px;">
+            <h4 style="margin: 0 0 15px 0; color: #1e293b; font-size: 1rem; font-weight: 700;">Location 2 (Muscat)</h4>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 12px;">
+                <div class="form-group" style="margin: 0;">
+                    <label>Title</label>
+                    <input type="text" name="contact_title_2" value="{{ $settings['contact_title_2'] ?? 'Muscat Office' }}">
+                </div>
+                <div class="form-group" style="margin: 0;">
+                    <label>Phone</label>
+                    <input type="text" name="contact_phone_2" value="{{ $settings['contact_phone_2'] ?? '(+968) 766 11537' }}">
+                </div>
             </div>
-            <div style="flex: 1;">
-                <label>Location 2 Phone</label>
-                <input type="text" name="contact_phone_2" value="{{ $settings['contact_phone_2'] ?? '(+968) 9141 2315' }}">
+            <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 15px;">
+                <div class="form-group" style="margin: 0;">
+                    <label>Address</label>
+                    <input type="text" name="contact_address_2" value="{{ $settings['contact_address_2'] ?? 'Office 301, Globex Business Center, Panorama Mall, Ghoubra, Muscat, Oman' }}">
+                </div>
+                <div class="form-group" style="margin: 0;">
+                    <label>Email</label>
+                    <input type="email" name="contact_email_2" value="{{ $settings['contact_email_2'] ?? ($settings['contact_email'] ?? 'info@bayantranslation.com') }}">
+                </div>
             </div>
         </div>
-        <div class="form-group" style="display: flex; gap: 15px; margin-bottom: 20px;">
-            <div style="flex: 1;">
-                <label>Location 3 Title (e.g. FLORIDA)</label>
-                <input type="text" name="contact_title_3" value="{{ $settings['contact_title_3'] ?? 'FLORIDA' }}">
+
+        <!-- Location 3 -->
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; margin-bottom: 20px;">
+            <h4 style="margin: 0 0 15px 0; color: #1e293b; font-size: 1rem; font-weight: 700;">Location 3 (Florida)</h4>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 12px;">
+                <div class="form-group" style="margin: 0;">
+                    <label>Title</label>
+                    <input type="text" name="contact_title_3" value="{{ $settings['contact_title_3'] ?? 'Florida Office' }}">
+                </div>
+                <div class="form-group" style="margin: 0;">
+                    <label>Phone</label>
+                    <input type="text" name="contact_phone_3" value="{{ $settings['contact_phone_3'] ?? '(+1) 727 371 4121' }}">
+                </div>
             </div>
-            <div style="flex: 1;">
-                <label>Location 3 Phone</label>
-                <input type="text" name="contact_phone_3" value="{{ $settings['contact_phone_3'] ?? '(+1) 727 371 4121' }}">
+            <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 15px;">
+                <div class="form-group" style="margin: 0;">
+                    <label>Address</label>
+                    <input type="text" name="contact_address_3" value="{{ $settings['contact_address_3'] ?? 'Tampa Bay, Florida, United States' }}">
+                </div>
+                <div class="form-group" style="margin: 0;">
+                    <label>Email</label>
+                    <input type="email" name="contact_email_3" value="{{ $settings['contact_email_3'] ?? ($settings['contact_email'] ?? 'info@bayantranslation.com') }}">
+                </div>
             </div>
         </div>
         <div class="form-group">

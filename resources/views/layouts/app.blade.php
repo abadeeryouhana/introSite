@@ -343,29 +343,95 @@
                 </ul>
             </div>
 
-            <div class="footer-col-4">
-                <h4>CONTACT</h4>
-                @if(!empty($global_settings['contact_phone_1']))
-                <div class="footer-contact-item">
-                    <span>{{ $global_settings['contact_title_1'] ?? 'CAIRO HQ' }}</span>
-                    <p>{{ $global_settings['contact_phone_1'] }}</p>
-                </div>
-                @endif
-                @if(!empty($global_settings['contact_phone_2']))
-                <div class="footer-contact-item">
-                    <span>{{ $global_settings['contact_title_2'] ?? 'MUSCAT' }}</span>
-                    <p>{{ $global_settings['contact_phone_2'] }}</p>
-                </div>
-                @endif
-                @if(!empty($global_settings['contact_phone_3']))
-                <div class="footer-contact-item">
-                    <span>{{ $global_settings['contact_title_3'] ?? 'FLORIDA' }}</span>
-                    <p>{{ $global_settings['contact_phone_3'] }}</p>
-                </div>
-                @endif
-                <div class="footer-contact-item" style="margin-top: 10px;">
-                    <a href="mailto:{{ $global_settings['contact_email'] ?? 'info@bayangroup.net' }}">{{ $global_settings['contact_email'] ?? 'info@bayangroup.net' }}</a>
-                </div>
+            <div class="footer-col-4 footer-contact-col">
+                <h4 class="footer-contact-main-title">Get In Touch</h4>
+
+                @php
+                    $contactLocations = [
+                        [
+                            'title'        => $global_settings['contact_title_1'] ?? 'Cairo Office',
+                            'default_flag' => 'eg.svg',
+                            'alt'          => 'Egypt Flag',
+                            'address'      => $global_settings['contact_address_1'] ?? '81 Mustafa El Nahas St., Nasr City, Cairo, Egypt',
+                            'phone'        => $global_settings['contact_phone_1'] ?? '(+20) 127 043 2222',
+                            'email'        => $global_settings['contact_email_1'] ?? ($global_settings['contact_email'] ?? 'info@bayantranslation.com'),
+                        ],
+                        [
+                            'title'        => $global_settings['contact_title_2'] ?? 'Muscat Office',
+                            'default_flag' => 'om.svg',
+                            'alt'          => 'Oman Flag',
+                            'address'      => $global_settings['contact_address_2'] ?? 'Office 301, Globex Business Center, Panorama Mall, Ghoubra, Muscat, Oman',
+                            'phone'        => $global_settings['contact_phone_2'] ?? '(+968) 766 11537',
+                            'email'        => $global_settings['contact_email_2'] ?? ($global_settings['contact_email'] ?? 'info@bayantranslation.com'),
+                        ],
+                        [
+                            'title'        => $global_settings['contact_title_3'] ?? 'Florida Office',
+                            'default_flag' => 'us.svg',
+                            'alt'          => 'USA Flag',
+                            'address'      => $global_settings['contact_address_3'] ?? 'Tampa Bay, Florida, United States',
+                            'phone'        => $global_settings['contact_phone_3'] ?? '(+1) 727 371 4121',
+                            'email'        => $global_settings['contact_email_3'] ?? ($global_settings['contact_email'] ?? 'info@bayantranslation.com'),
+                        ],
+                    ];
+                @endphp
+
+                @foreach($contactLocations as $loc)
+                    @if(!empty($loc['title']) || !empty($loc['phone']) || !empty($loc['address']))
+                        @php
+                            $titleText = trim($loc['title']);
+                            if (!empty($titleText) && !str_ends_with($titleText, ':')) {
+                                $titleText .= ':';
+                            }
+                            $lower = strtolower($loc['title']);
+                            $flagFile = $loc['default_flag'];
+                            if (str_contains($lower, 'cairo') || str_contains($lower, 'egypt')) {
+                                $flagFile = 'eg.svg';
+                            } elseif (str_contains($lower, 'muscat') || str_contains($lower, 'oman')) {
+                                $flagFile = 'om.svg';
+                            } elseif (str_contains($lower, 'florida') || str_contains($lower, 'usa') || str_contains($lower, 'america')) {
+                                $flagFile = 'us.svg';
+                            }
+                        @endphp
+                        <div class="footer-office-block">
+                            <div class="footer-office-header">
+                                <img src="{{ asset('images/flags/' . $flagFile) }}" alt="{{ $loc['alt'] }}" class="footer-office-flag">
+                                <span>{{ $titleText }}</span>
+                            </div>
+                            <ul class="footer-office-info">
+                                @if(!empty($loc['address']))
+                                <li>
+                                    <svg class="footer-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                    <span>{{ $loc['address'] }}</span>
+                                </li>
+                                @endif
+
+                                @if(!empty($loc['phone']))
+                                <li>
+                                    <svg class="footer-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                        <path d="M14.05 2a9 9 0 0 1 8 7.94"></path>
+                                        <path d="M14.05 6A5 5 0 0 1 18 10"></path>
+                                    </svg>
+                                    <a href="tel:{{ preg_replace('/[^0-9+]/', '', $loc['phone']) }}">{{ $loc['phone'] }}</a>
+                                </li>
+                                @endif
+
+                                @if(!empty($loc['email']))
+                                <li>
+                                    <svg class="footer-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                                    </svg>
+                                    <a href="mailto:{{ $loc['email'] }}">{{ $loc['email'] }}</a>
+                                </li>
+                                @endif
+                            </ul>
+                        </div>
+                    @endif
+                @endforeach
             </div>
         </div>
 
