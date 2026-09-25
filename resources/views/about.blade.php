@@ -270,7 +270,7 @@
 </div>
 
 <!-- Partners Section -->
-<div class="about-partners-section">
+<div class="about-partners-section" id="partnerships">
     <div class="about-partners-header animate-fade-up">
         <div class="about-partners-subtitle">CERTIFIED PARTNERS</div>
         <h2 class="about-partners-title">Powered by Zoho & Odoo.</h2>
@@ -356,7 +356,7 @@
 
 
 <!-- OUR CLIENTS -->
-<div class="about-clients-section">
+<div class="about-clients-section" id="our-clients">
     <div class="about-clients-container">
         <div class="about-clients-header animate-fade-up">
             <div class="about-clients-subtitle">OUR CLIENTS</div>

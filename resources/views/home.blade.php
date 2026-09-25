@@ -221,11 +221,11 @@
         
         <div class="services-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px;">
             @foreach($services as $service)
-            <div class="service-card" style="background: white; border: 1px solid #eaeaea; border-radius: 12px; padding: 25px 20px; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s;">
+            <div class="service-card" style="background: white; border: 1px solid #eaeaea; border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 15px; transition: transform 0.3s, box-shadow 0.3s;">
                 @if($service->icon_path)
-                    <img src="{{ asset('storage/' . $service->icon_path) }}" alt="{{ $service->title }}" style="width: 32px; height: 32px; object-fit: contain; margin-bottom: 15px;">
+                    <img src="{{ asset('storage/' . $service->icon_path) }}" alt="{{ $service->title }}" style="width: 32px; height: 32px; object-fit: contain; flex-shrink: 0;">
                 @else
-                    <div style="width: 32px; height: 32px; margin-bottom: 15px; color: var(--primary-color);">
+                    <div style="width: 32px; height: 32px; flex-shrink: 0; color: var(--primary-color); display: flex; align-items: center; justify-content: center;">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                     </div>
                 @endif
@@ -249,7 +249,7 @@
             
             <p style="color: #66768f; font-size: 1.15rem; line-height: 1.6; margin-bottom: 40px;">Bayan Technology is a certified partner for the world's two leading business platforms &mdash; delivering implementation, customization, support, and training end-to-end.</p>
             
-            <a href="#" style="background-color: #4b85c1; color: white; padding: 14px 35px; border-radius: 30px; font-weight: 600; text-decoration: none; display: inline-block; transition: background 0.3s; font-size: 1.05rem; box-shadow: 0 4px 15px rgba(75, 133, 193, 0.3);" onmouseover="this.style.backgroundColor='#3b71ca'" onmouseout="this.style.backgroundColor='#4b85c1'">Our Partnerships &rarr;</a>
+            <a href="{{ route('about') }}#partnerships" style="background-color: #4b85c1; color: white; padding: 14px 35px; border-radius: 30px; font-weight: 600; text-decoration: none; display: inline-block; transition: background 0.3s; font-size: 1.05rem; box-shadow: 0 4px 15px rgba(75, 133, 193, 0.3);" onmouseover="this.style.backgroundColor='#3b71ca'" onmouseout="this.style.backgroundColor='#4b85c1'">Our Partnerships &rarr;</a>
         </div>
         
         <!-- Right Content (Logos) -->

@@ -327,8 +327,8 @@
                 <h4>COMPANY</h4>
                 <ul>
                     <li><a href="{{ route('about') }}">About Us</a></li>
-                    <li><a href="#">Partnerships</a></li>
-                    <li><a href="#">Our Clients</a></li>
+                    <li><a href="{{ route('about') }}#partnerships">Partnerships</a></li>
+                    <li><a href="{{ route('about') }}#our-clients">Our Clients</a></li>
                     <li><a href="{{ route('careers') }}">Careers</a></li>
                 </ul>
             </div>

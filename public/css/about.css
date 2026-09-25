@@ -419,6 +419,7 @@
     padding: 100px 20px;
     max-width: 1200px;
     margin: 0 auto;
+    scroll-margin-top: 90px;
 }
 
 .about-partners-header {
@@ -696,6 +697,7 @@
     background-color: #fff;
     padding: 100px 20px;
     text-align: center;
+    scroll-margin-top: 90px;
 }
 
 .about-clients-container {
