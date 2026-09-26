@@ -354,7 +354,6 @@
                             'alt'          => 'Egypt Flag',
                             'address'      => $global_settings['contact_address_1'] ?? '81 Mustafa El Nahas St., Nasr City, Cairo, Egypt',
                             'phone'        => $global_settings['contact_phone_1'] ?? '(+20) 127 043 2222',
-                            'email'        => $global_settings['contact_email_1'] ?? ($global_settings['contact_email'] ?? 'info@bayantranslation.com'),
                         ],
                         [
                             'title'        => $global_settings['contact_title_2'] ?? 'Muscat Office',
@@ -362,7 +361,6 @@
                             'alt'          => 'Oman Flag',
                             'address'      => $global_settings['contact_address_2'] ?? 'Office 301, Globex Business Center, Panorama Mall, Ghoubra, Muscat, Oman',
                             'phone'        => $global_settings['contact_phone_2'] ?? '(+968) 766 11537',
-                            'email'        => $global_settings['contact_email_2'] ?? ($global_settings['contact_email'] ?? 'info@bayantranslation.com'),
                         ],
                         [
                             'title'        => $global_settings['contact_title_3'] ?? 'Florida Office',
@@ -370,9 +368,9 @@
                             'alt'          => 'USA Flag',
                             'address'      => $global_settings['contact_address_3'] ?? 'Tampa Bay, Florida, United States',
                             'phone'        => $global_settings['contact_phone_3'] ?? '(+1) 727 371 4121',
-                            'email'        => $global_settings['contact_email_3'] ?? ($global_settings['contact_email'] ?? 'info@bayantranslation.com'),
                         ],
                     ];
+                    $contactEmail = $global_settings['contact_email'] ?? 'info@bayangroup.com';
                 @endphp
 
                 @foreach($contactLocations as $loc)
@@ -418,20 +416,24 @@
                                     <a href="tel:{{ preg_replace('/[^0-9+]/', '', $loc['phone']) }}">{{ $loc['phone'] }}</a>
                                 </li>
                                 @endif
-
-                                @if(!empty($loc['email']))
-                                <li>
-                                    <svg class="footer-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                                    </svg>
-                                    <a href="mailto:{{ $loc['email'] }}">{{ $loc['email'] }}</a>
-                                </li>
-                                @endif
                             </ul>
                         </div>
                     @endif
                 @endforeach
+
+                @if(!empty($contactEmail))
+                    <div class="footer-office-block footer-email-block">
+                        <ul class="footer-office-info">
+                            <li>
+                                <svg class="footer-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                                </svg>
+                                <a href="mailto:{{ $contactEmail }}">{{ $contactEmail }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                @endif
             </div>
         </div>
 
@@ -520,6 +522,43 @@
         }).showToast();
     </script>
     @endif
+
+    <!-- Back to Top Button -->
+    <button type="button" id="backToTopBtn" class="back-to-top" aria-label="Back to top" title="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            if (!backToTopBtn) return;
+
+            if (document.getElementById('bayan-chatbot-launcher')) {
+                document.body.classList.add('has-chatbot');
+            }
+
+            const handleScroll = function() {
+                if (window.scrollY > 280) {
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                }
+            };
+
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            handleScroll();
+
+            backToTopBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 
     @include('partials.chatbot')
 </body>
